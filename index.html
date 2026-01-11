@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relicário DeusOt — Níveis e Custos</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: #121a27;
+      --panel2: #0f1622;
+      --text: #e9eef7;
+      --muted: #a8b3c7;
+      --stroke: rgba(255,255,255,.08);
+      --stroke2: rgba(255,255,255,.14);
+      --accent: #7c5cff;
+      --accent2: #2be4c6;
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(900px 600px at 110% 10%, rgba(43,228,198,.22), transparent 60%),
+        var(--bg);
+    }
+
+    /* Topbar */
+    header.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 16px;
+      border-bottom: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      font-weight: 900;
+      background: linear-gradient(145deg, rgba(124,92,255,.95), rgba(43,228,198,.55));
+      box-shadow: var(--shadow);
+    }
+    .brand-text h1 { margin: 0; font-size: 18px; letter-spacing: .2px; }
+    .brand-text p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+
+    .tools { display: flex; align-items: center; gap: 10px; }
+    .tools input {
+      width: min(420px, 55vw);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(18, 26, 39, 0.72);
+      color: var(--text);
+      outline: none;
+    }
+    .tools input::placeholder { color: rgba(168,179,199,.7); }
+    .tools button {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(18, 26, 39, 0.72);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color .12s ease, transform .12s ease;
+    }
+    .tools button:hover { border-color: var(--stroke2); transform: translateY(-1px); }
+
+    /* ====== NOVO LAYOUT (custos em cima, grid abaixo) ====== */
+    main.layout {
+      padding: 16px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .row-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .row-grid { grid-template-columns: 1fr; }
+      .tools input { width: 58vw; }
+    }
+
+    .panel {
+      background: rgba(18, 26, 39, 0.66);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* Costs card */
+    .costs {
+      padding: 14px;
+      background: rgba(15, 22, 34, 0.58);
+    }
+    .costs h2 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+    .costs p {
+      margin: 0 0 10px;
+      color: rgba(233,238,247,.92);
+      line-height: 1.45;
+      font-size: 13.5px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.5);
+      color: var(--text);
+      font-size: 12.5px;
+      font-variant-numeric: tabular-nums;
+    }
+    .chip b { color: rgba(233,238,247,.95); }
+    .chip .tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      color: var(--muted);
+      background: rgba(18, 26, 39, 0.5);
+      font-size: 11px;
+    }
+
+    /* Left: levels card */
+    .levels-wrap { padding: 14px; }
+    .levels-wrap h3 {
+      margin: 6px 4px 12px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .grid-levels {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    @media (max-width: 560px) {
+      .grid-levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .card {
+      position: relative;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(15, 22, 34, 0.95), rgba(18, 26, 39, 0.6));
+      cursor: pointer;
+      user-select: none;
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+      min-height: 88px;
+    }
+    .card:hover { transform: translateY(-2px); border-color: var(--stroke2); }
+    .card.active {
+      border-color: rgba(124, 92, 255, 0.65);
+      box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.18);
+    }
+    .card .lvl { font-weight: 900; font-size: 14px; }
+    .card .sub { margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.55);
+      color: var(--muted);
+    }
+
+    /* "aqui" widget */
+    .here {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 7px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(43, 228, 198, 0.4);
+      background: rgba(43, 228, 198, 0.12);
+      color: rgba(233,238,247,.95);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      width: fit-content;
+    }
+    .here::before{
+      content:"•";
+      color: var(--accent2);
+      margin-right: 8px;
+      font-size: 14px;
+      line-height: 0;
+    }
+
+    /* Right: details card */
+    .details-header {
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid var(--stroke);
+      background: rgba(15, 22, 34, 0.68);
+    }
+    .details-header h3 { margin: 0; font-size: 16px; }
+    .meta { display: inline-block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+
+    .details-body { padding: 14px; }
+    .hint {
+      border: 1px dashed var(--stroke);
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--muted);
+      background: rgba(15, 22, 34, 0.35);
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    .items { display: grid; gap: 10px; margin-top: 10px; }
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      background: rgba(15, 22, 34, 0.5);
+    }
+    .item .name { font-weight: 650; }
+    .item .qty {
+      font-variant-numeric: tabular-nums;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.45);
+    }
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    footer.footer {
+      padding: 10px 16px 18px;
+      color: rgba(168,179,199,.75);
+    }
+  </style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">R</div>
+    <div class="brand-text">
+      <h1>Relicário DeusOt</h1>
+      <p>27 níveis • 5 itens por nível • 25 unidades por item</p>
+    </div>
+  </div>
+
+  <div class="tools">
+    <input id="search" type="search" placeholder="Buscar item (ex: Tower Shield)..." />
+    <button id="clear" type="button">Limpar</button>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- Card separado no topo: CUSTOS -->
+  <section class="panel">
+    <div class="costs">
+      <h2>Custos de upgrades (intervalos)</h2>
+      <p>
+        Regras: cada nível pede <b>5 itens</b>, e cada item pede <b>25 unidades</b>.
+        Dentro de um intervalo, se um item repetir, ele soma. Os valores abaixo são os custos
+        por intervalo (ou acumulados quando indicado).
+      </p>
+      <div class="chips" id="costChips"></div>
+    </div>
+  </section>
+
+  <!-- Abaixo: grid com dois cards lado a lado -->
+  <section class="row-grid">
+    <!-- ESQUERDA: níveis -->
+    <section class="panel">
+      <div class="levels-wrap">
+        <h3>Níveis</h3>
+        <div id="levelsGrid" class="grid-levels"></div>
+      </div>
+    </section>
+
+    <!-- DIREITA: nível selecionado + itens -->
+    <section class="panel">
+      <div class="details-header">
+        <h3 id="detailsTitle">Clique em um nível</h3>
+        <span id="detailsMeta" class="meta"></span>
+      </div>
+      <div id="detailsBody" class="details-body">
+        <div class="hint">
+          Clique em um card para ver os itens do nível. Se você usar a busca, os cards dos níveis
+          que contêm o item vão mostrar um marcador <b>“aqui”</b> dentro deles.
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>Single-file pronto para deploy no GitHub Pages.</small>
+</footer>
+
+<script>
+  // -------------------------
+  // Dados: níveis e itens
+  // -------------------------
+  const LEVELS = [
+    { level: 1,  items: ["Strange Helmet", "Devil Helmet", "Dragon Hammer", "Crown Helmet", "Dragon Shield"] },
+    { level: 2,  items: ["K- Axe", "Guardian Shield", "Mino Shield", "Focus Cape", "Warrior Helmet"] },
+    { level: 3,  items: ["Fire Sword", "Beastslayer Axe", "Elvish Bow", "Dragonbone Staff", "K-Armor"] },
+    { level: 4,  items: ["Oriental Shoes", "Glooth Blade", "Glooth Axe", "Glooth Club", "Skull Staff"] },
+    { level: 5,  items: ["Terra Boots", "Magma Boots", "Glacier Shoes", "S. of Enlightenment", "Lightning Boots"] },
+    { level: 6,  items: ["Spiked Squelcher", "Tower Shield", "K-Legs", "Zaoan Shoes", "Magma Coat"] },
+    { level: 7,  items: ["Terra Hood", "Magma Monocle", "Terra Mantle", "Lightning Headband", "Rubber Cap"] },
+    { level: 8,  items: ["Wooden Spellbook", "Blue Robe", "Crown Shield", "Fire Axe", "Zaoan Armor"] },
+    { level: 9,  items: ["Titan Axe", "S. of Warding", "Medusa Shield", "Glorious Axe", "Blacksteel Sword*"] },
+    { level: 10, items: ["Mooh'tah Plate", "Lightning Legs", "War Axe", "Zoan Armor", "SpellBook Mind C"] },
+    { level: 11, items: ["Tower Shield", "Crusader Helmet", "Haunted Blade", "Crown Armor", "Warrior Helme"] },
+    { level: 12, items: ["Skull Staff", "Terra Mantle", "K-Legs", "Crown Shield", "Muk Rod"] },
+    { level: 13, items: ["Wand of Defiance", "Zoan Legs", "Magma Legs", "Wand of Everblazing", "Glacial Rod"] },
+    { level: 14, items: ["Glacier Kilt", "Terra Legs", "Fire Axe", "Butcher's Axe", "Lightning Legs"] },
+    { level: 15, items: ["Magma Coat", "Terra Mantle", "Blue Robe", "Glacier Robe", "Zaoan Robe"] },
+    { level: 16, items: ["Lightning Robe", "Crystalline Armor", "Calopteryx Cape", "Spellweaver's Robe", "Zaoan Robe"] },
+    { level: 17, items: ["Sapphire Hammer", "Epee", "Jade Hat", "Crystal Mace", "Warrior's Shield"] },
+    { level: 18, items: ["Warrior's Axe", "Hive Scythe", "Chaos Mace", "War Axe", "Noble Axe"] },
+    { level: 19, items: ["Drakinata", "Zaoan Sword", "Haunted Blade", "Bonebreaker", "Shadow Sceptre"] },
+    { level: 20, items: ["Mercenary Sword", "Crown Armor", "Crown Legs", "Zaoan Armor", "Jade Hammer"] },
+    { level: 21, items: ["S. of Mind Control", "Ornate Crossbow", "Sai", "Golden Armor", "Dragon Slayer"] },
+    { level: 22, items: ["Dreaded Cleaver", "Giant Sword", "Paladin Armor", "Dragon Lance", "Skullcracker Armor"] },
+    { level: 23, items: ["Relic Sword", "Vampire Shield", "Assassin Dagger", "Steel Boots", "Onyx Flail"] },
+    { level: 24, items: ["Boots of Haste", "Demon Shield", "Royal Helmet", "Mastermind Shield", "Vile Axe"] },
+    { level: 25, items: ["Crystal Crossbow", "Rift Lance", "Rift Bow", "Rift Crossbow", "Cristalline Sword"] },
+    { level: 26, items: ["Heavy Mace", "Skull Helmet", "Dragon Scale Mail", "Golden Legs", "Abyss Hammer"] },
+    { level: 27, items: ["Nightmare Blade", "Ruthless Axe", "Magic Plate Armor", "Hammer of Wrath", "Demonrage Sword"] },
+  ];
+  const QTY_PER_ITEM = 25;
+
+  // -------------------------
+  // Custos / intervalos
+  // -------------------------
+  const COSTS = {
+    acumulados: [
+      { label: "1 → 5 (acumulado)",  value: 2250000 },
+      { label: "1 → 10 (acumulado)", value: 8250000 },
+      { label: "1 → 15 (acumulado)", value: 18000000 },
+      { label: "1 → 20 (acumulado)", value: 31500000 },
+      { label: "1 → 27 (acumulado)", value: 56700000 },
+    ],
+    intervalos: [
+      { label: "5 → 10 (intervalo)", value: 6000000 },
+      { label: "10 → 15 (intervalo)", value: 9750000 },
+      { label: "15 → 20 (intervalo)", value: 13500000 },
+      { label: "20 → 27 (intervalo)", value: 25200000 },
+    ]
+  };
+
+  // -------------------------
+  // DOM
+  // -------------------------
+  const els = {
+    grid: document.querySelector("#levelsGrid"),
+    title: document.querySelector("#detailsTitle"),
+    meta: document.querySelector("#detailsMeta"),
+    body: document.querySelector("#detailsBody"),
+    search: document.querySelector("#search"),
+    clear: document.querySelector("#clear"),
+    costChips: document.querySelector("#costChips"),
+  };
+
+  let activeLevel = 1;
+  let activeSearch = "";
+
+  function normalize(s) { return String(s).toLowerCase().trim(); }
+
+  function money(n) {
+    const s = Math.round(n).toString();
+    return s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function renderCosts() {
+    const parts = [];
+
+    COSTS.acumulados.forEach(c => {
+      parts.push(`
+        <div class="chip">
+          <span class="tag">acumulado</span>
+          <b>${escapeHtml(c.label)}</b>
+          <span>— ${money(c.value)}</span>
+        </div>
+      `);
+    });
+
+    COSTS.intervalos.forEach(c => {
+      parts.push(`
+        <div class="chip">
+          <span class="tag">intervalo</span>
+          <b>${escapeHtml(c.label)}</b>
+          <span>— ${money(c.value)}</span>
+        </div>
+      `);
+    });
+
+    els.costChips.innerHTML = parts.join("");
+  }
+
+  function levelHasMatch(levelObj, q) {
+    if (!q) return false;
+    const nq = normalize(q);
+    return levelObj.items.some(it => normalize(it).includes(nq));
+  }
+
+  function countMatches(levelObj, q) {
+    if (!q) return 0;
+    const nq = normalize(q);
+    return levelObj.items.filter(it => normalize(it).includes(nq)).length;
+  }
+
+  function renderCards() {
+    els.grid.innerHTML = "";
+
+    LEVELS.forEach((lvl) => {
+      const has = levelHasMatch(lvl, activeSearch);
+      const hits = countMatches(lvl, activeSearch);
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.level = String(lvl.level);
+
+      if (activeLevel === lvl.level) card.classList.add("active");
+
+      card.innerHTML = `
+        <div class="lvl">Nível ${lvl.level}</div>
+        <div class="sub">${lvl.items.length} itens • ${QTY_PER_ITEM} un. cada</div>
+        ${activeSearch ? `<div class="badge">${hits ? `${hits} match` : "0 match"}</div>` : ""}
+        ${has ? `<div class="here">aqui</div>` : ""}
+      `;
+
+      if (activeSearch && has) {
+        card.style.borderColor = "rgba(43, 228, 198, 0.35)";
+      }
+
+      card.addEventListener("click", () => {
+        activeLevel = lvl.level;
+        highlightActive();
+        renderDetails(activeLevel);
+      });
+
+      els.grid.appendChild(card);
+    });
+  }
+
+  function highlightActive() {
+    document.querySelectorAll(".card").forEach((c) => c.classList.remove("active"));
+    const el = document.querySelector(`.card[data-level="${activeLevel}"]`);
+    if (el) el.classList.add("active");
+  }
+
+  function renderDetails(levelNumber) {
+    const lvl = LEVELS.find(x => x.level === levelNumber);
+    if (!lvl) return;
+
+    const filtered = activeSearch
+      ? lvl.items.filter(it => normalize(it).includes(normalize(activeSearch)))
+      : lvl.items;
+
+    els.title.textContent = `Nível ${lvl.level}`;
+    els.meta.textContent = activeSearch
+      ? `Mostrando ${filtered.length} de ${lvl.items.length} itens (filtro ativo)`
+      : `${lvl.items.length} itens`;
+
+    els.body.innerHTML = `
+      <div class="items">
+        ${filtered.map(name => `
+          <div class="item">
+            <div class="name">${escapeHtml(name)}</div>
+            <div class="qty">${QTY_PER_ITEM} un.</div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="note">
+        ${activeSearch
+          ? `Filtro atual: <b>${escapeHtml(activeSearch)}</b>. Cards com o item exibem o marcador <b>“aqui”</b>.`
+          : `Use a busca para localizar rapidamente em quais níveis um item aparece.`}
+      </div>
+    `;
+  }
+
+  function init() {
+    renderCosts();
+    renderCards();
+    highlightActive();
+    renderDetails(activeLevel);
+
+    els.search.addEventListener("input", (e) => {
+      activeSearch = e.target.value || "";
+      renderCards();
+      renderDetails(activeLevel);
+    });
+
+    els.clear.addEventListener("click", () => {
+      activeSearch = "";
+      els.search.value = "";
+      renderCards();
+      renderDetails(activeLevel);
+    });
+  }
+
+  init();
+</script>
+</body>
+</html>
