@@ -80,7 +80,7 @@
     }
     .tools button:hover { border-color: var(--stroke2); transform: translateY(-1px); }
 
-    /* ====== NOVO LAYOUT (custos em cima, grid abaixo) ====== */
+    /* ====== LAYOUT (custos em cima, grid abaixo) ====== */
     main.layout {
       padding: 16px;
       display: grid;
@@ -248,23 +248,125 @@
 
     .items { display: grid; gap: 10px; margin-top: 10px; }
     .item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px 12px;
       padding: 12px;
       border: 1px solid var(--stroke);
       border-radius: 14px;
       background: rgba(15, 22, 34, 0.5);
+      align-items: center;
     }
     .item .name { font-weight: 650; }
+
+    /* qty pill */
     .item .qty {
       font-variant-numeric: tabular-nums;
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
       background: rgba(11, 15, 23, 0.45);
+      justify-self: end;
+      white-space: nowrap;
     }
+
+    .item .subline {
+      grid-column: 1 / -1;
+      color: rgba(168,179,199,.9);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .item .subline b { color: rgba(233,238,247,.95); }
+
+    /* ================================
+       DROPPED BY (NOVO)
+       ================================ */
+    .drops {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .drops .drops-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: rgba(233,238,247,.92);
+      font-size: 12px;
+    }
+    .drops .drops-head b { color: rgba(233,238,247,.95); }
+    .drops .drops-head .count {
+      font-variant-numeric: tabular-nums;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.35);
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .drops .chipsWrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dropchip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(11, 15, 23, 0.45);
+      color: rgba(233,238,247,.92);
+      font-size: 12px;
+      line-height: 1;
+      max-width: 100%;
+    }
+    .dropchip::before{
+      content:"✦";
+      color: rgba(43,228,198,.9);
+      font-size: 12px;
+      transform: translateY(-0.5px);
+    }
+    .dropchip span{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 58ch;
+    }
+
+    /* toggle button for drops */
+    .dropsToggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(124,92,255,.35);
+      background: rgba(124,92,255,.10);
+      color: rgba(233,238,247,.95);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .15px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+      white-space: nowrap;
+    }
+    .dropsToggle:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,92,255,.55);
+      background: rgba(124,92,255,.14);
+    }
+    .dropsToggle::before{
+      content:"👁";
+      font-size: 12px;
+      transform: translateY(-0.5px);
+      opacity:.9;
+    }
+
     .note {
       margin-top: 12px;
       color: var(--muted);
@@ -276,6 +378,49 @@
       padding: 10px 16px 18px;
       color: rgba(168,179,199,.75);
     }
+
+    /* ================================
+       WIKI BUTTON
+       ================================ */
+    .nameRow{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .nameRow .name{
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .wiki {
+      margin-left: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(43, 228, 198, 0.38);
+      background: rgba(43, 228, 198, 0.12);
+      color: rgba(233,238,247,.95);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .wiki:hover{
+      transform: translateY(-1px);
+      border-color: rgba(43, 228, 198, 0.58);
+      background: rgba(43, 228, 198, 0.16);
+    }
+    .wiki::before{
+      content:"↗";
+      opacity:.9;
+      transform: translateY(-0.5px);
+    }
   </style>
 </head>
 
@@ -285,7 +430,7 @@
     <div class="logo">R</div>
     <div class="brand-text">
       <h1>Relicário DeusOt</h1>
-      <p>27 níveis • 5 itens por nível • 25 unidades por item</p>
+      <p id="brandSubtitle">Carregando…</p>
     </div>
   </div>
 
@@ -299,11 +444,11 @@
   <!-- Card separado no topo: CUSTOS -->
   <section class="panel">
     <div class="costs">
-      <h2>Custos de upgrades (intervalos)</h2>
+      <h2>Custos de upgrades (calculado do JSON)</h2>
       <p>
         Regras: cada nível pede <b>5 itens</b>, e cada item pede <b>25 unidades</b>.
-        Dentro de um intervalo, se um item repetir, ele soma. Os valores abaixo são os custos
-        por intervalo (ou acumulados quando indicado).
+        Os valores abaixo são calculados usando <b>sites</b> da <b>comunidade</b>.
+        Se um item estiver com <b>preço v</b>, ele é considerado como <b>0</b> no cálculo.
       </p>
       <div class="chips" id="costChips"></div>
     </div>
@@ -336,66 +481,29 @@
 </main>
 
 <footer class="footer">
-  <small>Single-file pronto para deploy no GitHub Pages.</small>
+  <small>Single-file pronto para deploy no GitHub Pages (lembre de manter o <b>itens.json</b> ao lado do <b>index.html</b>).</small>
 </footer>
 
 <script>
-  // -------------------------
-  // Dados: níveis e itens
-  // -------------------------
-  const LEVELS = [
-    { level: 1,  items: ["Strange Helmet", "Devil Helmet", "Dragon Hammer", "Crown Helmet", "Dragon Shield"] },
-    { level: 2,  items: ["Knight Axe", "Guardian Shield", "Mino Shield", "Focus Cape", "Warrior Helmet"] },
-    { level: 3,  items: ["Fire Sword", "Beastslayer Axe", "Elvish Bow", "Dragonbone Staff", "K-Armor"] },
-    { level: 4,  items: ["Oriental Shoes", "Glooth Blade", "Glooth Axe", "Glooth Club", "Skull Staff"] },
-    { level: 5,  items: ["Terra Boots", "Magma Boots", "Glacier Shoes", "S. of Enlightenment", "Lightning Boots"] },
-    { level: 6,  items: ["Spiked Squelcher", "Tower Shield", "K-Legs", "Zaoan Shoes", "Magma Coat"] },
-    { level: 7,  items: ["Terra Hood", "Magma Monocle", "Terra Mantle", "Lightning Headband", "Rubber Cap"] },
-    { level: 8,  items: ["Wooden Spellbook", "Blue Robe", "Crown Shield", "Fire Axe", "Zaoan Armor"] },
-    { level: 9,  items: ["Titan Axe", "S. of Warding", "Medusa Shield", "Glorious Axe", "Blacksteel Sword*"] },
-    { level: 10, items: ["Mooh'tah Plate", "Lightning Legs", "War Axe", "Zoan Armor", "SpellBook Mind C"] },
-    { level: 11, items: ["Tower Shield", "Crusader Helmet", "Haunted Blade", "Crown Armor", "Warrior Helme"] },
-    { level: 12, items: ["Skull Staff", "Terra Mantle", "Knight Legs", "Crown Shield", "Muk Rod"] },
-    { level: 13, items: ["Wand of Defiance", "Zoan Legs", "Magma Legs", "Wand of Everblazing", "Glacial Rod"] },
-    { level: 14, items: ["Glacier Kilt", "Terra Legs", "Fire Axe", "Butcher's Axe", "Lightning Legs"] },
-    { level: 15, items: ["Magma Coat", "Terra Mantle", "Blue Robe", "Glacier Robe", "Zaoan Robe"] },
-    { level: 16, items: ["Lightning Robe", "Crystalline Armor", "Calopteryx Cape", "Spellweaver's Robe", "Zaoan Robe"] },
-    { level: 17, items: ["Sapphire Hammer", "Epee", "Jade Hat", "Crystal Mace", "Warrior's Shield"] },
-    { level: 18, items: ["Warrior's Axe", "Hive Scythe", "Chaos Mace", "War Axe", "Noble Axe"] },
-    { level: 19, items: ["Drakinata", "Zaoan Sword", "Haunted Blade", "Bonebreaker", "Shadow Sceptre"] },
-    { level: 20, items: ["Mercenary Sword", "Crown Armor", "Crown Legs", "Zaoan Armor", "Jade Hammer"] },
-    { level: 21, items: ["S. of Mind Control", "Ornate Crossbow", "Sai", "Golden Armor", "Dragon Slayer"] },
-    { level: 22, items: ["Dreaded Cleaver", "Giant Sword", "Paladin Armor", "Dragon Lance", "Skullcracker Armor"] },
-    { level: 23, items: ["Relic Sword", "Vampire Shield", "Assassin Dagger", "Steel Boots", "Onyx Flail"] },
-    { level: 24, items: ["Boots of Haste", "Demon Shield", "Royal Helmet", "Mastermind Shield", "Vile Axe"] },
-    { level: 25, items: ["Crystal Crossbow", "Rift Lance", "Rift Bow", "Rift Crossbow", "Cristalline Sword"] },
-    { level: 26, items: ["Heavy Mace", "Skull Helmet", "Dragon Scale Mail", "Golden Legs", "Abyss Hammer"] },
-    { level: 27, items: ["Nightmare Blade", "Ruthless Axe", "Magic Plate Armor", "Hammer of Wrath", "Demonrage Sword"] },
-  ];
-  const QTY_PER_ITEM = 25;
+  // ============================================================
+  // CONFIG
+  // ============================================================
+  const JSON_URL = "./itens.json";
 
-  // -------------------------
-  // Custos / intervalos
-  // -------------------------
-  const COSTS = {
-    acumulados: [
-      { label: "1 → 5 (acumulado)",  value: 2250000 },
-      { label: "1 → 10 (acumulado)", value: 8250000 },
-      { label: "1 → 15 (acumulado)", value: 18000000 },
-      { label: "1 → 20 (acumulado)", value: 31500000 },
-      { label: "1 → 27 (acumulado)", value: 56700000 },
-    ],
-    intervalos: [
-      { label: "5 → 10 (intervalo)", value: 6000000 },
-      { label: "10 → 15 (intervalo)", value: 9750000 },
-      { label: "15 → 20 (intervalo)", value: 13500000 },
-      { label: "20 → 27 (intervalo)", value: 25200000 },
-    ]
-  };
+  // ============================================================
+  // STATE (alimentado pelo JSON)
+  // ============================================================
+  let LEVELS = [];
+  let LEVELS_FULL = []; // mantém o formato original (com prices)
+  let QTY_PER_ITEM = 25;
+  let COSTS = { acumulados: [], intervalos: [] };
 
-  // -------------------------
+  // para lembrar quais itens têm "droppedBy" expandido (por nível)
+  const dropsExpanded = new Set(); // key: `${level}:${wikiSlug||name}`
+
+  // ============================================================
   // DOM
-  // -------------------------
+  // ============================================================
   const els = {
     grid: document.querySelector("#levelsGrid"),
     title: document.querySelector("#detailsTitle"),
@@ -404,20 +512,24 @@
     search: document.querySelector("#search"),
     clear: document.querySelector("#clear"),
     costChips: document.querySelector("#costChips"),
+    brandSubtitle: document.querySelector("#brandSubtitle"),
   };
 
   let activeLevel = 1;
   let activeSearch = "";
 
-  function normalize(s) { return String(s).toLowerCase().trim(); }
+  // ============================================================
+  // UTILS
+  // ============================================================
+  function normalize(s) { return String(s ?? "").toLowerCase().trim(); }
 
   function money(n) {
-    const s = Math.round(n).toString();
+    const s = Math.round(Number(n || 0)).toString();
     return s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
   function escapeHtml(str) {
-    return String(str)
+    return String(str ?? "")
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
@@ -425,6 +537,104 @@
       .replaceAll("'", "&#039;");
   }
 
+  function getDisplayName(item) {
+    if (item?.aliases?.length) return item.aliases[0];
+    return item?.name ?? "";
+  }
+
+  function getItemPrice(item) {
+    const p = item?.npcBuy?.price;
+    if (p === null || p === undefined) return null;
+    const num = Number(p);
+    return Number.isFinite(num) ? num : null;
+  }
+
+  // pega o link da wiki conforme seu JSON
+  function getWikiUrl(item) {
+    if (item?.wikiUrl) return String(item.wikiUrl);
+    if (item?.wikiSlug) {
+      return `https://www.tibiawiki.com.br/wiki/${encodeURIComponent(String(item.wikiSlug))}`;
+    }
+    return null;
+  }
+
+  function getDropKey(levelNumber, item) {
+    return `${levelNumber}:${String(item?.wikiSlug || item?.name || item?._displayName || "item")}`;
+  }
+
+  // ============================================================
+  // BUILD DATA FROM JSON
+  // ============================================================
+  function buildFromJson(json) {
+    QTY_PER_ITEM = Number(json?.meta?.qtyPerItem ?? 25);
+
+    LEVELS_FULL = (json?.levels || []).map(l => ({
+      level: l.level,
+      items: (l.items || []).map(it => ({
+        ...it,
+        _displayName: getDisplayName(it),
+        _price: getItemPrice(it),
+        _qty: Number(it?.qty ?? QTY_PER_ITEM),
+        _wikiUrl: getWikiUrl(it),
+        _droppedBy: Array.isArray(it?.droppedBy) ? it.droppedBy.filter(Boolean) : []
+      }))
+    }));
+
+    LEVELS = LEVELS_FULL.map(l => ({
+      level: l.level,
+      items: l.items.map(it => it._displayName),
+    }));
+
+    const totalLevels = LEVELS.length;
+    const first = LEVELS[0]?.level ?? 1;
+
+    els.brandSubtitle.textContent =
+      `${totalLevels} níveis • 5 itens por nível • ${QTY_PER_ITEM} unidades por item`;
+
+    activeLevel = first;
+  }
+
+  // ============================================================
+  // COSTS (calculado do JSON)
+  // ============================================================
+  function calcCostsFromJson() {
+    const perLevel = LEVELS_FULL.map(lvl => {
+      const total = (lvl.items || []).reduce((acc, it) => {
+        const price = it._price ?? 0;
+        const qty = it._qty ?? QTY_PER_ITEM;
+        return acc + (price * qty);
+      }, 0);
+      return { level: lvl.level, total };
+    });
+
+    if (!perLevel.length) return { acumulados: [], intervalos: [] };
+
+    const maxLevel = Math.max(...perLevel.map(x => x.level));
+    const sumRange = (a, b) => perLevel
+      .filter(x => x.level >= a && x.level <= b)
+      .reduce((acc, x) => acc + x.total, 0);
+
+    const acumulados = [
+      { label: `1 → 5 (acumulado)`,  value: sumRange(1, Math.min(5, maxLevel)) },
+      { label: `1 → 10 (acumulado)`, value: sumRange(1, Math.min(10, maxLevel)) },
+      { label: `1 → 15 (acumulado)`, value: sumRange(1, Math.min(15, maxLevel)) },
+      { label: `1 → 20 (acumulado)`, value: sumRange(1, Math.min(20, maxLevel)) },
+      { label: `1 → ${maxLevel} (acumulado)`, value: sumRange(1, maxLevel) },
+    ].filter(c => c.value > 0);
+
+    const intervalos = [
+      { label: `5 → 10 (intervalo)`, value: sumRange(6, Math.min(10, maxLevel)) },
+      { label: `10 → 15 (intervalo)`, value: sumRange(11, Math.min(15, maxLevel)) },
+      { label: `15 → 20 (intervalo)`, value: sumRange(16, Math.min(20, maxLevel)) },
+      { label: `20 → ${maxLevel} (intervalo)`, value: sumRange(21, maxLevel) },
+    ].filter(c => c.value > 0);
+
+    return { acumulados, intervalos };
+  }
+
+  // ============================================================
+  // RENDER
+  // ============================================================
   function renderCosts() {
     const parts = [];
 
@@ -448,7 +658,13 @@
       `);
     });
 
-    els.costChips.innerHTML = parts.join("");
+    els.costChips.innerHTML = parts.join("") || `
+      <div class="chip">
+        <span class="tag">info</span>
+        <b>Sem custos</b>
+        <span>— (verifique se npcBuy.price está preenchido no JSON)</span>
+      </div>
+    `;
   }
 
   function levelHasMatch(levelObj, q) {
@@ -504,54 +720,189 @@
   }
 
   function renderDetails(levelNumber) {
-    const lvl = LEVELS.find(x => x.level === levelNumber);
-    if (!lvl) return;
+    const lvlSimple = LEVELS.find(x => x.level === levelNumber);
+    const lvlFull = LEVELS_FULL.find(x => x.level === levelNumber);
+    if (!lvlSimple || !lvlFull) return;
 
-    const filtered = activeSearch
-      ? lvl.items.filter(it => normalize(it).includes(normalize(activeSearch)))
-      : lvl.items;
+    const filteredFull = activeSearch
+      ? lvlFull.items.filter(it => normalize(it._displayName).includes(normalize(activeSearch)))
+      : lvlFull.items;
 
-    els.title.textContent = `Nível ${lvl.level}`;
+    els.title.textContent = `Nível ${lvlSimple.level}`;
     els.meta.textContent = activeSearch
-      ? `Mostrando ${filtered.length} de ${lvl.items.length} itens (filtro ativo)`
-      : `${lvl.items.length} itens`;
+      ? `Mostrando ${filteredFull.length} de ${lvlFull.items.length} itens (filtro ativo)`
+      : `${lvlFull.items.length} itens`;
+
+    const sumLevel = filteredFull.reduce((acc, it) => {
+      const price = it._price ?? 0;
+      const qty = it._qty ?? QTY_PER_ITEM;
+      return acc + (price * qty);
+    }, 0);
 
     els.body.innerHTML = `
       <div class="items">
-        ${filtered.map(name => `
-          <div class="item">
-            <div class="name">${escapeHtml(name)}</div>
-            <div class="qty">${QTY_PER_ITEM} un.</div>
-          </div>
-        `).join("")}
+        ${filteredFull.map(it => {
+          const name = it._displayName;
+          const qty = it._qty ?? QTY_PER_ITEM;
+          const price = it._price; // pode ser null
+          const total = (price ?? 0) * qty;
+
+          const priceText = (price === null)
+            ? `<b>preço:</b> <span style="opacity:.8">não definido</span>`
+            : `<b>preço:</b> ${money(price)} gp`;
+
+          const totalText = (price === null)
+            ? `<b>total:</b> <span style="opacity:.8">—</span>`
+            : `<b>total:</b> ${money(total)} gp`;
+
+          const wikiBtn = it._wikiUrl
+            ? `<a class="wiki" href="${escapeHtml(it._wikiUrl)}" target="_blank" rel="noopener noreferrer">Wiki</a>`
+            : "";
+
+          // =========================
+          // ✅ DROPPED BY (NOVO)
+          // =========================
+          const drops = Array.isArray(it._droppedBy) ? it._droppedBy : [];
+          const hasDrops = drops.length > 0;
+
+          const key = getDropKey(levelNumber, it);
+          const expanded = dropsExpanded.has(key);
+
+          const dropsBlock = (() => {
+            if (!hasDrops) {
+              return `
+                <div class="drops">
+                  <div class="drops-head">
+                    <div><b>Dropa de:</b> <span style="color: rgba(168,179,199,.92);">não informado</span></div>
+                    <div class="count">0</div>
+                  </div>
+                </div>
+              `;
+            }
+
+            // mostra poucos e deixa expandir (pra não virar um textão gigantesco)
+            const previewCount = 10;
+            const list = expanded ? drops : drops.slice(0, previewCount);
+            const hidden = Math.max(0, drops.length - list.length);
+
+            const toggle = (drops.length > previewCount)
+              ? `<button class="dropsToggle" type="button" data-action="toggleDrops" data-key="${escapeHtml(key)}">
+                   ${expanded ? "Recolher" : "Ver tudo"}${hidden && !expanded ? ` (+${hidden})` : ""}
+                 </button>`
+              : "";
+
+            return `
+              <div class="drops">
+                <div class="drops-head">
+                  <div><b>Dropa de:</b></div>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    ${toggle}
+                    <div class="count">${drops.length}</div>
+                  </div>
+                </div>
+
+                <div class="chipsWrap">
+                  ${list.map(m => `
+                    <span class="dropchip" title="${escapeHtml(m)}"><span>${escapeHtml(m)}</span></span>
+                  `).join("")}
+                </div>
+              </div>
+            `;
+          })();
+
+          return `
+            <div class="item">
+              <div class="nameRow">
+                <div class="name">${escapeHtml(name)}</div>
+                ${wikiBtn}
+              </div>
+              <div class="qty">${qty} un.</div>
+
+              <div class="subline">${priceText} • ${totalText}</div>
+
+              ${dropsBlock}
+            </div>
+          `;
+        }).join("")}
       </div>
 
       <div class="note">
         ${activeSearch
           ? `Filtro atual: <b>${escapeHtml(activeSearch)}</b>. Cards com o item exibem o marcador <b>“aqui”</b>.`
           : `Use a busca para localizar rapidamente em quais níveis um item aparece.`}
+        <br/>
+        <span style="opacity:.9">Total deste nível (considerando itens listados acima): <b>${money(sumLevel)} gp</b>.</span>
       </div>
     `;
+
+    // event delegation: toggle drops
+    els.body.querySelectorAll('[data-action="toggleDrops"]').forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const k = e.currentTarget.getAttribute("data-key");
+        if (!k) return;
+        if (dropsExpanded.has(k)) dropsExpanded.delete(k);
+        else dropsExpanded.add(k);
+
+        // re-render só o painel de detalhes (mantém seu fluxo)
+        renderDetails(levelNumber);
+      });
+    });
   }
 
-  function init() {
-    renderCosts();
-    renderCards();
-    highlightActive();
-    renderDetails(activeLevel);
+  // ============================================================
+  // LOAD JSON + INIT
+  // ============================================================
+  async function init() {
+    try {
+      const res = await fetch(JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Falha ao carregar JSON (${res.status})`);
+      const json = await res.json();
 
-    els.search.addEventListener("input", (e) => {
-      activeSearch = e.target.value || "";
-      renderCards();
-      renderDetails(activeLevel);
-    });
+      buildFromJson(json);
+      COSTS = calcCostsFromJson();
 
-    els.clear.addEventListener("click", () => {
-      activeSearch = "";
-      els.search.value = "";
+      renderCosts();
       renderCards();
+      highlightActive();
       renderDetails(activeLevel);
-    });
+
+      els.search.addEventListener("input", (e) => {
+        activeSearch = e.target.value || "";
+        renderCards();
+        renderDetails(activeLevel);
+      });
+
+      els.clear.addEventListener("click", () => {
+        activeSearch = "";
+        els.search.value = "";
+        renderCards();
+        renderDetails(activeLevel);
+      });
+
+    } catch (err) {
+      console.error(err);
+
+      els.brandSubtitle.textContent = "Erro ao carregar itens.json";
+      els.grid.innerHTML = "";
+      els.costChips.innerHTML = `
+        <div class="chip">
+          <span class="tag">erro</span>
+          <b>JSON não carregou</b>
+          <span>— verifique servidor local e caminho</span>
+        </div>
+      `;
+      els.title.textContent = "Erro ao carregar itens.json";
+      els.meta.textContent = "";
+      els.body.innerHTML = `
+        <div class="hint">
+          Não consegui carregar <b>${escapeHtml(JSON_URL)}</b>.<br/><br/>
+          <b>Checklist rápido:</b><br/>
+          • Coloque <b>itens.json</b> na mesma pasta do <b>index.html</b><br/>
+          • Rode por servidor local (ex: <b>npx live-server</b>) — não abre com duplo clique<br/>
+          • Abra pelo endereço do servidor (ex: http://127.0.0.1:8080)<br/>
+        </div>
+      `;
+    }
   }
 
   init();

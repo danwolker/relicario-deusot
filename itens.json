@@ -1,0 +1,2456 @@
+{
+    "meta": {
+        "project": "Relicário DeusOt",
+        "source": "https://www.tibiawiki.com.br/",
+        "priceType": "npc_buy_price",
+        "currency": "gp",
+        "qtyPerItem": 25,
+        "batch": {
+            "fromLevel": 1,
+            "toLevel": 27
+        }
+    },
+    "levels": [
+        {
+            "level": 1,
+            "items": [
+                {
+                    "name": "Strange Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Strange_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Strange_Helmet",
+                    "droppedBy": [
+                        "Albino Dragon",
+                        "Arbaziloth",
+                        "Blight Mariner",
+                        "Dragon Lord",
+                        "Frost Dragon",
+                        "Icecold Book",
+                        "Ice Golem",
+                        "Lavaworm",
+                        "Lich",
+                        "Quara Mantassin",
+                        "Renegade Quara Mantassin",
+                        "Serpent Spawn",
+                        "Ushuriel",
+                        "Vampire"
+                    ]
+                },
+                {
+                    "name": "Devil Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Devil_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Devil_Helmet",
+                    "droppedBy": [
+                        "Angry Demon",
+                        "Arbaziloth",
+                        "Demon",
+                        "Demon Outcast",
+                        "Golgordan",
+                        "Grimeleech",
+                        "Latrivan",
+                        "Rage Squid",
+                        "Razzagorn",
+                        "Vexclaw"
+                    ]
+                },
+                {
+                    "name": "Dragon Hammer",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragon_Hammer",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragon_Hammer",
+                    "droppedBy": [
+                        "Dragon",
+                        "Juggernaut",
+                        "Orc Warlord"
+                    ]
+                },
+                {
+                    "name": "Crown Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Helmet",
+                    "droppedBy": [
+                        "Hero",
+                        "Nightmare Scion",
+                        "Orewalker",
+                        "Renegade Knight",
+                        "Roaring Lion",
+                        "Ushuriel",
+                        "Vile Grandmaster",
+                        "Zanakeph"
+                    ]
+                },
+                {
+                    "name": "Dragon Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragon_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragon_Shield",
+                    "droppedBy": [
+                        "Cinder Wyrmling",
+                        "Dragon",
+                        "Inkwing"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "items": [
+                {
+                    "name": "Knight Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Knight_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Knight_Axe",
+                    "droppedBy": [
+                        "Black Knight",
+                        "Crusader",
+                        "Execowtioner",
+                        "Girtablilu Warrior",
+                        "Hellhound",
+                        "Hulking Carnisylvan",
+                        "Kerberos",
+                        "Lost Basher",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Minotaur Invader",
+                        "Morguthis",
+                        "Pirat Cutthroat",
+                        "Poisonous Carnisylvan",
+                        "Sir Leonard",
+                        "Sir Leopold",
+                        "Skeleton Elite Warrior",
+                        "Thanatursus",
+                        "The Enraged Thorn Knight",
+                        "Tremendous Tyrant",
+                        "Undead Elite Gladiator",
+                        "Undead Gladiator"
+                    ]
+                },
+                {
+                    "name": "Guardian Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Guardian_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Guardian_Shield",
+                    "droppedBy": [
+                        "Annihilon",
+                        "Burning Book",
+                        "Choking Fear",
+                        "Cult Enforcer",
+                        "Demon Skeleton",
+                        "Diabolic Imp",
+                        "Energy Elemental",
+                        "Enslaved Dwarf",
+                        "Fire Devil",
+                        "Knowledge Elemental",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Minotaur Invader",
+                        "Mooh'Tah Warrior",
+                        "Mutated Tiger",
+                        "Spiky Carnivor",
+                        "Terofar",
+                        "Vicious Squire",
+                        "Zavarash"
+                    ]
+                },
+                {
+                    "name": "Mino Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 3000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Mino_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Mino_Shield",
+                    "droppedBy": [
+                        "Minotaur Amazon",
+                        "Minotaur Cult Follower",
+                        "Minotaur Hunter",
+                        "Thanatursus",
+                        "The False God",
+                        "Usurper Archer"
+                    ]
+                },
+                {
+                    "name": "Focus Cape",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Focus_Cape",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Focus_Cape",
+                    "droppedBy": [
+                        "Dawnfire Asura",
+                        "Draken Spellweaver",
+                        "Girtablilu Warrior",
+                        "Harpy",
+                        "Hellgorak",
+                        "Lizard Dragon Priest",
+                        "Lumbering Carnivor",
+                        "Nightmare Scion",
+                        "Pirat Cutthroat",
+                        "Raging Mage",
+                        "Reality Reaver",
+                        "Sea Serpent",
+                        "Tremendous Tyrant",
+                        "Wyrm"
+                    ]
+                },
+                {
+                    "name": "Warrior Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Warrior_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Warrior_Helmet",
+                    "droppedBy": [
+                        "Black Knight",
+                        "Crusader",
+                        "Cult Enforcer",
+                        "Enslaved Dwarf",
+                        "Flameborn",
+                        "Hellspawn",
+                        "Hydra",
+                        "Minotaur Amazon",
+                        "Minotaur Cult Follower",
+                        "Minotaur Invader",
+                        "Monk's Apparition",
+                        "Orc Cult Fanatic",
+                        "Orc Leader",
+                        "Quara Pincher",
+                        "Renegade Orc",
+                        "Renegade Quara Pincher",
+                        "Serpent Spawn",
+                        "Sir Leonard",
+                        "Sir Leopold",
+                        "Spiky Carnivor",
+                        "Terrorsleep",
+                        "The Many",
+                        "Ushuriel",
+                        "Usurper Archer",
+                        "Vicious Squire"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "items": [
+                {
+                    "name": "Fire Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Fire_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Fire_Sword",
+                    "droppedBy": [
+                        "Albino Dragon",
+                        "Arbaziloth",
+                        "Demodras",
+                        "Dragon Lord",
+                        "Guardian Of Tales",
+                        "Hellfire Fighter",
+                        "Hellhound",
+                        "Hero",
+                        "Honey Elemental",
+                        "Kerberos",
+                        "Lava Golem",
+                        "Magma Crawler",
+                        "Massive Fire Elemental",
+                        "Pirat Mate",
+                        "Renegade Knight",
+                        "Retching Horror",
+                        "The Count Of The Core",
+                        "The Baron from Below",
+                        "The Duke Of The Depths",
+                        "Thornfire Wolf",
+                        "Vile Grandmaster",
+                        "Vulcongra",
+                        "Ushuriel",
+                        "Weeper"
+                    ]
+                },
+                {
+                    "name": "Beastslayer Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Beastslayer_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Beastslayer_Axe",
+                    "droppedBy": [
+                        "Barbarian Bloodwalker",
+                        "Choking Fear",
+                        "Girtablilu Warrior",
+                        "Glooth Bandit",
+                        "Hellgorak",
+                        "Horadron",
+                        "Retching Horror",
+                        "Thanatursus"
+                    ]
+                },
+                {
+                    "name": "Elvish Bow",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Elvish_Bow",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Elvish_Bow",
+                    "droppedBy": [
+                        "Cave Chimera",
+                        "Elder Forest Fury",
+                        "Elf Scout",
+                        "Firestarter",
+                        "Forest Fury",
+                        "Hawk Hopper",
+                        "Naga Archer",
+                        "Usurper Archer"
+                    ]
+                },
+                {
+                    "name": "Dragonbone Staff",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 3000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragonbone_Staff",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragonbone_Staff",
+                    "droppedBy": [
+                        "Dragon",
+                        "Elder Wyrm",
+                        "Girtablilu Warrior",
+                        "Hulking Carnisylvan",
+                        "Juvenile Bashmu",
+                        "Oozing Corpus",
+                        "Soul of Dragonking Zyrtarch",
+                        "Tremendous Tyrant",
+                        "Undead Dragon",
+                        "Wyrm",
+                        "Zanakeph"
+                    ]
+                },
+                {
+                    "name": "Knight Armor",
+                    "aliases": [
+                        "K-Armor"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Knight_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Knight_Armor",
+                    "droppedBy": [
+                        "Black Knight",
+                        "Brutus Bloodbeard",
+                        "Crystal Spider",
+                        "Deadeye Devious",
+                        "Esmeralda",
+                        "Falcon Knight",
+                        "Fleshcrawler",
+                        "Giant Spider",
+                        "Grand Chaplain Gaunder",
+                        "Hand of Cursed Fate",
+                        "Hydra",
+                        "Juggernaut",
+                        "Lethal Lissy",
+                        "Medusa",
+                        "Mooh'Tah Warrior",
+                        "Naga Warrior",
+                        "Pirat Cutthroat",
+                        "Preceptor Lazare",
+                        "Quara Hydromancer",
+                        "Quara Hydromancer Scout",
+                        "Rhindeer",
+                        "Ron The Ripper",
+                        "Sir Leonard",
+                        "Sir Leopold",
+                        "Stampor",
+                        "Terrorsleep",
+                        "The Bloodweb",
+                        "The Many",
+                        "The Old Widow",
+                        "The Snapper",
+                        "Tromphonyte",
+                        "Undead Dragon",
+                        "Usurper Archer",
+                        "Zanakeph"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 4,
+            "items": [
+                {
+                    "name": "Oriental Shoes",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Oriental_Shoes",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Oriental_Shoes",
+                    "droppedBy": [
+                        "Ancient Spawn of Morgathla",
+                        "Dawnfire Asura",
+                        "Midnight Asura",
+                        "Ravenous Hunger",
+                        "The Diamond Blossom",
+                        "The Flaming Orchid",
+                        "True Midnight Asura"
+                    ]
+                },
+                {
+                    "name": "Glooth Blade",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glooth_Blade",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glooth_Blade",
+                    "droppedBy": [
+                        "Blood Beast",
+                        "Devourer",
+                        "Glooth Anemone",
+                        "Glooth Bandit",
+                        "Glooth Blob",
+                        "Glooth Brigand",
+                        "Glooth Golem",
+                        "Glooth Fairy",
+                        "Lisa"
+                    ]
+                },
+                {
+                    "name": "Glooth Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glooth_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glooth_Axe",
+                    "droppedBy": [
+                        "Blood Beast",
+                        "Devourer",
+                        "Glooth Anemone",
+                        "Glooth Bandit",
+                        "Glooth Blob",
+                        "Glooth Brigand",
+                        "Glooth Golem",
+                        "Glooth Fairy",
+                        "Lisa",
+                        "Rot Elemental"
+                    ]
+                },
+                {
+                    "name": "Glooth Club",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glooth_Club",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glooth_Club",
+                    "droppedBy": [
+                        "Blood Beast",
+                        "Devourer",
+                        "Glooth Anemone",
+                        "Glooth Bandit",
+                        "Glooth Blob",
+                        "Glooth Brigand",
+                        "Glooth Fairy",
+                        "Glooth Golem",
+                        "Lisa"
+                    ]
+                },
+                {
+                    "name": "Skull Staff",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Skull_Staff",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Skull_Staff",
+                    "droppedBy": [
+                        "Alptramun",
+                        "Arbaziloth",
+                        "Blightwalker",
+                        "Blood Hand",
+                        "Blood Priest",
+                        "Dipthrah",
+                        "Infernalist",
+                        "Izcandar the Banished",
+                        "Enlightened of the Cult",
+                        "Glooth Bandit",
+                        "Golgordan",
+                        "Gravedigger",
+                        "Hand of Cursed Fate",
+                        "Juvenile Bashmu",
+                        "Lady Tenebris",
+                        "Latrivan",
+                        "Lich",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Lost Soul",
+                        "Malofur Mangrinder",
+                        "Maxxenius",
+                        "Necromancer",
+                        "Necropharus",
+                        "Plagueroot",
+                        "Ragiaz",
+                        "The Last Lore Keeper",
+                        "The Sandking",
+                        "The Source Of Corruption",
+                        "The Time Guardian",
+                        "Warlock",
+                        "World Devourer"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 5,
+            "items": [
+                {
+                    "name": "Terra Boots",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Boots",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Boots",
+                    "droppedBy": [
+                        "Armadile",
+                        "Blight Mariner",
+                        "Choking Fear",
+                        "Cobra Vizier",
+                        "Crazed Winter Vanguard",
+                        "Cursed Book",
+                        "Deathbine",
+                        "Dwarf Geomancer",
+                        "Enfeebled Silencer",
+                        "Exotic Cave Spider",
+                        "Foam Stalker",
+                        "Ghastly Dragon",
+                        "Glooth Bandit",
+                        "Glooth Brigand",
+                        "Hideous Fungus",
+                        "Hulking Carnisylvan",
+                        "Humongous Fungus",
+                        "Ink Blob",
+                        "Lost Basher",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Mercurial Menace",
+                        "Ogre Sage",
+                        "Omnivora",
+                        "Oozing Corpus",
+                        "Pirat Bombardier",
+                        "Ravenous Hunger",
+                        "Shrieking Cry-Stal",
+                        "Silencer",
+                        "Terofar",
+                        "Thanatursus",
+                        "Undertaker"
+                    ]
+                },
+                {
+                    "name": "Magma Boots",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magma_Boots",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magma_Boots",
+                    "droppedBy": [
+                        "Burning Gladiator",
+                        "Crazed Summer Vanguard",
+                        "Dragon Lord Hatchling",
+                        "Feral Sphinx",
+                        "Hellflayer",
+                        "Hellhound",
+                        "Honey Elemental",
+                        "Infernalist",
+                        "Lava Golem",
+                        "Magma Crawler",
+                        "Manticore",
+                        "Massive Fire Elemental",
+                        "Orc Warlord",
+                        "Pirat Bombardier",
+                        "Sphinx",
+                        "Sulphider",
+                        "The Souldespoiler"
+                    ]
+                },
+                {
+                    "name": "Glacier Shoes",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glacier_Shoes",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glacier_Shoes",
+                    "droppedBy": [
+                        "Bluebeak",
+                        "Foam Stalker",
+                        "Icecold Book",
+                        "Ice Witch",
+                        "Seacrest Serpent",
+                        "Soul-Broken Harbinger",
+                        "Two-Headed Turtle",
+                        "Usurper Archer",
+                        "Varnished Diremaw"
+                    ]
+                },
+                {
+                    "name": "Spellbook of Enlightenment",
+                    "aliases": [
+                        "S. of Enlightenment"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spellbook_of_Enlightenment",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spellbook_of_Enlightenment",
+                    "droppedBy": [
+                        "Blood Hand",
+                        "Frost Dragon Hatchling",
+                        "Golden Servant",
+                        "Golden Servant Replica",
+                        "Iks Ahpututu",
+                        "Iks Pututu",
+                        "Jungle Moa",
+                        "Lloyd",
+                        "Mutated Rat",
+                        "Omnivora",
+                        "Shadow Pupil",
+                        "Two-Headed Turtle"
+                    ]
+                },
+                {
+                    "name": "Lightning Boots",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 2500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Lightning_Boots",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Lightning_Boots",
+                    "droppedBy": [
+                        "Burning Gladiator",
+                        "Elder Wyrm",
+                        "Lich",
+                        "Juvenile Bashmu",
+                        "Mazzinor",
+                        "Mercurial Menace",
+                        "Pirat Bombardier",
+                        "Prince Drazzak",
+                        "War Golem"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 6,
+            "items": [
+                {
+                    "name": "Spiked Squelcher",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spiked_Squelcher",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spiked_Squelcher",
+                    "droppedBy": [
+                        "Bloodback",
+                        "Braindeath",
+                        "Bretzecutioner",
+                        "Cliff Strider",
+                        "Cyclops Smith",
+                        "Drillworm",
+                        "Falcon Knight",
+                        "Flameborn",
+                        "Grand Chaplain Gaunder",
+                        "Hellspawn",
+                        "Juggernaut",
+                        "Lost Basher",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Moohtant",
+                        "Orclops Doomhauler",
+                        "Orclops Ravager",
+                        "Retching Horror",
+                        "Rustheap Golem",
+                        "Shadowpelt",
+                        "Stampor",
+                        "Stone Devourer",
+                        "The Souldespoiler",
+                        "Tromphonyte",
+                        "Werebear",
+                        "Worker Golem"
+                    ]
+                },
+                {
+                    "name": "Tower Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Tower_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Tower_Shield",
+                    "droppedBy": [
+                        "Albino Dragon",
+                        "Annihilon",
+                        "Armadile",
+                        "Boar Man",
+                        "Dragon Lord",
+                        "Draken Warmaster",
+                        "Enslaved Dwarf",
+                        "Esmeralda",
+                        "Eternal Guardian",
+                        "Frost Dragon",
+                        "Lizard High Guard",
+                        "Lizard Zaogun",
+                        "Lizard Chosen",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Lost Soul",
+                        "Mutated Rat",
+                        "Retching Horror",
+                        "Serpent Spawn",
+                        "The Noxious Spawn"
+                    ]
+                },
+                {
+                    "name": "Knight Legs",
+                    "aliases": [
+                        "K-Legs"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Knight_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Knight_Legs",
+                    "droppedBy": [
+                        "Black Knight",
+                        "Cliff Strider",
+                        "Cult Enforcer",
+                        "Crystal Spider",
+                        "Flameborn",
+                        "Foam Stalker",
+                        "Giant Spider",
+                        "Gore Horn",
+                        "Hellgorak",
+                        "Hellspawn",
+                        "Hide",
+                        "Horadron",
+                        "Lost Basher",
+                        "Menacing Carnivor",
+                        "Mooh'Tah Warrior",
+                        "Nightmare",
+                        "Orewalker",
+                        "Plaguesmith",
+                        "Sir Leonard",
+                        "The Bloodweb",
+                        "The Old Widow",
+                        "Tormentor",
+                        "Two-Headed Turtle",
+                        "Usurper Knight",
+                        "Usurper Warlock",
+                        "Vicious Squire"
+                    ]
+                },
+                {
+                    "name": "Zaoan Shoes",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 3000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Shoes",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Shoes",
+                    "droppedBy": [
+                        "Draken Spellweaver",
+                        "Draken Warmaster",
+                        "Ethershreck",
+                        "Fazzrah",
+                        "Ghastly Dragon",
+                        "Hatebreeder",
+                        "Lizard Chosen",
+                        "Lizard Dragon Priest",
+                        "Lizard Gate Guardian",
+                        "Lizard High Guard",
+                        "Lizard Legionnaire",
+                        "Lizard Zaogun",
+                        "The Voice of Ruin"
+                    ]
+                },
+                {
+                    "name": "Magma Coat",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magma_Coat",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magma_Coat",
+                    "droppedBy": [
+                        "Burning Book",
+                        "Cinder Wyrmling",
+                        "Crape Man",
+                        "Dawnfire Asura",
+                        "Diabolic Imp",
+                        "Fire Overlord",
+                        "Gazer Spectre",
+                        "Girtablilu Warrior",
+                        "Gorerilla",
+                        "Guardian Of Tales",
+                        "Hellfire Fighter",
+                        "Hellhound",
+                        "Insane Siren",
+                        "King Zelos",
+                        "Lava Golem",
+                        "Manticore",
+                        "Mazoran",
+                        "Scarlett Etzel",
+                        "Shaburak Lord",
+                        "Shaburak Prince",
+                        "Stalking Stalk",
+                        "Urmahlullu the Weakened",
+                        "The Baron from Below",
+                        "The Flaming Orchid",
+                        "The Sandking",
+                        "Vulcongra",
+                        "Weeper"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 7,
+            "items": [
+                {
+                    "name": "Terra Hood",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Hood",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Hood",
+                    "droppedBy": [
+                        "Adult Goanna",
+                        "Ancient Scarab",
+                        "Ancient Spawn of Morgathla",
+                        "Bramble Wyrmling",
+                        "Cobra Vizier",
+                        "Crazed Winter Vanguard",
+                        "Cursed Book",
+                        "Draken Abomination",
+                        "Drume",
+                        "Glooth Bandit",
+                        "Glooth Brigand",
+                        "Hide",
+                        "Hulking Carnisylvan",
+                        "Ink Blob",
+                        "Ink Splash",
+                        "Lamassu",
+                        "Scarlett Etzel",
+                        "Thanatursus",
+                        "The Unarmored Voidborn",
+                        "Usurper Warlock",
+                        "Young Goanna"
+                    ]
+                },
+                {
+                    "name": "Magma Monocle",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magma_Monocle",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magma_Monocle",
+                    "droppedBy": [
+                        "Burning Book",
+                        "Cinder Wyrmling",
+                        "Diabolic Imp",
+                        "Efreet",
+                        "Essence Of Malice",
+                        "Fahim the Wise",
+                        "Feral Sphinx",
+                        "Hellhound",
+                        "Manticore",
+                        "Marid",
+                        "Merikh the Slaughterer",
+                        "Raubritter Chastener",
+                        "Scarlett Etzel",
+                        "Sphinx",
+                        "Urmahlullu the Weakened",
+                        "Usurper Warlock",
+                        "Percht"
+                    ]
+                },
+                {
+                    "name": "Terra Mantle",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Mantle",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Mantle",
+                    "droppedBy": [
+                        "Ancient Spawn of Morgathla",
+                        "Askarak Lord",
+                        "Askarak Prince",
+                        "Banshee",
+                        "Blightwalker",
+                        "Choking Fear",
+                        "Cursed Book",
+                        "Drume",
+                        "Earth Overlord",
+                        "Esmeralda",
+                        "Exotic Cave Spider",
+                        "Fleshcrawler",
+                        "Glooth Bandit",
+                        "Glooth Brigand",
+                        "Gorgo",
+                        "Humongous Fungus",
+                        "Hideous Fungus",
+                        "Ink Blob",
+                        "Ink Splash",
+                        "Medusa",
+                        "Raubritter Marksman",
+                        "Scarlett Etzel",
+                        "Spiky Carnivor"
+                    ]
+                },
+                {
+                    "name": "Lightning Headband",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Lightning_Headband",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Lightning_Headband",
+                    "droppedBy": [
+                        "Anomaly",
+                        "Burning Gladiator",
+                        "Burster",
+                        "Giant Spider",
+                        "High Voltage Elemental",
+                        "Hulking Carnisylvan",
+                        "Outburst",
+                        "Reality Reaver",
+                        "Sphinx",
+                        "Usurper Warlock",
+                        "World Devourer"
+                    ]
+                },
+                {
+                    "name": "Rubber Cap",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Rubber_Cap",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Rubber_Cap",
+                    "droppedBy": [
+                        "Darklight Matter",
+                        "Glooth Bandit",
+                        "Glooth Brigand",
+                        "Glooth Fairy",
+                        "Glooth Golem",
+                        "Rotten Golem"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 8,
+            "items": [
+                {
+                    "name": "Wooden Spellbook",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 1000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Wooden_Spellbook",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Wooden_Spellbook",
+                    "droppedBy": [
+                        "Arctic Faun",
+                        "Boogy",
+                        "Dark Faun",
+                        "Noxious Ripptor",
+                        "Pixie",
+                        "Raubritter Chastener",
+                        "Raxias",
+                        "Ravenous Hunger",
+                        "Young Goanna"
+                    ]
+                },
+                {
+                    "name": "Blue Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Blue_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Blue_Robe",
+                    "droppedBy": [
+                        "Banshee",
+                        "Enlightened of the Cult",
+                        "Feversleep",
+                        "Girtablilu Warrior",
+                        "Hellgorak",
+                        "Horadron",
+                        "Lich",
+                        "Lokathmor",
+                        "Lumbering Carnivor",
+                        "Midnight Asura",
+                        "Quara Mantassin",
+                        "Renegade Quara Mantassin",
+                        "Spiky Carnivor",
+                        "Tamru the Black",
+                        "Terrorsleep",
+                        "True Midnight Asura",
+                        "Vashresamun",
+                        "Warlock"
+                    ]
+                },
+                {
+                    "name": "Crown Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Shield",
+                    "droppedBy": [
+                        "Annihilon",
+                        "Demon Outcast",
+                        "Flameborn",
+                        "Hero",
+                        "Lava Golem",
+                        "Raubritter Skirmisher",
+                        "Renegade Knight",
+                        "Retching Horror",
+                        "Soul-Broken Harbinger",
+                        "Sulphider",
+                        "Terofar",
+                        "Varnished Diremaw",
+                        "Vile Grandmaster"
+                    ]
+                },
+                {
+                    "name": "Fire Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Fire_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Fire_Axe",
+                    "droppedBy": [
+                        "Angry Demon",
+                        "Arbaziloth",
+                        "Demon",
+                        "Essence Of Malice",
+                        "Feral Sphinx",
+                        "Golgordan",
+                        "Guardian Of Tales",
+                        "Hellfire Fighter",
+                        "Latrivan",
+                        "Lava Golem",
+                        "Lost Basher",
+                        "Lost Berserker",
+                        "Lost Exile",
+                        "Lost Husher",
+                        "Mahrdis",
+                        "Mazoran",
+                        "Rage Squid",
+                        "Sulphider",
+                        "The Count Of The Core",
+                        "The Duke Of The Depths",
+                        "Vexclaw",
+                        "Weeper"
+                    ]
+                },
+                {
+                    "name": "Zaoan Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Armor",
+                    "droppedBy": [
+                        "Draken Abomination",
+                        "Draken Elite",
+                        "Draken Warmaster",
+                        "Ethershreck",
+                        "Fazzrah",
+                        "Ghastly Dragon",
+                        "Lizard Chosen",
+                        "Lizard High Guard",
+                        "Lizard Legionnaire",
+                        "Lizard Zaogun",
+                        "Paiz the Pauperizer"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 9,
+            "items": [
+                {
+                    "name": "Titan Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 7000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Titan_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Titan_Axe",
+                    "droppedBy": [
+                        "Armadile",
+                        "Behemoth",
+                        "Enslaved Dwarf",
+                        "Execowtioner",
+                        "Falcon Knight",
+                        "Fleshslicer",
+                        "Gorgo",
+                        "Grand Chaplain Gaunder",
+                        "Headpecker",
+                        "Juggernaut",
+                        "Lost Soul",
+                        "Lion Hydra",
+                        "Medusa",
+                        "Minotaur Invader",
+                        "Orewalker",
+                        "Preceptor Lazare",
+                        "Rhindeer",
+                        "Silencer",
+                        "Spidris",
+                        "Spidris Elite",
+                        "Thanatursus",
+                        "The Manhunter"
+                    ]
+                },
+                {
+                    "name": "Spellbook of Warding",
+                    "aliases": [
+                        "S. of Warding"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spellbook_of_Warding",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spellbook_of_Warding",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Medusa Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Medusa_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Medusa_Shield",
+                    "droppedBy": [
+                        "Gorgo",
+                        "Hydra",
+                        "Lion Hydra",
+                        "Medusa",
+                        "The Enraged Thorn Knight",
+                        "The Many",
+                        "The Souldespoiler"
+                    ]
+                },
+                {
+                    "name": "Glorious Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glorious_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glorious_Axe",
+                    "droppedBy": [
+                        "Bashmu",
+                        "Enfeebled Silencer",
+                        "Enraged Crystal Golem",
+                        "Enslaved Dwarf",
+                        "Lumbering Carnivor",
+                        "Mutated Tiger",
+                        "Orewalker",
+                        "Silencer",
+                        "Stone Devourer"
+                    ]
+                },
+                {
+                    "name": "Blacksteel Sword",
+                    "aliases": [
+                        "Blacksteel Sword*"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Blacksteel_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Blacksteel_Sword",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 10,
+            "items": [
+                {
+                    "name": "Mooh'tah Plate",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 16000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Mooh%27tah_Plate",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Mooh%27tah_Plate",
+                    "droppedBy": [
+                        "Minotaur Hunter",
+                        "Minotaur Invader",
+                        "Mooh'Tah Warrior",
+                        "Bullwark"
+                    ]
+                },
+                {
+                    "name": "Lightning Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 11000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Lightning_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Lightning_Legs",
+                    "droppedBy": [
+                        "Anomaly",
+                        "Black Knight",
+                        "Burning Gladiator",
+                        "Converter",
+                        "Crape Man",
+                        "Elder Wyrm",
+                        "Energuardian Of Tales",
+                        "Essence Of Malice",
+                        "Ferumbras Mortal Shell",
+                        "High Voltage Elemental",
+                        "Horadron",
+                        "Juvenile Bashmu",
+                        "Lloyd",
+                        "Massive Energy Elemental",
+                        "Shulgrax",
+                        "Tremendous Tyrant",
+                        "Outburst",
+                        "Urmahlullu the Weakened",
+                        "Utua Stone Sting",
+                        "Yielothax"
+                    ]
+                },
+                {
+                    "name": "War Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "War_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/War_Axe",
+                    "droppedBy": [
+                        "Behemoth",
+                        "Falcon Knight",
+                        "Glooth Bandit",
+                        "Hulking Prehemoth",
+                        "Juggernaut",
+                        "Katex Blood Tongue",
+                        "Lost Basher",
+                        "Nightmare",
+                        "Norcferatu Heartless",
+                        "Outburst",
+                        "Preceptor Lazare",
+                        "Priestess Of The Wild Sun",
+                        "Stonecracker",
+                        "Stone Devourer",
+                        "Srezz Yellow Eyes",
+                        "The False God",
+                        "Tormentor",
+                        "Undead Dragon",
+                        "Yirkas Blue Scales",
+                        "Rotten Golem"
+                    ]
+                },
+                {
+                    "name": "Zaoan Armor",
+                    "aliases": [
+                        "Zoan Armor"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Armor",
+                    "droppedBy": [
+                        "Draken Abomination",
+                        "Draken Elite",
+                        "Draken Warmaster",
+                        "Ethershreck",
+                        "Fazzrah",
+                        "Ghastly Dragon",
+                        "Lizard Chosen",
+                        "Lizard High Guard",
+                        "Lizard Legionnaire",
+                        "Lizard Zaogun",
+                        "Paiz the Pauperizer"
+                    ]
+                },
+                {
+                    "name": "Spellbook of Mind Control",
+                    "aliases": [
+                        "SpellBook Mind C"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spellbook_of_Mind_Control",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spellbook_of_Mind_Control",
+                    "droppedBy": [
+                        "Blood Priest",
+                        "Carnivostrich",
+                        "Choking Fear",
+                        "Dawnfire Asura",
+                        "Ferumbras Mortal Shell",
+                        "Frost Flower Asura",
+                        "Hellflayer",
+                        "Hellgorak",
+                        "Horadron",
+                        "Infernalist",
+                        "Lava Golem",
+                        "Midnight Asura",
+                        "Nighthunter",
+                        "Raging Mage",
+                        "Serpent Spawn",
+                        "Soul-Broken Harbinger",
+                        "Soul of Dragonking Zyrtarch",
+                        "The Noxious Spawn",
+                        "True Midnight Asura",
+                        "Wrathful Archivist",
+                        "Yirkas Blue Scales"
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 11,
+            "items": [
+                {
+                    "name": "Tower Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Tower_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Tower_Shield",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crusader Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crusader_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crusader_Helmet",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Haunted Blade",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Haunted_Blade",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Haunted_Blade",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crown Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Warrior Helmet",
+                    "aliases": [
+                        "Warrior Helme"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Warrior_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Warrior_Helmet",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 12,
+            "items": [
+                {
+                    "name": "Skull Staff",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Skull_Staff",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Skull_Staff",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Terra Mantle",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Mantle",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Mantle",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Knight Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 5000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Knight_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Knight_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crown Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Shield",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Muck Rod",
+                    "aliases": [
+                        "Muk Rod"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Muck_Rod",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Muck_Rod",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 13,
+            "items": [
+                {
+                    "name": "Wand of Defiance",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Wand_of_Defiance",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Wand_of_Defiance",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Zaoan Legs",
+                    "aliases": [
+                        "Zoan Legs"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 14000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Magma Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 14000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magma_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magma_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Wand of Everblazing",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Wand_of_Everblazing",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Wand_of_Everblazing",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Glacial Rod",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6500,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glacial_Rod",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glacial_Rod",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 14,
+            "items": [
+                {
+                    "name": "Glacier Kilt",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 11000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glacier_Kilt",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glacier_Kilt",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Terra Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 11000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Fire Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Fire_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Fire_Axe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Butcher's Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 18000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Butcher%27s_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Butcher%27s_Axe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Lightning Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 11000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Lightning_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Lightning_Legs",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 15,
+            "items": [
+                {
+                    "name": "Magma Coat",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magma_Coat",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magma_Coat",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Terra Mantle",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Terra_Mantle",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Terra_Mantle",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Blue Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Blue_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Blue_Robe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Glacier Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Glacier_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Glacier_Robe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Zaoan Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Robe",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 16,
+            "items": [
+                {
+                    "name": "Lightning Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Lightning_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Lightning_Robe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crystalline Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 16000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crystalline_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crystalline_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Calopteryx Cape",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Calopteryx_Cape",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Calopteryx_Cape",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Spellweaver's Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spellweaver%27s_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spellweaver%27s_Robe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Zaoan Robe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 10000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Robe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Robe",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 17,
+            "items": [
+                {
+                    "name": "Sapphire Hammer",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 7000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Sapphire_Hammer",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Sapphire_Hammer",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Epee",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Epee",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Epee",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Jade Hat",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 4000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Jade_Hat",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Jade_Hat",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crystal Mace",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crystal_Mace",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crystal_Mace",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Warrior's Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Warrior%27s_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Warrior%27s_Shield",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 18,
+            "items": [
+                {
+                    "name": "Warrior's Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 11000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Warrior%27s_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Warrior%27s_Axe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Hive Scythe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Hive_Scythe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Hive_Scythe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Chaos Mace",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Chaos_Mace",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Chaos_Mace",
+                    "droppedBy": []
+                },
+                {
+                    "name": "War Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "War_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/War_Axe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Noble Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Noble_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Noble_Axe",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 19,
+            "items": [
+                {
+                    "name": "Drakinata",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Drakinata",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Drakinata",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Zaoan Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 14000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Sword",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Haunted Blade",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 8000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Haunted_Blade",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Haunted_Blade",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Bonebreaker",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Bonebreaker",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Bonebreaker",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Shadow Sceptre",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 7000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Shadow_Sceptre",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Shadow_Sceptre",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 20,
+            "items": [
+                {
+                    "name": "Mercenary Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Mercenary_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Mercenary_Sword",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crown Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crown Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crown_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crown_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Zaoan Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Zaoan_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Zaoan_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Jade Hammer",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 6000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Jade_Hammer",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Jade_Hammer",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 21,
+            "items": [
+                {
+                    "name": "Spellbook of Mind Control",
+                    "aliases": [
+                        "S. of Mind Control"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 13000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Spellbook_of_Mind_Control",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Spellbook_of_Mind_Control",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Ornate Crossbow",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 12000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Ornate_Crossbow",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Ornate_Crossbow",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Sai",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 540,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Sai",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Sai",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Golden Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 20000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Golden_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Golden_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Dragon Slayer",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragon_Slayer",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragon_Slayer",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 22,
+            "items": [
+                {
+                    "name": "Dreaded Cleaver",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dreaded_Cleaver",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dreaded_Cleaver",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Giant Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 17000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Giant_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Giant_Sword",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Paladin Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Paladin_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Paladin_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Dragon Lance",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 9000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragon_Lance",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragon_Lance",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Skullcracker Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 18000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Skullcracker_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Skullcracker_Armor",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 23,
+            "items": [
+                {
+                    "name": "Relic Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 25000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Relic_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Relic_Sword",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Vampire Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 15000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Vampire_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Vampire_Shield",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Assassin Dagger",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 20000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Assassin_Dagger",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Assassin_Dagger",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Steel Boots",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Steel_Boots",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Steel_Boots",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Onyx Flail",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 22000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Onyx_Flail",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Onyx_Flail",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 24,
+            "items": [
+                {
+                    "name": "Boots of Haste",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Boots_of_Haste",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Boots_of_Haste",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Demon Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Demon_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Demon_Shield",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Royal Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Royal_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Royal_Helmet",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Mastermind Shield",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 550,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Mastermind_Shield",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Mastermind_Shield",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Vile Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Vile_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Vile_Axe",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 25,
+            "items": [
+                {
+                    "name": "Crystal Crossbow",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 35000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crystal_Crossbow",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crystal_Crossbow",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Rift Lance",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Rift_Lance",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Rift_Lance",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Rift Bow",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 45000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Rift_Bow",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Rift_Bow",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Rift Crossbow",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 45000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Rift_Crossbow",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Rift_Crossbow",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Crystalline Sword",
+                    "aliases": [
+                        "Cristalline Sword"
+                    ],
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": null,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Crystalline_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Crystalline_Sword",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 26,
+            "items": [
+                {
+                    "name": "Heavy Mace",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 50000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Heavy_Mace",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Heavy_Mace",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Skull Helmet",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 40000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Skull_Helmet",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Skull_Helmet",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Dragon Scale Mail",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 40000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Dragon_Scale_Mail",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Dragon_Scale_Mail",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Golden Legs",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Golden_Legs",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Golden_Legs",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Abyss Hammer",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 20000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Abyss_Hammer",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Abyss_Hammer",
+                    "droppedBy": []
+                }
+            ]
+        },
+        {
+            "level": 27,
+            "items": [
+                {
+                    "name": "Nightmare Blade",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 35000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Nightmare_Blade",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Nightmare_Blade",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Ruthless Axe",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 45000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Ruthless_Axe",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Ruthless_Axe",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Magic Plate Armor",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 90000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Magic_Plate_Armor",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Magic_Plate_Armor",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Hammer of Wrath",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 30000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Hammer_of_Wrath",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Hammer_of_Wrath",
+                    "droppedBy": []
+                },
+                {
+                    "name": "Demonrage Sword",
+                    "qty": 25,
+                    "npcBuy": {
+                        "price": 36000,
+                        "currency": "gp"
+                    },
+                    "wikiSlug": "Demonrage_Sword",
+                    "wikiUrl": "https://www.tibiawiki.com.br/wiki/Demonrage_Sword",
+                    "droppedBy": []
+                }
+            ]
+        }
+    ]
+}
