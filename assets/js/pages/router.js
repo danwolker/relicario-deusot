@@ -5,7 +5,8 @@ const routes = {
   home: () => import("./home.js"),
   relicario: () => import("./relicario.js"),
   "server-info": () => import("./server-info.js"),
-  roulette: () => import("./roulette.js"), // ✅ ADICIONADO
+  roulette: () => import("./roulette.js"),
+  fendas: () => import("./fendas.js"), // ✅ NOVO
 };
 
 let currentPage = null;
@@ -26,7 +27,6 @@ async function renderPage(key) {
   const app = document.getElementById("app");
   if (!app) return;
 
-  // evita rerender desnecessário
   if (currentPage === key) return;
 
   app.innerHTML = `
@@ -73,20 +73,17 @@ async function renderPage(key) {
   }
 }
 
-// Escuta navegação do sidebar
 on("relicario:nav", (e) => {
   const key = e?.detail?.key || "home";
-  setHash(key);       // ✅ atualiza URL
-  renderPage(key);    // ✅ renderiza
+  setHash(key);
+  renderPage(key);
 });
 
-// Navegação por hash (refresh / link direto)
 window.addEventListener("hashchange", () => {
   const key = getKeyFromHash();
   renderPage(key);
 });
 
-// Inicial
 document.addEventListener("DOMContentLoaded", () => {
   const key = getKeyFromHash();
   renderPage(key);

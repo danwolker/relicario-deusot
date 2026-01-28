@@ -1,0 +1,313 @@
+/* assets/css/pages/fendas.css */
+
+.fendas-page {
+  display: grid;
+  gap: 16px;
+}
+
+/* -------------------------
+   Panel (se teu tema já define .panel, isso só “encaixa”)
+------------------------- */
+.fendas-section .panel-head {
+  margin-bottom: 10px;
+}
+
+.fendas-section .panel-title {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: .2px;
+}
+
+/* -------------------------
+   Vídeo
+------------------------- */
+.fendas-video {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.fendas-h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.fendas-video-frame {
+  width: min(900px, 100%);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-video-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* -------------------------
+   Zebra blocks (Informações gerais / exemplos)
+------------------------- */
+.fendas-zebra {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-zebra-row {
+  padding: 10px 12px;
+}
+
+.fendas-zebra-row p {
+  margin: 0;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.fendas-zebra-row.is-even { background: rgba(255, 255, 255, .04); }
+.fendas-zebra-row.is-odd  { background: rgba(255, 255, 255, .02); }
+
+/* -------------------------
+   Tabelas
+------------------------- */
+.fendas-table-wrap {
+  display: grid;
+  gap: 10px;
+}
+
+.fendas-note {
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-table,
+.fendas-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-table th,
+.fendas-table td,
+.fendas-mini-table th,
+.fendas-mini-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-table thead th,
+.fendas-mini-table thead th {
+  background: rgba(255,255,255,.06);
+  text-align: center;
+  font-weight: 700;
+}
+
+.fendas-table tbody td:first-child {
+  text-align: center;
+}
+
+.fendas-table tbody td:last-child {
+  text-align: center;
+}
+
+.fendas-table tr.is-even td,
+.fendas-mini-table tr.is-even td { background: rgba(255,255,255,.03); }
+
+.fendas-table tr.is-odd td,
+.fendas-mini-table tr.is-odd td { background: rgba(255,255,255,.015); }
+
+.is-green { color: #77e38b; }
+
+/* -------------------------
+   Escalonamento
+------------------------- */
+.fendas-scaling {
+  display: grid;
+  gap: 12px;
+}
+
+.fendas-banner {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  line-height: 1.45;
+}
+
+.fendas-banner.is-green { color: #77e38b; }
+
+.fendas-formula {
+  text-align: center;
+  font-size: 15px;
+  opacity: .95;
+}
+
+.fendas-examples {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-example {
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.fendas-example.is-even { background: rgba(255,255,255,.03); }
+.fendas-example.is-odd  { background: rgba(255,255,255,.015); }
+
+/* -------------------------
+   Cards (Totem / Portais)
+------------------------- */
+.fendas-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.fendas-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+}
+
+.fendas-card-aside {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  align-content: start;
+}
+
+.fendas-card-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+
+.fendas-card-title {
+  text-align: center;
+  opacity: .95;
+}
+
+.fendas-card-main {
+  display: grid;
+  gap: 10px;
+}
+
+.fendas-card-desc {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  line-height: 1.45;
+}
+
+/* -------------------------
+   Recompensas
+------------------------- */
+.fendas-reward-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+}
+
+.fendas-reward-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+}
+
+.fendas-reward-title { font-size: 16px; }
+.fendas-reward-desc { opacity: .92; }
+
+.fendas-reward-section {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.fendas-reward-section-title {
+  text-align: center;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.fendas-reward-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.fendas-reward-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+}
+
+.fendas-reward-item.is-even { background: rgba(255,255,255,.03); }
+.fendas-reward-item.is-odd  { background: rgba(255,255,255,.015); }
+
+.fendas-reward-item-img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+}
+
+.fendas-reward-item-text {
+  line-height: 1.25;
+}
+
+.rarity {
+  margin-left: 6px;
+  color: var(--rarity, #77e38b);
+  font-weight: 700;
+}
+
+.rarity-glow {
+  text-shadow:
+    -1px -1px 0 rgba(0,0,0,.9),
+     1px -1px 0 rgba(0,0,0,.9),
+    -1px  1px 0 rgba(0,0,0,.9),
+     1px  1px 0 rgba(0,0,0,.9),
+     0 0 10px rgba(255, 227, 84, .35);
+}
+
+/* Responsivo */
+@media (max-width: 760px) {
+  .fendas-card {
+    grid-template-columns: 1fr;
+  }
+  .fendas-reward-grid {
+    grid-template-columns: 1fr;
+  }
+}
