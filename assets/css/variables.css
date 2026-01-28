@@ -1,0 +1,50 @@
+:root{
+  /* ===== Paleta (mesma identidade) ===== */
+  --bg: #0b0f17;
+  --panel: #121a27;
+  --panel2: #0f1622;
+
+  --text: #e9eef7;
+  --muted: #a8b3c7;
+
+  --stroke: rgba(255,255,255,.08);
+  --stroke2: rgba(255,255,255,.14);
+
+  --accent: #7c5cff;   /* roxo */
+  --accent2: #2be4c6;  /* verde/teal */
+
+  /* ===== Layout / medidas ===== */
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-lg: 20px;
+
+  --gap: 16px;
+  --pad: 16px;
+
+  /* ===== Sombras / glow ===== */
+  --shadow: 0 12px 30px rgba(0,0,0,.35);
+  --shadow-soft: 0 10px 22px rgba(0,0,0,.28);
+
+  --glow-accent: 0 0 0 3px rgba(124,92,255,.18);
+  --glow-accent2: 0 0 0 3px rgba(43,228,198,.16);
+
+  /* ===== Superfícies (glass) ===== */
+  --glass: rgba(11, 15, 23, 0.78);
+  --glass2: rgba(18, 26, 39, 0.66);
+  --glass3: rgba(15, 22, 34, 0.58);
+
+  /* ===== Tipografia ===== */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* ===== Transições ===== */
+  --t: 120ms ease;
+}
+
+/* Fundo com aura — mantém sua assinatura */
+body{
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.35), transparent 55%),
+    radial-gradient(900px 600px at 110% 10%, rgba(43,228,198,.22), transparent 60%),
+    var(--bg);
+}

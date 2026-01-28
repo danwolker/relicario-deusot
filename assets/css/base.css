@@ -1,0 +1,155 @@
+/* =========================
+   Base / Reset / Defaults
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.45;
+
+  /* deixa a UI com cara de app/site premium */
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* seleção bonitinha, sem estourar a paleta */
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: var(--text);
+}
+
+/* =========================
+   Utilitários leves
+   ========================= */
+
+.muted { color: var(--muted); }
+
+.kicker {
+  font-size: 12px;
+  letter-spacing: .45px;
+  text-transform: uppercase;
+  color: rgba(168, 179, 199, .92);
+}
+
+.lead {
+  margin: 10px 0 0;
+  color: rgba(233, 238, 247, .92);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* =========================
+   Acessibilidade / foco
+   ========================= */
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--glow-accent);
+  border-radius: 10px;
+}
+
+/* inputs e botões com comportamento consistente */
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border: 1px solid var(--stroke);
+  background: rgba(18, 26, 39, 0.72);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t), background var(--t);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(168, 179, 199, .72);
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(124, 92, 255, 0.5);
+  box-shadow: var(--glow-accent);
+}
+
+button {
+  border: 1px solid var(--stroke);
+  background: rgba(18, 26, 39, 0.72);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t), background var(--t);
+}
+
+button:hover {
+  border-color: var(--stroke2);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0px);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--stroke);
+  margin: 16px 0;
+}
+
+/* =========================
+   Scrollbar (sutil)
+   ========================= */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 92, 255, .35) rgba(18, 26, 39, .25);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(18, 26, 39, .25);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 255, .28);
+  border: 2px solid rgba(18, 26, 39, .25);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 92, 255, .38);
+}

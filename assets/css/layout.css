@@ -1,0 +1,129 @@
+/* =========================
+   Layout (Shell + Sticky Areas)
+   compatível com:
+   main.app-shell
+   aside.sidebar > .sidebar-inner
+   section.content-area > #app.layout
+   ========================= */
+
+:root{
+  --header-h: 74px;     /* altura do header fixo */
+  --sidebar-w: 290px;   /* largura do menu */
+  --gap: 16px;          /* espaçamento padrão */
+}
+
+/* trava o scroll do documento inteiro */
+html, body{
+  height: 100%;
+}
+
+body{
+  overflow: hidden;
+}
+
+/* Header injetado: ocupa topo fixo */
+#app-header{
+  position: relative;
+  z-index: 60;
+}
+
+/* O header real vem do header.html */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 70;
+}
+
+/* Shell principal: abaixo do header */
+.app-shell{
+  position: relative;
+  padding-top: var(--header-h);
+
+  height: 100vh;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  gap: var(--gap);
+
+  padding: var(--gap);
+  padding-top: calc(var(--header-h) + var(--gap));
+}
+
+/* Sidebar fixa (por viewport) */
+.sidebar{
+  height: calc(100vh - var(--header-h) - (var(--gap) * 2));
+  overflow: hidden; /* rolagem apenas no miolo */
+  min-width: 0;
+}
+
+/* o conteúdo interno da sidebar é quem rola */
+.sidebar-inner{
+  height: 100%;
+  overflow: hidden; /* o .side-list rola por dentro */
+}
+
+/* Conteúdo à direita: ESTE é o scroll principal */
+.content-area{
+  height: calc(100vh - var(--header-h) - (var(--gap) * 2));
+  overflow: auto;
+  min-width: 0;
+  padding-right: 2px;
+}
+
+/* Scrollbar do conteúdo */
+.content-area::-webkit-scrollbar{ width: 10px; }
+.content-area::-webkit-scrollbar-track{ background: transparent; }
+.content-area::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0);
+  background-clip: padding-box;
+}
+.content-area::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,.10);
+}
+
+/* Layout interno do app (custos + grid) */
+.layout{
+  display: grid;
+  gap: var(--gap);
+}
+
+/* Linha Níveis + Detalhes */
+.row-grid{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  :root{ --sidebar-w: 260px; }
+  .row-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px){
+  :root{ --header-h: 136px; }
+
+  body{ overflow: hidden; }
+
+  /* Mobile: tira a coluna fixa (a sidebar vira drawer via components.css) */
+  .app-shell{
+    grid-template-columns: 1fr;
+    padding-top: calc(var(--header-h) + var(--gap));
+  }
+
+  /* não ocupa mais espaço no fluxo */
+  .sidebar{
+    height: auto; /* o drawer controla o height via position fixed no components.css */
+  }
+
+  .content-area{
+    height: calc(100vh - var(--header-h) - (var(--gap) * 2));
+  }
+}

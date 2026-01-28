@@ -1,0 +1,57 @@
+/* =========================
+   Página: Upgrade System
+   (ajustes finos e identidade)
+   ========================= */
+
+/* deixa o conteúdo com uma largura agradável em telas grandes */
+.layout{
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Custos: título e bloco */
+.costs .kicker{
+  margin-bottom: 6px;
+}
+
+.costs .lead b{
+  color: rgba(233,238,247,.98);
+}
+
+/* chips mais “respiráveis” */
+.costs .chips{
+  margin-top: 14px;
+}
+
+/* Painel de detalhes: título mais imponente */
+.details-header h3{
+  font-size: 16px;
+  letter-spacing: .1px;
+}
+
+/* Ajuste do hint (fica menos “caixa cinza”) */
+.hint{
+  background: rgba(15, 22, 34, 0.28);
+}
+
+/* Quando estiver filtrando e o nível tiver match, você pinta a borda via JS.
+   Aqui garantimos que a borda não brigue com o active. */
+.card.active[style*="border-color"]{
+  box-shadow: var(--glow-accent);
+}
+
+/* Pequeno refinamento: quando há filtro, o badge fica mais evidente */
+.badge{
+  backdrop-filter: blur(6px);
+}
+
+/* Itens: nome e wiki alinhados e elegantes */
+.nameRow .name{
+  letter-spacing: .1px;
+}
+
+/* Chips de drop: em telas pequenas, evita esmagar tudo */
+@media (max-width: 460px){
+  .dropchip span{ max-width: 36ch; }
+  .grid-levels{ grid-template-columns: 1fr; }
+}
