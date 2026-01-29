@@ -1,3 +1,5 @@
+// assets/js/pages/server-info.js
+
 const EXP_RATE = [
   { from: 1, to: 8, mult: "100x" },
   { from: 9, to: 50, mult: "100x" },
@@ -82,12 +84,35 @@ const OTHER_INFOS = [
 
 /** ---------- helpers ---------- */
 
+/**
+ * Base dinâmica para funcionar em:
+ * - local: http://.../ -> "/"
+ * - GitHub Pages project page: https://user.github.io/repo/ -> "/repo/"
+ *
+ * Se quiser forçar manualmente (opcional), no HTML:
+ * <meta name="app-base" content="/relicario-deusot/">
+ */
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
 function ensureCss() {
   if (document.getElementById("server-info-css")) return;
   const link = document.createElement("link");
   link.id = "server-info-css";
   link.rel = "stylesheet";
-  link.href = "/assets/css/pages/server-info.css";
+
+  const base = getBasePath();
+  link.href = `${base}assets/css/pages/server-info.css`;
+
   document.head.appendChild(link);
 }
 
@@ -210,7 +235,9 @@ export function render(container) {
   const top = el("div", "si-hero");
   top.appendChild(el("h1", "si-hero__title", "Server Informations"));
   top.appendChild(
-    el("p", "si-hero__lead",
+    el(
+      "p",
+      "si-hero__lead",
       "Tudo o que você precisa saber — taxas, frags, comandos e regras — organizado em blocos claros e fáceis de consultar."
     )
   );
@@ -252,6 +279,7 @@ export function render(container) {
       grid.appendChild(p);
     }
 
+    // MAGIC (4 col)
     {
       const { wrap: p, body: pb } = panel("MAGIC RATE", "Escolha a vocação.", "si-col-4");
       p.classList.add("is-magic");
