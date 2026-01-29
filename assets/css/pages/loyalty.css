@@ -1,0 +1,374 @@
+/* assets/css/pages/loyalty.css */
+
+.loy-page {
+  width: 100%;
+  padding: 18px 14px 40px;
+  box-sizing: border-box;
+}
+
+.loy-hero {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(1100px 380px at 20% 0%, rgba(60, 255, 160, 0.10), transparent 60%),
+    radial-gradient(900px 340px at 90% 20%, rgba(106, 168, 255, 0.10), transparent 60%),
+    var(--loy-scroll-a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+.loy-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.62));
+  pointer-events: none;
+}
+
+.loy-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 26px 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.loy-title h1 {
+  margin: 0 0 10px;
+  font-size: 1.55rem;
+  letter-spacing: 0.2px;
+}
+
+.loy-title p {
+  margin: 0;
+  line-height: 1.55;
+  opacity: 0.92;
+  max-width: 78ch;
+}
+
+.loy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.loy-btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.loy-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.loy-btn:active {
+  transform: translateY(0);
+}
+
+.loy-btn-ghost {
+  background: transparent;
+}
+
+.loy-section {
+  margin-top: 16px;
+}
+
+.loy-card {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.loy-card-head {
+  padding: 16px 16px 10px;
+}
+
+.loy-card-head h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.loy-muted {
+  margin: 0;
+  opacity: 0.72;
+  line-height: 1.45;
+}
+
+.loy-bullets {
+  padding: 10px 12px 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.loy-bullet {
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 8px;
+}
+
+.loy-bullet p {
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+.loy-badge {
+  width: fit-content;
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  opacity: 0.95;
+}
+
+.loy-badge-green {
+  border-color: rgba(60, 255, 160, 0.20);
+  background: rgba(60, 255, 160, 0.08);
+}
+
+.loy-badge-blue {
+  border-color: rgba(106, 168, 255, 0.22);
+  background: rgba(106, 168, 255, 0.08);
+}
+
+.loy-link {
+  margin-left: 10px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.loy-link:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.loy-table {
+  padding: 10px 10px 14px;
+}
+
+.loy-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 0.7fr;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.loy-row + .loy-row {
+  margin-top: 8px;
+}
+
+.loy-head {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  font-weight: 800;
+}
+
+.loy-zebra-a {
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.loy-zebra-b {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.loy-cell {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.loy-center {
+  justify-content: center;
+}
+
+.loy-rank {
+  gap: 10px;
+}
+
+.loy-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(60, 255, 160, 0.55);
+  box-shadow: 0 0 0 3px rgba(60, 255, 160, 0.12);
+  flex: 0 0 auto;
+}
+
+.loy-points,
+.loy-skill {
+  justify-content: center;
+  font-weight: 800;
+}
+
+.loy-bonus {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+.loy-zero {
+  border-color: rgba(255, 92, 92, 0.20);
+  background: rgba(255, 92, 92, 0.08);
+}
+
+.loy-plus {
+  border-color: rgba(60, 255, 160, 0.20);
+  background: rgba(60, 255, 160, 0.08);
+}
+
+.loy-voc-grid {
+  padding: 10px 12px 16px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.loy-voc-card {
+  border-radius: 16px;
+  padding: 12px 12px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 8px;
+}
+
+.loy-voc-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loy-voc-tag {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.loy-voc-text {
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+.loy-druid .loy-voc-tag { color: #3cffA0; }
+.loy-sorc .loy-voc-tag { color: #b06cff; }
+.loy-knight .loy-voc-tag { color: #e6e6e6; }
+.loy-pala .loy-voc-tag { color: #fa7d00; }
+
+.loy-formula {
+  background:
+    radial-gradient(900px 320px at 10% 0%, rgba(60, 255, 160, 0.08), transparent 60%),
+    rgba(255,255,255,0.04);
+}
+
+.loy-formula-body {
+  padding: 10px 16px 18px;
+}
+
+.loy-formula-body p {
+  margin: 0 0 12px;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+.loy-highlight {
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 10px;
+}
+
+.loy-highlight-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.loy-k {
+  opacity: 0.75;
+  font-weight: 700;
+}
+
+.loy-v {
+  font-weight: 900;
+}
+
+.loy-backtop {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loy-backbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.loy-backbtn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.loy-backbtn img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.95;
+}
+
+@media (max-width: 840px) {
+  .loy-voc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .loy-row {
+    grid-template-columns: 1fr;
+  }
+
+  .loy-points,
+  .loy-skill {
+    justify-content: flex-start;
+  }
+
+  .loy-title h1 {
+    font-size: 1.35rem;
+  }
+}
