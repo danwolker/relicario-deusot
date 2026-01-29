@@ -122,7 +122,6 @@ function renderAbilityCard(a) {
 export function render(app) {
   ensurePageCss();
 
-  const separator = `${BASE_ORIGIN}/images/separador.png`;
   const refUrl = `${BASE_ORIGIN}/?subtopic=forgesystem`;
 
   app.innerHTML = `
