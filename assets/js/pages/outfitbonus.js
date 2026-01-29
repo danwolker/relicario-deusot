@@ -1,31 +1,64 @@
 // assets/js/pages/outfitbonus.js
 
 const PAGE_KEY = "outfitbonus";
-const PAGE_CSS = `/assets/css/pages/${PAGE_KEY}.css`;
-const ORIGIN = "https://deusot.com";
+const ORIGIN_FALLBACK = "https://deusot.com";
 
 /**
- * Converte URL relativa em absoluta baseada no ORIGIN.
- * - "./images/x.gif" -> "https://deusot.com/images/x.gif"
- * - "/images/x.gif"  -> "https://deusot.com/images/x.gif"
- * - "https://..."    -> mantém
+ * Base dinâmica para funcionar em:
+ * - local: http://.../ -> "/"
+ * - GitHub Pages project page: https://user.github.io/repo/ -> "/repo/"
+ *
+ * Se quiser forçar manualmente (recomendado), no HTML:
+ * <meta name="app-base" content="/relicario-deusot/">
  */
-export function toAbsUrl(url, origin = ORIGIN) {
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
+/**
+ * Resolve URLs de imagens.
+ * - Se for http(s), mantém.
+ * - Se for "./..." ou "/..." ou "images/..." => resolve para o seu projeto (basePath).
+ * - Se vier algo estranho e você quiser cair no deusot.com, usa fallback.
+ */
+export function toAbsUrl(url, originFallback = ORIGIN_FALLBACK) {
   if (!url) return "";
   const s = String(url).trim();
   if (!s) return "";
+
+  // já absoluta
   if (/^https?:\/\//i.test(s)) return s;
 
-  const cleaned = s.replace(/^\.\//, "");
-  const needsSlash = cleaned.startsWith("/") ? "" : "/";
-  return `${origin}${needsSlash}${cleaned}`;
+  // mantém data/mailto/tel/js/#
+  if (/^(data:|mailto:|tel:|javascript:)/i.test(s) || s.startsWith("#")) return s;
+
+  const base = getBasePath();
+
+  // resolve relativo ao seu projeto (recomendado)
+  // "./images/x.gif" -> base + "images/x.gif"
+  // "/images/x.gif"  -> base + "images/x.gif"
+  // "images/x.gif"   -> base + "images/x.gif"
+  const cleaned = s.replace(/^\.\//, "").replace(/^\/+/, "");
+  if (cleaned) return `${base}${cleaned}`;
+
+  // fallback
+  const needsSlash = s.startsWith("/") ? "" : "/";
+  return `${originFallback}${needsSlash}${s}`;
 }
 
 /**
  * Para quando você colar HTML bruto no futuro: converte src/href relativos para absolutos.
- * Mantém data:, mailto:, tel:, javascript: intactos.
+ * Mantém data:, mailto:, tel:, javascript: e anchors intactos.
  */
-export function normalizeRelativeUrlsInHtml(html, origin = ORIGIN) {
+export function normalizeRelativeUrlsInHtml(html, originFallback = ORIGIN_FALLBACK) {
   if (!html) return "";
   return String(html).replace(
     /(src|href)\s*=\s*("([^"]+)"|'([^']+)')/gi,
@@ -45,7 +78,7 @@ export function normalizeRelativeUrlsInHtml(html, origin = ORIGIN) {
         return m;
       }
 
-      const abs = toAbsUrl(v, origin);
+      const abs = toAbsUrl(v, originFallback);
       const quote = quoted.startsWith("'") ? "'" : '"';
       return `${attr}=${quote}${abs}${quote}`;
     }
@@ -56,10 +89,12 @@ function ensurePageStyles() {
   const id = `page-css-${PAGE_KEY}`;
   if (document.getElementById(id)) return;
 
+  const base = getBasePath();
+
   const link = document.createElement("link");
   link.id = id;
   link.rel = "stylesheet";
-  link.href = PAGE_CSS;
+  link.href = `${base}assets/css/pages/${PAGE_KEY}.css`;
   document.head.appendChild(link);
 }
 
@@ -457,18 +492,14 @@ function computeTotals(outfits) {
   const sums = Object.create(null);
 
   for (const o of outfits) {
-    for (const b of o.bonuses || []) {
-      pushStatSum(sums, parseStatPiece(b));
-    }
+    for (const b of o.bonuses || []) pushStatSum(sums, parseStatPiece(b));
 
     for (const n of o.notes || []) {
       const txt = String(n?.text || "");
       if (!txt) continue;
 
       const parts = txt.split("•").map((p) => p.trim()).filter(Boolean);
-      for (const p of parts) {
-        pushStatSum(sums, parseStatPiece(p));
-      }
+      for (const p of parts) pushStatSum(sums, parseStatPiece(p));
     }
   }
 
@@ -569,17 +600,14 @@ function renderTotalsCard(totals) {
 }
 
 /* ============================
-   RENDER NOTES (FIX Mage/Summoner)
+   RENDER NOTES (Mage/Summoner)
 ============================ */
 
 function splitNotePieces(text) {
   const t = String(text || "").trim();
   if (!t) return [];
   if (/nenhum\s*b[oô]nus/i.test(t)) return [];
-  return t
-    .split("•")
-    .map((p) => p.trim())
-    .filter(Boolean);
+  return t.split("•").map((p) => p.trim()).filter(Boolean);
 }
 
 function renderNotesBlocks(notes) {
@@ -592,7 +620,6 @@ function renderNotesBlocks(notes) {
           const who = escapeHtml(n?.who || "");
           const txt = String(n?.text || "").trim();
 
-          // Nenhum bônus
           if (/nenhum\s*b[oô]nus/i.test(txt)) {
             return `
               <div class="ob-noteBlock">
@@ -604,15 +631,11 @@ function renderNotesBlocks(notes) {
             `;
           }
 
-          // Lista com •
           const pieces = splitNotePieces(txt);
           const listHtml = pieces.length
             ? `<ul class="ob-noteList">
                 ${pieces
-                  .map(
-                    (p) =>
-                      `<li class="ob-noteItem"><span class="ob-bullet">♦</span>${escapeHtml(p)}</li>`
-                  )
+                  .map((p) => `<li class="ob-noteItem"><span class="ob-bullet">♦</span>${escapeHtml(p)}</li>`)
                   .join("")}
               </ul>`
             : `<div class="ob-noteEmpty">Nenhum bônus</div>`;
@@ -638,9 +661,7 @@ function renderNotesBlocks(notes) {
 
 function renderCard(o) {
   const title = o.link
-    ? `<a class="ob-titleLink" href="${escapeHtml(o.link)}" target="_blank" rel="noreferrer">${escapeHtml(
-        o.name
-      )}</a>`
+    ? `<a class="ob-titleLink" href="${escapeHtml(o.link)}" target="_blank" rel="noreferrer">${escapeHtml(o.name)}</a>`
     : `<span class="ob-title">${escapeHtml(o.name)}</span>`;
 
   const femaleImg = toAbsUrl(o.femaleImg);
@@ -656,9 +677,7 @@ function renderCard(o) {
 
   const notesHtml = renderNotesBlocks(o.notes);
 
-  const hasAnyBonus =
-    (o.bonuses?.length || 0) > 0 ||
-    (o.notes?.length || 0) > 0;
+  const hasAnyBonus = (o.bonuses?.length || 0) > 0 || (o.notes?.length || 0) > 0;
 
   return `
     <article class="ob-card" data-name="${escapeHtml(o.name)}">
@@ -691,6 +710,7 @@ function mountInteractions(root) {
   const q = root.querySelector("#ob-q");
   const only = root.querySelector("#ob-only");
   const cards = Array.from(root.querySelectorAll(".ob-card"));
+  const counter = root.querySelector("#ob-count");
 
   function apply() {
     const term = normalizeText(q?.value || "");
@@ -715,7 +735,6 @@ function mountInteractions(root) {
       if (ok) visible++;
     }
 
-    const counter = root.querySelector("#ob-count");
     if (counter) counter.textContent = String(visible);
   }
 
@@ -734,12 +753,11 @@ export function render(app) {
       <header class="ob-hero">
         <div class="ob-heroInner">
 
-          <!-- COLUNA ESQUERDA: contexto -->
           <div class="ob-titleBlock">
             <h1>System Bonuses — Outfits</h1>
             <p>
               Aqui os outfits acumulados no personagem viram progresso real:
-              bônus como <strong>Health</strong>, <strong>Critical Chance</strong>, <strong>Skills</strong> e outros
+              bônus como <strong>Critical Chance</strong>, <strong>Skills</strong> e outros
               vão empilhando conforme você completa os addons.
             </p>
             <p class="ob-tip">
@@ -747,7 +765,6 @@ export function render(app) {
             </p>
           </div>
 
-          <!-- COLUNA DIREITA: painel -->
           <aside class="ob-side" aria-label="Ferramentas e bônus total">
 
             <div class="ob-tools" aria-label="Filtros">
@@ -761,6 +778,17 @@ export function render(app) {
                   autocomplete="off"
                 />
               </div>
+
+              <div class="ob-toolRowInline">
+                <label class="ob-check">
+                  <input id="ob-only" type="checkbox" />
+                  <span>Somente com bônus</span>
+                </label>
+
+                <div class="ob-meta">
+                  <span class="ob-pill subtle">Visíveis</span>
+                  <span class="ob-pill" id="ob-count">0</span>
+                </div>
               </div>
             </div>
 
@@ -786,3 +814,5 @@ export function render(app) {
 
   mountInteractions(app);
 }
+
+export default { render };
