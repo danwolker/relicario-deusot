@@ -130,7 +130,7 @@ export function render(app) {
       <header class="fs-hero" aria-label="Forge System">
         <div class="fs-hero__inner">
           <h1 class="fs-title">Forge System</h1>
-          <img class="fs-sep" src="${escapeHtml(separator)}" alt="" loading="lazy" referrerpolicy="no-referrer" />
+
           <div class="fs-hero__actions" role="group" aria-label="Ações">
             <!-- botões opcionais -->
           </div>
