@@ -2,12 +2,22 @@
 import { emit } from "../utils.js";
 
 const PAGE_KEY = "tasks";
-const CSS_PATH = "/assets/css/pages/tasks.css";
 const BASE_ORIGIN = "https://deusot.com";
 
-function ensurePageCss(href = CSS_PATH) {
+/**
+ * Carrega o CSS da página usando caminho relativo ao próprio módulo.
+ * Isso remove o problema clássico do GitHub Pages tentar buscar em:
+ *   https://danwolker.github.io/assets/...
+ * em vez de:
+ *   https://danwolker.github.io/relicario-deusot/assets/...
+ */
+function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
   if (document.getElementById(id)) return;
+
+  // ✅ O JS está em /assets/js/pages/tasks.js
+  // então "../../css/pages/tasks.css" resolve certinho para /assets/css/pages/tasks.css
+  const href = new URL(`../../css/pages/${PAGE_KEY}.css`, import.meta.url).href;
 
   const link = document.createElement("link");
   link.id = id;
@@ -92,8 +102,7 @@ export function render(app) {
           </div>
 
           <div class="tk-hero__actions" role="group" aria-label="Ações">
-          
-           
+            <!-- se quiser botões depois, coloque aqui -->
           </div>
         </div>
       </header>
@@ -122,7 +131,12 @@ export function render(app) {
         <div class="tk-split">
           <figure class="tk-figure">
             <div class="tk-frame">
-              <img src="${escapeHtml(imgOverview)}" alt="Janela inicial das Tasks (referência)" loading="lazy" />
+              <img
+                src="${escapeHtml(imgOverview)}"
+                alt="Janela inicial das Tasks (referência)"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
             </div>
             <figcaption>
               Janela inicial das tasks: categorias, filtros, busca e listagem.
@@ -183,7 +197,12 @@ export function render(app) {
         <div class="tk-split tk-split--reverse">
           <figure class="tk-figure">
             <div class="tk-frame">
-              <img src="${escapeHtml(imgDetails)}" alt="Detalhes de uma Task (referência)" loading="lazy" />
+              <img
+                src="${escapeHtml(imgDetails)}"
+                alt="Detalhes de uma Task (referência)"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
             </div>
             <figcaption>
               Detalhes de uma task: hunts recomendadas, recompensas, monstros e iniciar.
@@ -238,7 +257,6 @@ export function render(app) {
 
             <div class="tk-cta__actions">
               <button class="tk-btn" type="button" data-action="open-download">Abrir página de download</button>
-              
             </div>
           </div>
         </div>
@@ -268,3 +286,5 @@ export function render(app) {
     { passive: true }
   );
 }
+
+export default { render };
