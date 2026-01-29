@@ -1,14 +1,14 @@
 // assets/js/pages/outfitbonus.js
 
 const PAGE_KEY = "outfitbonus";
-const ORIGIN_FALLBACK = "https://deusot.com";
+const ORIGIN = "https://deusot.com";
 
 /**
- * Base dinâmica para funcionar em:
- * - local: http://.../ -> "/"
- * - GitHub Pages project page: https://user.github.io/repo/ -> "/repo/"
+ * Base dinâmica para CSS/arquivos do seu projeto:
+ * - local: "/"
+ * - GitHub Pages project page: "/relicario-deusot/"
  *
- * Se quiser forçar manualmente (recomendado), no HTML:
+ * Se quiser fixar (recomendado), no HTML:
  * <meta name="app-base" content="/relicario-deusot/">
  */
 function getBasePath() {
@@ -24,12 +24,14 @@ function getBasePath() {
 }
 
 /**
- * Resolve URLs de imagens.
- * - Se for http(s), mantém.
- * - Se for "./..." ou "/..." ou "images/..." => resolve para o seu projeto (basePath).
- * - Se vier algo estranho e você quiser cair no deusot.com, usa fallback.
+ * Resolve URL para imagens/links.
+ * Regra do projeto (seu pedido): outfits SEMPRE vêm do ORIGIN.
+ *
+ * - Se já for http(s), mantém.
+ * - Se for "./images/..." ou "/images/..." ou "images/..." => converte para ORIGIN + "/images/..."
+ * - Se for outras relativas (raras), também converte para ORIGIN por padrão.
  */
-export function toAbsUrl(url, originFallback = ORIGIN_FALLBACK) {
+export function toAbsUrl(url, origin = ORIGIN) {
   if (!url) return "";
   const s = String(url).trim();
   if (!s) return "";
@@ -37,28 +39,22 @@ export function toAbsUrl(url, originFallback = ORIGIN_FALLBACK) {
   // já absoluta
   if (/^https?:\/\//i.test(s)) return s;
 
-  // mantém data/mailto/tel/js/#
+  // mantém especiais
   if (/^(data:|mailto:|tel:|javascript:)/i.test(s) || s.startsWith("#")) return s;
 
-  const base = getBasePath();
+  // normaliza
+  const noDot = s.replace(/^\.\//, "");
+  const cleaned = noDot.replace(/^\/+/, ""); // remove "/" iniciais
 
-  // resolve relativo ao seu projeto (recomendado)
-  // "./images/x.gif" -> base + "images/x.gif"
-  // "/images/x.gif"  -> base + "images/x.gif"
-  // "images/x.gif"   -> base + "images/x.gif"
-  const cleaned = s.replace(/^\.\//, "").replace(/^\/+/, "");
-  if (cleaned) return `${base}${cleaned}`;
-
-  // fallback
-  const needsSlash = s.startsWith("/") ? "" : "/";
-  return `${originFallback}${needsSlash}${s}`;
+  // seu caso: tudo que cair aqui vira deusot.com/...
+  // "images/outfits/x.gif" -> https://deusot.com/images/outfits/x.gif
+  return `${origin}/${cleaned}`;
 }
 
 /**
- * Para quando você colar HTML bruto no futuro: converte src/href relativos para absolutos.
- * Mantém data:, mailto:, tel:, javascript: e anchors intactos.
+ * Para quando você colar HTML bruto no futuro: converte src/href relativos para absolutos no ORIGIN.
  */
-export function normalizeRelativeUrlsInHtml(html, originFallback = ORIGIN_FALLBACK) {
+export function normalizeRelativeUrlsInHtml(html, origin = ORIGIN) {
   if (!html) return "";
   return String(html).replace(
     /(src|href)\s*=\s*("([^"]+)"|'([^']+)')/gi,
@@ -78,7 +74,7 @@ export function normalizeRelativeUrlsInHtml(html, originFallback = ORIGIN_FALLBA
         return m;
       }
 
-      const abs = toAbsUrl(v, originFallback);
+      const abs = toAbsUrl(v, origin);
       const quote = quoted.startsWith("'") ? "'" : '"';
       return `${attr}=${quote}${abs}${quote}`;
     }
@@ -90,7 +86,6 @@ function ensurePageStyles() {
   if (document.getElementById(id)) return;
 
   const base = getBasePath();
-
   const link = document.createElement("link");
   link.id = id;
   link.rel = "stylesheet";
@@ -141,10 +136,12 @@ const OUTFITS = [
       "Critical Damage: +0.50%",
     ],
   },
+
+  // ✅ agora tudo vindo do deusot.com
   {
     name: "Hades Outfit",
-    femaleImg: "./images/outfits/hades_outfit.gif",
-    maleImg: "./images/outfits/hades_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/hades_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/hades_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +2",
@@ -155,8 +152,8 @@ const OUTFITS = [
   },
   {
     name: "Nattank",
-    femaleImg: "./images/outfits/nattank_outfit.gif",
-    maleImg: "./images/outfits/nattank_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/nattank_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/nattank_outfit.gif",
     bonuses: [
       "Skill: +2",
       "Transcendence: +0.15%",
@@ -169,8 +166,8 @@ const OUTFITS = [
   },
   {
     name: "Diogo",
-    femaleImg: "./images/outfits/diogo_outfit.gif",
-    maleImg: "./images/outfits/diogo_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/diogo_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/diogo_outfit.gif",
     bonuses: [
       "Skill: +2",
       "Transcendence: +0.15%",
@@ -183,8 +180,8 @@ const OUTFITS = [
   },
   {
     name: "DDD",
-    femaleImg: "./images/outfits/ddd_outfit.gif",
-    maleImg: "./images/outfits/ddd_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/ddd_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/ddd_outfit.gif",
     bonuses: [
       "Skill: +2",
       "Transcendence: +0.15%",
@@ -197,8 +194,8 @@ const OUTFITS = [
   },
   {
     name: "Bugado",
-    femaleImg: "./images/outfits/bugado_outfit.gif",
-    maleImg: "./images/outfits/bugado_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/bugado_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/bugado_outfit.gif",
     bonuses: [
       "Skill: +2",
       "Transcendence: +0.15%",
@@ -211,8 +208,8 @@ const OUTFITS = [
   },
   {
     name: "Dukoth",
-    femaleImg: "./images/outfits/dukoth_outfit.gif",
-    maleImg: "./images/outfits/dukoth_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/dukoth_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/dukoth_outfit.gif",
     bonuses: [
       "Skill: +2",
       "Transcendence: +0.15%",
@@ -225,14 +222,14 @@ const OUTFITS = [
   },
   {
     name: "Bigodezerah",
-    femaleImg: "./images/outfits/bigodezerah_outfit.gif",
-    maleImg: "./images/outfits/bigodezerah_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/bigodezerah_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/bigodezerah_outfit.gif",
     bonuses: ["Onslaught: +0.10%", "Critical Chance: +0.20%"],
   },
   {
     name: "Julio Skeletin",
-    femaleImg: "./images/outfits/julioskeletin_outfit.gif",
-    maleImg: "./images/outfits/julioskeletin_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/julioskeletin_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/julioskeletin_outfit.gif",
     bonuses: [
       "Critical Chance: +0.05%",
       "Critical Damage: +1%",
@@ -244,20 +241,20 @@ const OUTFITS = [
   },
   {
     name: "Archer",
-    femaleImg: "./images/outfits/archer_outfit.gif",
-    maleImg: "./images/outfits/archer_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/archer_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/archer_outfit.gif",
     bonuses: ["Critical Chance: +0.05%"],
   },
   {
     name: "Angel",
-    femaleImg: "./images/outfits/angel_outfit.gif",
-    maleImg: "./images/outfits/angel_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/angel_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/angel_outfit.gif",
     bonuses: ["Skill: +2", "Transcendence: +0.25%", "Onslaught: +0.50%"],
   },
   {
     name: "Diamond Outfit",
-    femaleImg: "./images/outfits/diamond_outfit.gif",
-    maleImg: "./images/outfits/diamond_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/diamond_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/diamond_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +2",
@@ -268,8 +265,8 @@ const OUTFITS = [
   },
   {
     name: "Platinum Outfit",
-    femaleImg: "./images/outfits/platinum_outfit.gif",
-    maleImg: "./images/outfits/platinum_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/platinum_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/platinum_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +2",
@@ -280,8 +277,8 @@ const OUTFITS = [
   },
   {
     name: "Silver Outfit",
-    femaleImg: "./images/outfits/silver_outfit.gif",
-    maleImg: "./images/outfits/silver_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/silver_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/silver_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +2",
@@ -292,8 +289,8 @@ const OUTFITS = [
   },
   {
     name: "Ruby Outfit",
-    femaleImg: "./images/outfits/ruby_outfit.gif",
-    maleImg: "./images/outfits/ruby_outfit.gif",
+    femaleImg: "https://deusot.com/images/outfits/ruby_outfit.gif",
+    maleImg: "https://deusot.com/images/outfits/ruby_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +2",
@@ -302,6 +299,7 @@ const OUTFITS = [
       "Critical Damage: +1%",
     ],
   },
+
   {
     name: "Golden Outfit",
     link: "https://www.tibiawiki.com.br/wiki/Golden_Outfit_Outfits",
@@ -315,10 +313,11 @@ const OUTFITS = [
       "Critical Damage: +1%",
     ],
   },
+
   {
     name: "Guardian Of Nature",
-    femaleImg: "./images/outfits/Guardian_Of_Nature_Female.gif",
-    maleImg: "./images/outfits/Guardian_Of_Nature_Male.gif",
+    femaleImg: "https://deusot.com/images/outfits/Guardian_Of_Nature_Female.gif",
+    maleImg: "https://deusot.com/images/outfits/Guardian_Of_Nature_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -329,8 +328,8 @@ const OUTFITS = [
   },
   {
     name: "Elemental Spykes",
-    femaleImg: "./images/outfits/Elemental_Spykes_Female.gif",
-    maleImg: "./images/outfits/Elemental_Spykes_Male.gif",
+    femaleImg: "https://deusot.com/images/outfits/Elemental_Spykes_Female.gif",
+    maleImg: "https://deusot.com/images/outfits/Elemental_Spykes_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -341,8 +340,8 @@ const OUTFITS = [
   },
   {
     name: "Aegis Aurora",
-    femaleImg: "./images/outfits/Aegis_Aurora.gif",
-    maleImg: "./images/outfits/Aegis_Valor.gif",
+    femaleImg: "https://deusot.com/images/outfits/Aegis_Aurora.gif",
+    maleImg: "https://deusot.com/images/outfits/Aegis_Valor.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -353,8 +352,8 @@ const OUTFITS = [
   },
   {
     name: "Ultimate God",
-    femaleImg: "./images/outfits/Ultimate_Gods_Female.gif",
-    maleImg: "./images/outfits/Ultimate_Gods_Male.gif",
+    femaleImg: "https://deusot.com/images/outfits/Ultimate_Gods_Female.gif",
+    maleImg: "https://deusot.com/images/outfits/Ultimate_Gods_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -365,8 +364,8 @@ const OUTFITS = [
   },
   {
     name: "Polar King and Queen",
-    femaleImg: "./images/outfits/Polar_Queen.gif",
-    maleImg: "./images/outfits/Polar_King.gif",
+    femaleImg: "https://deusot.com/images/outfits/Polar_Queen.gif",
+    maleImg: "https://deusot.com/images/outfits/Polar_King.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -377,8 +376,8 @@ const OUTFITS = [
   },
   {
     name: "Shocksmith",
-    femaleImg: "./images/outfits/Shocksmith_Female.gif",
-    maleImg: "./images/outfits/Shocksmith_Male.gif",
+    femaleImg: "https://deusot.com/images/outfits/Shocksmith_Female.gif",
+    maleImg: "https://deusot.com/images/outfits/Shocksmith_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
       "Skill: +1",
@@ -387,6 +386,7 @@ const OUTFITS = [
       "Critical Damage: +0.50%",
     ],
   },
+
   {
     name: "Mage",
     link: "https://www.tibiawiki.com.br/wiki/Mage_Outfits",
@@ -415,6 +415,7 @@ const OUTFITS = [
       { who: "Male", text: "Nenhum bônus" },
     ],
   },
+
   {
     name: "Royal Costume",
     link: "https://www.tibiawiki.com.br/wiki/Formal_Dress_Outfits",
