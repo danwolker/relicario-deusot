@@ -483,6 +483,7 @@
     justify-content: flex-start;
   }
 }
+
 /* =========================================================
    HOTFIX: garantir clique nos chips/tabs (anti-overlay)
    ========================================================= */
@@ -496,7 +497,6 @@
   z-index: 50;
 }
 
-/* garante que os botões recebam clique sempre */
 .stone-tab,
 .stone-lvl {
   position: relative;
@@ -504,15 +504,130 @@
   pointer-events: auto;
 }
 
-/* se algum wrapper global estiver com pointer-events:none, isso resgata */
 #stonePercentSection * {
   pointer-events: auto;
 }
 
-/* e se existir “camada fantasma” do template, isso impede de capturar clique */
 .stone-percent-wrap::before,
 .stone-percent-wrap::after,
 .stone-toolbar::before,
 .stone-toolbar::after {
   pointer-events: none !important;
+}
+
+/* =========================
+   STONE PRICE TABLE (FINAL)
+   - Ajustado p/ casar com a palheta do projeto
+   ========================= */
+
+.stone-price-wrap {
+  padding: 0 12px 16px;
+}
+
+.stone-price-head {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 0.55fr;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  font-weight: 900;
+  text-align: center;
+}
+
+.stone-price-hcell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  opacity: 0.95;
+}
+
+.stone-price-body {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.stone-price-row {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 0.55fr;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stone-price-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+}
+
+.stone-price-level,
+.stone-price-cost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.stone-price-arrow {
+  font-weight: 900;
+  opacity: 0.95;
+}
+
+.stone-price-gif {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 4px;
+}
+
+.stone-chance {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
+  min-width: 90px;
+}
+
+/* ✅ mesma palheta do projeto (verde/ouro/vermelho translúcidos) */
+.stone-chance.is-good {
+  border-color: rgba(60, 255, 160, 0.25);
+  background: rgba(60, 255, 160, 0.10);
+}
+
+.stone-chance.is-warn {
+  border-color: rgba(255, 215, 0, 0.28);
+  background: rgba(255, 215, 0, 0.10);
+}
+
+.stone-chance.is-bad {
+  border-color: rgba(255, 80, 80, 0.28);
+  background: rgba(255, 80, 80, 0.10);
+}
+
+@media (max-width: 860px) {
+  .stone-price-head {
+    display: none;
+  }
+
+  .stone-price-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stone-price-cell {
+    justify-content: center;
+  }
 }

@@ -4,7 +4,9 @@ import {
   ELEMENTS_WEAPONS,
   ELEMENTS_ARMORS,
   HELMET_STATS,
-  stoneGifByElement,
+  HELMET_STONE_ELEMENT_BY_STAT,
+  getStoneGif,
+  getUpgradePriceRows,
   WEAPON_LEVEL_VALUES,
   ARMOR_LEVEL_VALUES,
   HELMET_LEVEL_VALUES,
@@ -12,7 +14,7 @@ import {
   mult3,
 } from "../data/stone-weapons.data.js";
 
-const STONE_SYSTEM_VERSION = "stone-system@reset-v2-video-cards";
+const STONE_SYSTEM_VERSION = "stone-system@palette-upgrade-v1";
 
 function ensureCssLoaded() {
   const id = "css-page-stone-system";
@@ -101,22 +103,79 @@ function infoCard(c) {
 }
 
 /** =========================
+ *  TABELA DE PREÇOS (Upgrade)
+ *  - usa exatamente o CSS do projeto (.stone-price-*)
+ *  - sempre death stone (pretanv0..pretanv9)
+ *  ========================= */
+
+function chanceClass(chanceText) {
+  // chanceText vem tipo "100%", "90%"...
+  const n = Number(String(chanceText).replace("%", "").trim());
+  if (!Number.isFinite(n)) return "is-good";
+  if (n >= 70) return "is-good";
+  if (n >= 45) return "is-warn";
+  return "is-bad";
+}
+
+function renderPriceTable() {
+  const rows = getUpgradePriceRows();
+  const element = "death";
+
+  const body = rows
+    .map((r) => {
+      const fromGif = getStoneGif(element, r.from);
+      const toGif = getStoneGif(element, r.to);
+
+      return `
+        <div class="stone-price-row">
+          <div class="stone-price-cell">
+            <div class="stone-price-level">
+              <img class="stone-price-gif" src="${fromGif}" alt="pretanv${r.from}">
+              <span><b>Nível ${r.from}</b> para <b>Nível ${r.to}</b></span>
+              <img class="stone-price-gif" src="${toGif}" alt="pretanv${r.to}">
+            </div>
+          </div>
+
+          <div class="stone-price-cell">
+            <div class="stone-price-cost">
+              <span class="stone-val">${r.cost}</span>
+              <span class="stone-price-arrow">+</span>
+              <span><b>3x</b></span>
+              <img class="stone-price-gif" src="${fromGif}" alt="3x stone nv${r.from}">
+            </div>
+          </div>
+
+          <div class="stone-price-cell">
+            <span class="stone-chance ${chanceClass(r.chance)}"><b>${r.chance}</b></span>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="stone-price-wrap">
+      <div class="stone-price-head">
+        <div class="stone-price-hcell">Níveis:</div>
+        <div class="stone-price-hcell">Custo:</div>
+        <div class="stone-price-hcell">Chance:</div>
+      </div>
+
+      <div class="stone-price-body">
+        ${body}
+      </div>
+    </div>
+  `;
+}
+
+/** =========================
  *  PORCENTAGENS (Tabela)
  *  ========================= */
 
 const categoryMeta = {
-  weapons: {
-    title: "Porcentagens para Armas",
-    icon: "https://www.tibiawiki.com.br/images/f/fd/Magic_Sword.gif",
-  },
-  armors: {
-    title: "Porcentagens para Armaduras",
-    icon: "https://www.tibiawiki.com.br/images/5/5f/Armor.gif",
-  },
-  helmets: {
-    title: "Porcentagens para Capacetes",
-    icon: "https://www.tibiawiki.com.br/images/6/6b/Helmet.gif",
-  },
+  weapons: { title: "Porcentagens para Armas", icon: "https://www.tibiawiki.com.br/images/f/fd/Magic_Sword.gif" },
+  armors: { title: "Porcentagens para Armaduras", icon: "https://www.tibiawiki.com.br/images/5/5f/Armor.gif" },
+  helmets: { title: "Porcentagens para Capacetes", icon: "https://www.tibiawiki.com.br/images/6/6b/Helmet.gif" },
 };
 
 function normalizeCategory(cat) {
@@ -131,7 +190,7 @@ function getRows(cat, lvl) {
   if (category === "weapons") {
     const values = WEAPON_LEVEL_VALUES[level] || WEAPON_LEVEL_VALUES[1];
     return ELEMENTS_WEAPONS.map((el) => ({
-      stoneGif: stoneGifByElement[el.key] || "",
+      stoneGif: getStoneGif(el.key, level),
       effectIcon: el.effectIcon,
       label: el.label,
       v1: values.v1,
@@ -143,7 +202,7 @@ function getRows(cat, lvl) {
   if (category === "armors") {
     const values = ARMOR_LEVEL_VALUES[level] || ARMOR_LEVEL_VALUES[1];
     return ELEMENTS_ARMORS.map((el) => ({
-      stoneGif: stoneGifByElement[el.key] || "",
+      stoneGif: getStoneGif(el.key, level),
       effectIcon: el.effectIcon,
       label: el.label,
       v1: values.v1,
@@ -152,13 +211,18 @@ function getRows(cat, lvl) {
     }));
   }
 
-  // helmets
+  // HELMETS: stone por atributo + effectIcon por atributo
   const base = HELMET_LEVEL_VALUES[level] || HELMET_LEVEL_VALUES[1];
+
   return HELMET_STATS.map((st) => {
     const val = base[st.key];
     const { v1, v2, v3 } = mult3(val, st.kind);
+
+    const elementForStone = HELMET_STONE_ELEMENT_BY_STAT?.[st.key] || "death";
+    const stoneGif = getStoneGif(elementForStone, level);
+
     return {
-      stoneGif: "",
+      stoneGif,
       effectIcon: st.effectIcon || "",
       label: st.label,
       v1,
@@ -218,7 +282,6 @@ function renderTabs(cat) {
 
 function renderTable(cat, lvl) {
   const rows = getRows(cat, lvl);
-  const isHelmet = cat === "helmets";
 
   const head = `
     <div class="stone-matrix-head">
@@ -236,11 +299,9 @@ function renderTable(cat, lvl) {
         ? `<img class="stone-eff-ico" src="${r.effectIcon}" alt="">`
         : `<div class="stone-eff-ico placeholder" aria-hidden="true"></div>`;
 
-      const stoneHtml = isHelmet ? stoneCell("") : stoneCell(r.stoneGif);
-
       return `
         <div class="stone-matrix-row ${zebra}">
-          <div class="stone-matrix-cell">${stoneHtml}</div>
+          <div class="stone-matrix-cell">${stoneCell(r.stoneGif)}</div>
 
           <div class="stone-matrix-cell">
             <div class="stone-eff">
@@ -304,9 +365,7 @@ export function render(app) {
           <div class="stone-hero-inner">
             <div class="stone-title">
               <h1>Stone System <span class="stone-brand">DeusOT</span></h1>
-              <p>
-                Sistema de slots e progressão por stones, com evolução por combinação.
-              </p>
+              <p>Sistema de slots e progressão por stones, com evolução por combinação.</p>
             </div>
 
             <div class="stone-actions">
@@ -316,26 +375,6 @@ export function render(app) {
           </div>
         </header>
 
-        <!-- ✅ VÍDEO NO TOPO -->
-        <section class="stone-section">
-          <div class="stone-video-card">
-            <div class="stone-video-head">
-              <h2>Vídeo da atualização</h2>
-              <p class="stone-muted">Explicação visual do Stone System.</p>
-            </div>
-
-            <div class="stone-video">
-              <iframe
-                src="https://www.youtube.com/embed/E-q-TdunS8k?si=2BizRfQagCIbYmww"
-                title="NOVA ATUALIZAÇÃO DEUSOT!!!"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </section>
-
-        <!-- ✅ INFORMAÇÕES GERAIS (CARDS) -->
         <section class="stone-section">
           <div class="stone-block">
             <div class="stone-block-head">
@@ -353,9 +392,8 @@ export function render(app) {
           </div>
         </section>
 
-        <!-- ✅ PORCENTAGENS (O QUE JÁ ESTÁ FUNCIONANDO) -->
         <section class="stone-section">
-          <div class="stone-block stone-percent">
+          <div class="stone-block stone-percent" id="stonePercentSection">
             <div class="stone-block-head">
               <h2>Porcentagens</h2>
               <p class="stone-muted">Selecione a categoria e o nível.</p>
@@ -379,20 +417,30 @@ export function render(app) {
             </div>
 
             <div class="stone-hint">
-              Dica: quando você mandar as URLs dos GIFs das stones, eu substituo os placeholders automaticamente.
+              Armas/Armaduras: a stone muda pelo elemento. Capacetes: a stone muda pelo atributo (skill/momentum/etc.).
             </div>
+          </div>
+        </section>
+
+        <!-- ✅ TABELA DE UPGRADE seguindo seu CSS e sempre por último -->
+        <section class="stone-section">
+          <div class="stone-block">
+            <div class="stone-block-head">
+              <h2>Valores</h2>
+              <p class="stone-muted">Tabela de custo e chance para evoluir a Stone (exemplo: Death).</p>
+            </div>
+            ${renderPriceTable()}
           </div>
         </section>
       </main>
     `;
   }
 
-  // handler único por render
-  if (window.__stoneResetHandler) {
-    app.removeEventListener("click", window.__stoneResetHandler);
+  if (window.__stoneHandler) {
+    app.removeEventListener("click", window.__stoneHandler);
   }
 
-  window.__stoneResetHandler = (e) => {
+  window.__stoneHandler = (e) => {
     const t = e.target instanceof Element ? e.target : null;
     if (!t) return;
 
@@ -420,7 +468,6 @@ export function render(app) {
     }
   };
 
-  app.addEventListener("click", window.__stoneResetHandler);
-
+  app.addEventListener("click", window.__stoneHandler);
   paint();
 }
