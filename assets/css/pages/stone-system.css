@@ -1,0 +1,518 @@
+/* assets/css/pages/stone-system.css */
+
+.stone-page {
+  width: 100%;
+  padding: 18px 14px 44px;
+  box-sizing: border-box;
+}
+
+.stone-hero {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(1200px 420px at 10% 0%, rgba(255, 215, 0, 0.10), transparent 60%),
+    radial-gradient(900px 380px at 90% 25%, rgba(60, 255, 160, 0.10), transparent 60%),
+    var(--stone-scroll);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+.stone-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.66));
+  pointer-events: none;
+}
+
+.stone-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 26px 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.stone-title h1 {
+  margin: 0 0 10px;
+  font-size: 1.55rem;
+  letter-spacing: 0.2px;
+}
+
+.stone-brand {
+  font-weight: 900;
+  opacity: 0.95;
+}
+
+.stone-title p {
+  margin: 0;
+  line-height: 1.55;
+  opacity: 0.92;
+  max-width: 78ch;
+}
+
+.stone-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stone-btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.stone-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.stone-btn:active {
+  transform: translateY(0);
+}
+
+.stone-btn-ghost {
+  background: transparent;
+}
+
+.stone-section {
+  margin-top: 16px;
+}
+
+.stone-muted {
+  margin: 0;
+  opacity: 0.72;
+  line-height: 1.45;
+}
+
+.stone-video-card {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.stone-video-head {
+  padding: 16px 16px 10px;
+}
+
+.stone-video-head h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.stone-video {
+  padding: 0 14px 16px;
+}
+
+.stone-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.stone-block {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.stone-block-head {
+  padding: 16px 16px 10px;
+}
+
+.stone-block-head h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.stone-grid {
+  padding: 10px 12px 16px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stone-card {
+  border-radius: 16px;
+  padding: 12px 12px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 10px;
+}
+
+.stone-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stone-card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  letter-spacing: 0.1px;
+}
+
+.stone-card-body p {
+  margin: 0;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+.stone-inline-gif {
+  width: 26px;
+  height: 26px;
+  vertical-align: -6px;
+  margin: 0 6px;
+}
+
+.stone-green {
+  color: rgba(60, 255, 160, 0.95);
+  font-weight: 900;
+}
+
+.stone-footnote {
+  font-size: 0.92rem;
+  opacity: 0.72;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+}
+
+.stone-gold {
+  background:
+    radial-gradient(700px 240px at 10% 0%, rgba(255, 215, 0, 0.10), transparent 60%),
+    rgba(0,0,0,0.18);
+}
+
+.stone-paper {
+  background:
+    radial-gradient(700px 240px at 10% 0%, rgba(255, 255, 255, 0.06), transparent 60%),
+    rgba(0,0,0,0.18);
+}
+
+.stone-emerald {
+  background:
+    radial-gradient(700px 240px at 10% 0%, rgba(60, 255, 160, 0.10), transparent 60%),
+    rgba(0,0,0,0.18);
+}
+
+.stone-sign {
+  padding: 0 16px 16px;
+  opacity: 0.82;
+  font-weight: 700;
+}
+
+/* =========================
+   PARTE 2 — Porcentagens
+   ========================= */
+
+.stone-percent .stone-block-head {
+  padding-bottom: 14px;
+}
+
+.stone-toolbar {
+  padding: 0 12px 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.stone-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stone-tab {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  border-radius: 999px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.stone-tab:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.stone-tab.is-active {
+  background: rgba(60, 255, 160, 0.10);
+  border-color: rgba(60, 255, 160, 0.25);
+}
+
+.stone-levels {
+  display: grid;
+  gap: 8px;
+}
+
+.stone-levels-label {
+  font-weight: 800;
+  opacity: 0.82;
+}
+
+.stone-levels-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stone-lvl {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.18);
+  color: inherit;
+  cursor: pointer;
+  font-weight: 900;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.stone-lvl:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.stone-lvl.is-active {
+  background: rgba(255, 215, 0, 0.10);
+  border-color: rgba(255, 215, 0, 0.25);
+}
+
+.stone-percent-wrap {
+  padding: 0 12px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.stone-percent-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.stone-percent-title h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.stone-title-ico {
+  width: 28px;
+  height: 28px;
+  opacity: 0.95;
+}
+
+.stone-percent-scroll {
+  border-radius: 16px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: auto;
+  padding: 10px;
+}
+
+.stone-matrix {
+  min-width: 760px;
+}
+
+.stone-matrix-head,
+.stone-matrix-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.stone-matrix-cell {
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+}
+
+.stone-matrix-cell.head {
+  font-weight: 900;
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.10);
+}
+
+.stone-matrix-body {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.stone-matrix-row.zebra-a .stone-matrix-cell {
+  background: rgba(0,0,0,0.18);
+}
+
+.stone-matrix-row.zebra-b .stone-matrix-cell {
+  background: rgba(255,255,255,0.03);
+}
+
+.stone-gif {
+  width: 34px;
+  height: 34px;
+}
+
+.stone-gif-placeholder {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.03);
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  opacity: 0.75;
+}
+
+.stone-gif-placeholder span {
+  font-weight: 900;
+}
+
+.stone-gif-placeholder small {
+  opacity: 0.75;
+}
+
+.stone-eff {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.stone-eff-ico {
+  width: 26px;
+  height: 26px;
+}
+
+.stone-eff-txt {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+
+.stone-val {
+  font-weight: 900;
+  color: rgba(60, 255, 160, 0.95);
+}
+
+.stone-eff-name {
+  opacity: 0.85;
+  font-weight: 700;
+}
+
+.stone-hint {
+  padding: 0 16px 16px;
+  opacity: 0.72;
+}
+
+.stone-empty {
+  padding: 14px 14px 10px;
+}
+
+.stone-empty-title {
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.stone-empty p {
+  margin: 0;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+@media (max-width: 840px) {
+  .stone-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stone-title h1 {
+    font-size: 1.35rem;
+  }
+
+  .stone-matrix {
+    min-width: 0;
+  }
+
+  .stone-matrix-head {
+    display: none;
+  }
+
+  .stone-matrix-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stone-matrix-cell {
+    justify-content: flex-start;
+  }
+
+  .stone-eff {
+    justify-content: flex-start;
+  }
+}
+/* =========================================================
+   HOTFIX: garantir clique nos chips/tabs (anti-overlay)
+   ========================================================= */
+
+#stonePercentSection,
+.stone-toolbar,
+.stone-tabs,
+.stone-levels,
+.stone-levels-chips {
+  position: relative;
+  z-index: 50;
+}
+
+/* garante que os botões recebam clique sempre */
+.stone-tab,
+.stone-lvl {
+  position: relative;
+  z-index: 60;
+  pointer-events: auto;
+}
+
+/* se algum wrapper global estiver com pointer-events:none, isso resgata */
+#stonePercentSection * {
+  pointer-events: auto;
+}
+
+/* e se existir “camada fantasma” do template, isso impede de capturar clique */
+.stone-percent-wrap::before,
+.stone-percent-wrap::after,
+.stone-toolbar::before,
+.stone-toolbar::after {
+  pointer-events: none !important;
+}

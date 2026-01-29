@@ -10,30 +10,35 @@ const routes = {
   outfitbonus: () => import("./outfitbonus.js"),
   "mount-bonus": () => import("./mount-bonus.js"),
   "vip-system": () => import("./vip-system.js"),
-
-  // ✅ nova página
   loyalty: () => import("./loyalty.js"),
+  "stone-system": () => import("./stone-system.js"),
 };
 
 let currentPage = null;
 
+function normalizeKey(input) {
+  const raw = String(input || "").trim();
+  // aceita "#/relicario", "#relicario", "/relicario", "relicario"
+  return raw.replace(/^#/, "").replace(/^\/+/, "") || "home";
+}
+
 function getKeyFromHash() {
-  const raw = (location.hash || "").replace("#", "").trim();
-  return raw || "home";
+  return normalizeKey(location.hash);
 }
 
 function setHash(key) {
-  const safe = key || "home";
-  if (location.hash.replace("#", "") !== safe) {
-    location.hash = safe;
-  }
+  const safe = normalizeKey(key);
+  // padroniza sempre como "#/rota" (mais comum em SPA)
+  const next = `#/${safe}`;
+  if (location.hash !== next) location.hash = next;
 }
 
 async function renderPage(key) {
   const app = document.getElementById("app");
   if (!app) return;
 
-  if (currentPage === key) return;
+  const safeKey = normalizeKey(key);
+  if (currentPage === safeKey) return;
 
   app.innerHTML = `
     <section class="panel">
@@ -43,7 +48,7 @@ async function renderPage(key) {
     </section>
   `;
 
-  const loader = routes[key];
+  const loader = routes[safeKey];
   if (!loader) {
     app.innerHTML = `
       <section class="panel">
@@ -52,7 +57,7 @@ async function renderPage(key) {
         </div>
       </section>
     `;
-    currentPage = key;
+    currentPage = safeKey;
     return;
   }
 
@@ -66,14 +71,14 @@ async function renderPage(key) {
           </div>
         </section>
       `;
-      currentPage = key;
+      currentPage = safeKey;
       return;
     }
 
     mod.render(app);
-    currentPage = key;
+    currentPage = safeKey;
   } catch (err) {
-    console.error("[router] erro ao carregar rota:", key, err);
+    console.error("[router] erro ao carregar rota:", safeKey, err);
     app.innerHTML = `
       <section class="panel">
         <div class="details-body">
@@ -81,7 +86,7 @@ async function renderPage(key) {
         </div>
       </section>
     `;
-    currentPage = key;
+    currentPage = safeKey;
   }
 }
 
@@ -96,5 +101,8 @@ window.addEventListener("hashchange", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderPage(getKeyFromHash());
+  // se entrou com "#relicario" (sem /), normaliza pra "#/relicario"
+  const k = getKeyFromHash();
+  setHash(k);
+  renderPage(k);
 });
