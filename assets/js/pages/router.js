@@ -6,7 +6,8 @@ const routes = {
   relicario: () => import("./relicario.js"),
   "server-info": () => import("./server-info.js"),
   roulette: () => import("./roulette.js"),
-  fendas: () => import("./fendas.js"), // ✅ NOVO
+  fendas: () => import("./fendas.js"),
+  outfitbonus: () => import("./outfitbonus.js"), // ✅ NOVO
 };
 
 let currentPage = null;

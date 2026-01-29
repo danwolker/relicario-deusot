@@ -1,0 +1,788 @@
+// assets/js/pages/outfitbonus.js
+
+const PAGE_KEY = "outfitbonus";
+const PAGE_CSS = `/assets/css/pages/${PAGE_KEY}.css`;
+const ORIGIN = "https://deusot.com";
+
+/**
+ * Converte URL relativa em absoluta baseada no ORIGIN.
+ * - "./images/x.gif" -> "https://deusot.com/images/x.gif"
+ * - "/images/x.gif"  -> "https://deusot.com/images/x.gif"
+ * - "https://..."    -> mantém
+ */
+export function toAbsUrl(url, origin = ORIGIN) {
+  if (!url) return "";
+  const s = String(url).trim();
+  if (!s) return "";
+  if (/^https?:\/\//i.test(s)) return s;
+
+  const cleaned = s.replace(/^\.\//, "");
+  const needsSlash = cleaned.startsWith("/") ? "" : "/";
+  return `${origin}${needsSlash}${cleaned}`;
+}
+
+/**
+ * Para quando você colar HTML bruto no futuro: converte src/href relativos para absolutos.
+ * Mantém data:, mailto:, tel:, javascript: intactos.
+ */
+export function normalizeRelativeUrlsInHtml(html, origin = ORIGIN) {
+  if (!html) return "";
+  return String(html).replace(
+    /(src|href)\s*=\s*("([^"]+)"|'([^']+)')/gi,
+    (m, attr, quoted, dq, sq) => {
+      const raw = dq ?? sq ?? "";
+      const v = raw.trim();
+
+      if (
+        !v ||
+        /^https?:\/\//i.test(v) ||
+        /^data:/i.test(v) ||
+        /^mailto:/i.test(v) ||
+        /^tel:/i.test(v) ||
+        /^javascript:/i.test(v) ||
+        v.startsWith("#")
+      ) {
+        return m;
+      }
+
+      const abs = toAbsUrl(v, origin);
+      const quote = quoted.startsWith("'") ? "'" : '"';
+      return `${attr}=${quote}${abs}${quote}`;
+    }
+  );
+}
+
+function ensurePageStyles() {
+  const id = `page-css-${PAGE_KEY}`;
+  if (document.getElementById(id)) return;
+
+  const link = document.createElement("link");
+  link.id = id;
+  link.rel = "stylesheet";
+  link.href = PAGE_CSS;
+  document.head.appendChild(link);
+}
+
+const OUTFITS = [
+  {
+    name: "Future Warrior Outfit",
+    femaleImg: "https://deusot.com/images/outfits/Outfit_Future_Warrior_DeusOT.gif",
+    maleImg: "https://deusot.com/images/outfits/Outfit_Future_Warrior_DeusOT.gif",
+    bonuses: ["Onslaught: +0.10%", "Transcendence: +0.05%"],
+  },
+  {
+    name: "Blood Lover Outfit",
+    femaleImg: "https://deusot.com/images/outfits/Outfit_Blood_Lover.gif",
+    maleImg: "https://deusot.com/images/outfits/Outfit_Blood_Lover.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Moonmaster Outfit",
+    femaleImg: "https://deusot.com/images/outfits/Outfit_Moonmaster.gif",
+    maleImg: "https://deusot.com/images/outfits/Outfit_Moonmaster.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Hefesto Outfit",
+    femaleImg: "https://deusot.com/images/outfits/Outfit_Hefesto.gif",
+    maleImg: "https://deusot.com/images/outfits/Outfit_Hefesto.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Hades Outfit",
+    femaleImg: "./images/outfits/hades_outfit.gif",
+    maleImg: "./images/outfits/hades_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Nattank",
+    femaleImg: "./images/outfits/nattank_outfit.gif",
+    maleImg: "./images/outfits/nattank_outfit.gif",
+    bonuses: [
+      "Skill: +2",
+      "Transcendence: +0.15%",
+      "Onslaught: +0.10%",
+      "Critical Chance: +0.25%",
+      "Critical Damage: +1%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "Diogo",
+    femaleImg: "./images/outfits/diogo_outfit.gif",
+    maleImg: "./images/outfits/diogo_outfit.gif",
+    bonuses: [
+      "Skill: +2",
+      "Transcendence: +0.15%",
+      "Onslaught: +0.10%",
+      "Critical Chance: +0.25%",
+      "Critical Damage: +1%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "DDD",
+    femaleImg: "./images/outfits/ddd_outfit.gif",
+    maleImg: "./images/outfits/ddd_outfit.gif",
+    bonuses: [
+      "Skill: +2",
+      "Transcendence: +0.15%",
+      "Onslaught: +0.10%",
+      "Critical Chance: +0.25%",
+      "Critical Damage: +1%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "Bugado",
+    femaleImg: "./images/outfits/bugado_outfit.gif",
+    maleImg: "./images/outfits/bugado_outfit.gif",
+    bonuses: [
+      "Skill: +2",
+      "Transcendence: +0.15%",
+      "Onslaught: +0.10%",
+      "Critical Chance: +0.25%",
+      "Critical Damage: +1%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "Dukoth",
+    femaleImg: "./images/outfits/dukoth_outfit.gif",
+    maleImg: "./images/outfits/dukoth_outfit.gif",
+    bonuses: [
+      "Skill: +2",
+      "Transcendence: +0.15%",
+      "Onslaught: +0.10%",
+      "Critical Chance: +0.25%",
+      "Critical Damage: +1%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "Bigodezerah",
+    femaleImg: "./images/outfits/bigodezerah_outfit.gif",
+    maleImg: "./images/outfits/bigodezerah_outfit.gif",
+    bonuses: ["Onslaught: +0.10%", "Critical Chance: +0.20%"],
+  },
+  {
+    name: "Julio Skeletin",
+    femaleImg: "./images/outfits/julioskeletin_outfit.gif",
+    maleImg: "./images/outfits/julioskeletin_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.05%",
+      "Critical Damage: +1%",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Momentum: +0.50%",
+      "Ruse: +0.50%",
+    ],
+  },
+  {
+    name: "Archer",
+    femaleImg: "./images/outfits/archer_outfit.gif",
+    maleImg: "./images/outfits/archer_outfit.gif",
+    bonuses: ["Critical Chance: +0.05%"],
+  },
+  {
+    name: "Angel",
+    femaleImg: "./images/outfits/angel_outfit.gif",
+    maleImg: "./images/outfits/angel_outfit.gif",
+    bonuses: ["Skill: +2", "Transcendence: +0.25%", "Onslaught: +0.50%"],
+  },
+  {
+    name: "Diamond Outfit",
+    femaleImg: "./images/outfits/diamond_outfit.gif",
+    maleImg: "./images/outfits/diamond_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Platinum Outfit",
+    femaleImg: "./images/outfits/platinum_outfit.gif",
+    maleImg: "./images/outfits/platinum_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Silver Outfit",
+    femaleImg: "./images/outfits/silver_outfit.gif",
+    maleImg: "./images/outfits/silver_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Ruby Outfit",
+    femaleImg: "./images/outfits/ruby_outfit.gif",
+    maleImg: "./images/outfits/ruby_outfit.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Golden Outfit",
+    link: "https://www.tibiawiki.com.br/wiki/Golden_Outfit_Outfits",
+    femaleImg: "https://www.tibiawiki.com.br/images/3/39/Outfit_Golden_Female_Addon_3.gif",
+    maleImg: "https://www.tibiawiki.com.br/images/4/48/Outfit_Golden_Male_Addon_3.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
+  {
+    name: "Guardian Of Nature",
+    femaleImg: "./images/outfits/Guardian_Of_Nature_Female.gif",
+    maleImg: "./images/outfits/Guardian_Of_Nature_Male.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Elemental Spykes",
+    femaleImg: "./images/outfits/Elemental_Spykes_Female.gif",
+    maleImg: "./images/outfits/Elemental_Spykes_Male.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Aegis Aurora",
+    femaleImg: "./images/outfits/Aegis_Aurora.gif",
+    maleImg: "./images/outfits/Aegis_Valor.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Ultimate God",
+    femaleImg: "./images/outfits/Ultimate_Gods_Female.gif",
+    maleImg: "./images/outfits/Ultimate_Gods_Male.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Polar King and Queen",
+    femaleImg: "./images/outfits/Polar_Queen.gif",
+    maleImg: "./images/outfits/Polar_King.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Shocksmith",
+    femaleImg: "./images/outfits/Shocksmith_Female.gif",
+    maleImg: "./images/outfits/Shocksmith_Male.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +1",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.25%",
+      "Critical Damage: +0.50%",
+    ],
+  },
+  {
+    name: "Mage",
+    link: "https://www.tibiawiki.com.br/wiki/Mage_Outfits",
+    femaleImg: "https://www.tibiawiki.com.br/images/1/1a/Outfit_Mage_Female_Addon_3.gif",
+    maleImg: "https://www.tibiawiki.com.br/images/d/da/Outfit_Mage_Male_Addon_3.gif",
+    notes: [
+      { who: "Female", text: "Nenhum bônus" },
+      {
+        who: "Male",
+        text:
+          "Critical Chance: +0.10% • Skill: +2 • Onslaught: +0.10% • Transcendence: +0.05% • Critical Damage: +1%",
+      },
+    ],
+  },
+  {
+    name: "Summoner",
+    link: "https://www.tibiawiki.com.br/wiki/Summoner_Outfits",
+    femaleImg: "https://www.tibiawiki.com.br/images/1/14/Outfit_Summoner_Female_Addon_3.gif",
+    maleImg: "https://www.tibiawiki.com.br/images/8/8a/Outfit_Summoner_Male_Addon_3.gif",
+    notes: [
+      {
+        who: "Female",
+        text:
+          "Critical Chance: +0.10% • Skill: +2 • Onslaught: +0.10% • Transcendence: +0.05% • Critical Damage: +1%",
+      },
+      { who: "Male", text: "Nenhum bônus" },
+    ],
+  },
+  {
+    name: "Royal Costume",
+    link: "https://www.tibiawiki.com.br/wiki/Formal_Dress_Outfits",
+    femaleImg: "https://www.tibiawiki.com.br/images/3/31/Outfit_Royal_Costume_Female_Addon_3.gif",
+    maleImg: "https://www.tibiawiki.com.br/images/8/81/Outfit_Royal_Costume_Male_Addon_3.gif",
+    bonuses: ["Critical Chance: +0.05%", "Skill: +1", "Onslaught: +0.10%", "Critical Damage: +1%"],
+  },
+];
+
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function normalizeText(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+/* ============================
+   SOMA TOTAL DOS ATRIBUTOS
+============================ */
+
+function canonicalStatName(raw) {
+  const k = normalizeText(raw).replace(/\s+/g, " ").trim();
+
+  if (k.startsWith("crit chance") || k === "critical chance") return "Critical Chance";
+  if (k.startsWith("crit damage") || k === "critical damage") return "Critical Damage";
+  if (k === "skill" || k === "skills") return "Skill";
+  if (k === "onslaught") return "Onslaught";
+  if (k === "transcendence") return "Transcendence";
+  if (k === "momentum") return "Momentum";
+  if (k === "ruse") return "Ruse";
+
+  const trimmed = String(raw || "").trim();
+  return trimmed ? trimmed : "Other";
+}
+
+function parseStatPiece(piece) {
+  const s = String(piece || "").trim();
+  if (!s) return null;
+  if (/nenhum\s*b[oô]nus/i.test(s)) return null;
+
+  const idx = s.indexOf(":");
+  if (idx === -1) return null;
+
+  const nameRaw = s.slice(0, idx).trim();
+  const valRaw = s.slice(idx + 1).trim();
+  const stat = canonicalStatName(nameRaw);
+
+  const numMatch = valRaw.match(/([+-]\s*\d+(?:[.,]\d+)?)/);
+  if (!numMatch) return null;
+
+  const num = Number(numMatch[1].replace(/\s+/g, "").replace(",", "."));
+  if (!Number.isFinite(num)) return null;
+
+  const isPercent = /%/.test(valRaw);
+  return { stat, value: num, isPercent };
+}
+
+function pushStatSum(store, parsed) {
+  if (!parsed) return;
+  const { stat, value, isPercent } = parsed;
+  const key = `${stat}__${isPercent ? "pct" : "flat"}`;
+  store[key] = (store[key] ?? 0) + value;
+}
+
+function computeTotals(outfits) {
+  const sums = Object.create(null);
+
+  for (const o of outfits) {
+    for (const b of o.bonuses || []) {
+      pushStatSum(sums, parseStatPiece(b));
+    }
+
+    for (const n of o.notes || []) {
+      const txt = String(n?.text || "");
+      if (!txt) continue;
+
+      const parts = txt.split("•").map((p) => p.trim()).filter(Boolean);
+      for (const p of parts) {
+        pushStatSum(sums, parseStatPiece(p));
+      }
+    }
+  }
+
+  const getPct = (stat) => sums[`${stat}__pct`] ?? 0;
+  const getFlat = (stat) => sums[`${stat}__flat`] ?? 0;
+
+  return {
+    Skill: getFlat("Skill"),
+    "Critical Chance": getPct("Critical Chance"),
+    "Critical Damage": getPct("Critical Damage"),
+    Onslaught: getPct("Onslaught"),
+    Transcendence: getPct("Transcendence"),
+    Momentum: getPct("Momentum"),
+    Ruse: getPct("Ruse"),
+  };
+}
+
+function formatPct(n) {
+  const v = Math.round(n * 100) / 100;
+  return `${v.toFixed(2)}%`;
+}
+
+function formatInt(n) {
+  return String(Math.round(n));
+}
+
+function renderTotalsCard(totals) {
+  const hasAnything =
+    (totals.Skill || 0) !== 0 ||
+    (totals["Critical Chance"] || 0) !== 0 ||
+    (totals["Critical Damage"] || 0) !== 0 ||
+    (totals.Onslaught || 0) !== 0 ||
+    (totals.Transcendence || 0) !== 0 ||
+    (totals.Momentum || 0) !== 0 ||
+    (totals.Ruse || 0) !== 0;
+
+  const summaryLine = hasAnything
+    ? `Ao completar <strong>todos</strong> os outfits, você empilha um pacote permanente de poder que muda o ritmo das lutas — mais consistência no dano, mais explosão crítica e mais “sobra” pra errar menos.`
+    : `Ainda não há bônus suficientes para somar — mas assim que você preencher os outfits, esse painel vira seu “placar de poder total”.`;
+
+  return `
+    <aside class="ob-totalCard" aria-label="Soma total de bônus">
+      <div class="ob-totalHead">
+        <div class="ob-totalTitle">
+          <span class="ob-totalCrown">◆</span>
+          Bônus Total (coleção completa)
+        </div>
+        <div class="ob-totalSub">
+          ${OUTFITS.length} outfits no sistema
+        </div>
+      </div>
+
+      <div class="ob-totalGrid">
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Skill</div>
+          <div class="ob-totalVal is-green">+${formatInt(totals.Skill || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Critical Chance</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals["Critical Chance"] || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Critical Damage</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals["Critical Damage"] || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Onslaught</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals.Onslaught || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Transcendence</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals.Transcendence || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Momentum</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals.Momentum || 0)}</div>
+        </div>
+
+        <div class="ob-totalStat">
+          <div class="ob-totalKey">Ruse</div>
+          <div class="ob-totalVal is-green">+${formatPct(totals.Ruse || 0)}</div>
+        </div>
+      </div>
+
+      <p class="ob-totalText">${summaryLine}</p>
+
+      <div class="ob-totalHint">
+        <span class="ob-totalHintPill">Dica:</span>
+        como os bônus são acumulativos, cada outfit concluído é um “upgrade invisível” que você carrega sem trocar nada no visual.
+      </div>
+    </aside>
+  `;
+}
+
+/* ============================
+   RENDER NOTES (FIX Mage/Summoner)
+============================ */
+
+function splitNotePieces(text) {
+  const t = String(text || "").trim();
+  if (!t) return [];
+  if (/nenhum\s*b[oô]nus/i.test(t)) return [];
+  return t
+    .split("•")
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
+function renderNotesBlocks(notes) {
+  if (!notes?.length) return "";
+
+  return `
+    <div class="ob-notes">
+      ${notes
+        .map((n) => {
+          const who = escapeHtml(n?.who || "");
+          const txt = String(n?.text || "").trim();
+
+          // Nenhum bônus
+          if (/nenhum\s*b[oô]nus/i.test(txt)) {
+            return `
+              <div class="ob-noteBlock">
+                <div class="ob-noteHead">
+                  <span class="ob-noteTag">${who}</span>
+                  <span class="ob-noteEmpty">Nenhum bônus</span>
+                </div>
+              </div>
+            `;
+          }
+
+          // Lista com •
+          const pieces = splitNotePieces(txt);
+          const listHtml = pieces.length
+            ? `<ul class="ob-noteList">
+                ${pieces
+                  .map(
+                    (p) =>
+                      `<li class="ob-noteItem"><span class="ob-bullet">♦</span>${escapeHtml(p)}</li>`
+                  )
+                  .join("")}
+              </ul>`
+            : `<div class="ob-noteEmpty">Nenhum bônus</div>`;
+
+          return `
+            <div class="ob-noteBlock">
+              <div class="ob-noteHead">
+                <span class="ob-noteTag">${who}</span>
+                <span class="ob-noteCaption">Bônus do gênero</span>
+              </div>
+              ${listHtml}
+            </div>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+/* ============================
+   CARDS / LISTAGEM
+============================ */
+
+function renderCard(o) {
+  const title = o.link
+    ? `<a class="ob-titleLink" href="${escapeHtml(o.link)}" target="_blank" rel="noreferrer">${escapeHtml(
+        o.name
+      )}</a>`
+    : `<span class="ob-title">${escapeHtml(o.name)}</span>`;
+
+  const femaleImg = toAbsUrl(o.femaleImg);
+  const maleImg = toAbsUrl(o.maleImg);
+
+  const bonusesHtml = o.bonuses?.length
+    ? `<ul class="ob-bonusList">
+        ${o.bonuses
+          .map((b) => `<li class="ob-bonusItem"><span class="ob-bullet">♦</span>${escapeHtml(b)}</li>`)
+          .join("")}
+      </ul>`
+    : "";
+
+  const notesHtml = renderNotesBlocks(o.notes);
+
+  const hasAnyBonus =
+    (o.bonuses?.length || 0) > 0 ||
+    (o.notes?.length || 0) > 0;
+
+  return `
+    <article class="ob-card" data-name="${escapeHtml(o.name)}">
+      <header class="ob-cardHead">
+        ${title}
+      </header>
+
+      <div class="ob-sprites">
+        <figure class="ob-sprite">
+          <figcaption>Female</figcaption>
+          <img loading="lazy" src="${escapeHtml(femaleImg)}" alt="${escapeHtml(o.name)} female" />
+        </figure>
+
+        <figure class="ob-sprite">
+          <figcaption>Male</figcaption>
+          <img loading="lazy" src="${escapeHtml(maleImg)}" alt="${escapeHtml(o.name)} male" />
+        </figure>
+      </div>
+
+      <div class="ob-cardBody">
+        ${bonusesHtml}
+        ${notesHtml}
+        ${!hasAnyBonus ? `<p class="ob-empty">Nenhum bônus informado.</p>` : ""}
+      </div>
+    </article>
+  `;
+}
+
+function mountInteractions(root) {
+  const q = root.querySelector("#ob-q");
+  const only = root.querySelector("#ob-only");
+  const cards = Array.from(root.querySelectorAll(".ob-card"));
+
+  function apply() {
+    const term = normalizeText(q?.value || "");
+    const onlyWithBonus = !!only?.checked;
+
+    let visible = 0;
+
+    for (const card of cards) {
+      const name = normalizeText(card.getAttribute("data-name") || "");
+      const matchName = !term || name.includes(term);
+
+      const hasBonus =
+        !!card.querySelector(".ob-bonusList") ||
+        !!card.querySelector(".ob-notes") ||
+        !!card.querySelector(".ob-noteBlock") ||
+        !!card.querySelector(".ob-noteList");
+
+      const matchBonus = !onlyWithBonus || hasBonus;
+
+      const ok = matchName && matchBonus;
+      card.style.display = ok ? "" : "none";
+      if (ok) visible++;
+    }
+
+    const counter = root.querySelector("#ob-count");
+    if (counter) counter.textContent = String(visible);
+  }
+
+  q?.addEventListener("input", apply);
+  only?.addEventListener("change", apply);
+  apply();
+}
+
+export function render(app) {
+  ensurePageStyles();
+
+  const totals = computeTotals(OUTFITS);
+
+  app.innerHTML = `
+    <main class="ob-page">
+      <header class="ob-hero">
+        <div class="ob-heroInner">
+
+          <!-- COLUNA ESQUERDA: contexto -->
+          <div class="ob-titleBlock">
+            <h1>System Bonuses — Outfits</h1>
+            <p>
+              Aqui os outfits acumulados no personagem viram progresso real:
+              bônus como <strong>Health</strong>, <strong>Critical Chance</strong>, <strong>Skills</strong> e outros
+              vão empilhando conforme você completa os addons.
+            </p>
+            <p class="ob-tip">
+              <span class="ob-tipMark">Nota:</span> não precisa estar usando o outfit — basta ter <strong>Addon 1 e 2</strong>.
+            </p>
+          </div>
+
+          <!-- COLUNA DIREITA: painel -->
+          <aside class="ob-side" aria-label="Ferramentas e bônus total">
+
+            <div class="ob-tools" aria-label="Filtros">
+              <div class="ob-toolRow">
+                <label class="ob-label" for="ob-q">Buscar</label>
+                <input
+                  id="ob-q"
+                  class="ob-input"
+                  type="search"
+                  placeholder="Ex.: Hades, Angel, Ruby..."
+                  autocomplete="off"
+                />
+              </div>
+              </div>
+            </div>
+
+            ${renderTotalsCard(totals)}
+
+          </aside>
+        </div>
+      </header>
+
+      <section class="ob-gridWrap" aria-label="Lista de outfits">
+        <div class="ob-grid">
+          ${OUTFITS.map(renderCard).join("")}
+        </div>
+      </section>
+
+      <footer class="ob-foot">
+        <p>
+          Fonte do conteúdo: página de referência do servidor (subtopic <em>outfitbonus</em>).
+        </p>
+      </footer>
+    </main>
+  `;
+
+  mountInteractions(app);
+}
