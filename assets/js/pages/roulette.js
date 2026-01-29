@@ -6,8 +6,6 @@
  * Se um asset falhar, entra placeholder sem quebrar o grid.
  */
 
-import { getBasePath } from "../includes.js";
-
 const BASE = "https://deusot.com";
 
 // Imagens/gifs principais (do HTML de referência)
@@ -129,6 +127,26 @@ function escapeHtml(s) {
     .replaceAll("'", "&#039;");
 }
 
+/**
+ * Base dinâmica para funcionar em:
+ * - local: http://.../ -> "/"
+ * - GitHub Pages project page: https://user.github.io/repo/ -> "/repo/"
+ *
+ * Se você um dia quiser forçar manualmente, pode colocar no HTML:
+ * <meta name="app-base" content="/relicario-deusot/">
+ */
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
 function ensureCss() {
   const id = "roulette-css";
   if (document.getElementById(id)) return;
@@ -137,8 +155,7 @@ function ensureCss() {
   link.id = id;
   link.rel = "stylesheet";
 
-  // ✅ Base dinâmica (GitHub Pages / subpasta / local)
-  const base = getBasePath(); // ex.: "/" ou "/relicario-deusot/"
+  const base = getBasePath();
   link.href = `${base}assets/css/pages/roulette.css`;
 
   document.head.appendChild(link);
@@ -154,8 +171,6 @@ function imgSafe(src, alt, className) {
   img.src = src;
 
   img.addEventListener("error", () => {
-    // placeholder minimalista (sem depender de arquivo externo)
-    // (apenas some com a imagem e deixa um “vazio elegante”)
     img.style.display = "none";
     img.setAttribute("data-broken", "1");
   });
@@ -295,7 +310,6 @@ export function render(container) {
     );
 
     head.appendChild(titleWrap);
-
     sec.appendChild(head);
 
     const body = el("div", "roulette-section__body");
@@ -372,8 +386,7 @@ export function render(container) {
         hint: "A roleta principal. Visual maior.",
         costImg: ASSETS.coin,
         costValue: "1 Roulette Coin",
-        costText:
-          "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
+        costText: "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
         gif: ASSETS.gifMain,
         gifWidth: "100%",
       })
@@ -385,8 +398,7 @@ export function render(container) {
         hint: "Versão compacta.",
         costImg: ASSETS.ticket,
         costValue: "1 Roulette Ticket",
-        costText:
-          "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
+        costText: "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
         gif: ASSETS.gifSlot,
         gifWidth: "520px",
       })
@@ -417,8 +429,7 @@ export function render(container) {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder =
-      "Buscar item (ex.: Bag, Scroll, Stone, Resilience...)";
+    input.placeholder = "Buscar item (ex.: Bag, Scroll, Stone, Resilience...)";
     input.autocomplete = "off";
     input.spellcheck = false;
 
