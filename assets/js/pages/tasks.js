@@ -5,19 +5,31 @@ const PAGE_KEY = "tasks";
 const BASE_ORIGIN = "https://deusot.com";
 
 /**
- * Carrega o CSS da página usando caminho relativo ao próprio módulo.
- * Isso remove o problema clássico do GitHub Pages tentar buscar em:
- *   https://danwolker.github.io/assets/...
- * em vez de:
- *   https://danwolker.github.io/relicario-deusot/assets/...
+ * Base dinâmica para CSS/arquivos do seu projeto:
+ * - local: "/"
+ * - GitHub Pages project page: "/relicario-deusot/"
+ *
+ * Recomendado no HTML (você já tem):
+ * <meta name="app-base" content="/relicario-deusot/">
  */
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
 function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
   if (document.getElementById(id)) return;
 
-  // ✅ O JS está em /assets/js/pages/tasks.js
-  // então "../../css/pages/tasks.css" resolve certinho para /assets/css/pages/tasks.css
-  const href = new URL(`../../css/pages/${PAGE_KEY}.css`, import.meta.url).href;
+  const base = getBasePath(); // ✅ aqui está o pulo do gato
+  const href = `${base}assets/css/pages/${PAGE_KEY}.css`;
 
   const link = document.createElement("link");
   link.id = id;
@@ -264,7 +276,6 @@ export function render(app) {
     </main>
   `;
 
-  // Ações
   app.addEventListener(
     "click",
     (e) => {
