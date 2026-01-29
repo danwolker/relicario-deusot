@@ -44,8 +44,7 @@ export function render(app) {
           </div>
 
           <div class="pb-hero__actions" role="group" aria-label="Ações">
-            <button class="pb-btn pb-btn--ghost" type="button" data-action="back">Voltar</button>
-            <button class="pb-btn" type="button" data-action="open-ref">Ver referência</button>
+        
           </div>
         </div>
 

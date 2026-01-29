@@ -13,7 +13,7 @@ const routes = {
   loyalty: () => import("./loyalty.js"),
   "stone-system": () => import("./stone-system.js"),
 
-  // ✅ novas rotas do sidebar
+  // novas páginas do sidebar
   "passe-de-batalha": () => import("./passe-de-batalha.js"),
   tasks: () => import("./tasks.js"),
   "forge-system": () => import("./forge-system.js"),
