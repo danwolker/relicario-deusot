@@ -71,7 +71,8 @@
 
 /* Headline (inspira o caption bar da referência) */
 .fs-headline {
-  display: center;
+   display: grid;
+  justify-items: center;
   grid-template-columns: auto 1fr;
   gap: 10px;
   align-items: center;

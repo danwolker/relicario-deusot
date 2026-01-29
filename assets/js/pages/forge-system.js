@@ -2,12 +2,34 @@
 import { emit } from "../utils.js";
 
 const PAGE_KEY = "forge-system";
-const CSS_PATH = "/assets/css/pages/forge-system.css";
 const BASE_ORIGIN = "https://deusot.com";
 
-function ensurePageCss(href = CSS_PATH) {
+/**
+ * Base dinâmica para CSS/arquivos do seu projeto:
+ * - local: "/"
+ * - GitHub Pages project page: "/relicario-deusot/"
+ *
+ * Recomendado no HTML:
+ * <meta name="app-base" content="/relicario-deusot/">
+ */
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
+function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
   if (document.getElementById(id)) return;
+
+  const base = getBasePath();
+  const href = `${base}assets/css/pages/${PAGE_KEY}.css`;
 
   const link = document.createElement("link");
   link.id = id;
@@ -83,7 +105,7 @@ function renderAbilityCard(a) {
   return `
     <article class="fs-ability" data-key="${escapeHtml(a.key)}">
       <div class="fs-ability__icon" aria-hidden="true">
-        <img src="${escapeHtml(a.icon)}" alt="" loading="lazy" />
+        <img src="${escapeHtml(a.icon)}" alt="" loading="lazy" referrerpolicy="no-referrer" />
       </div>
 
       <div class="fs-ability__body">
@@ -106,21 +128,22 @@ export function render(app) {
 
   app.innerHTML = `
     <main class="fs-page">
-      <!-- Cabeçalho como na referência: título central + separador -->
       <header class="fs-hero" aria-label="Forge System">
         <div class="fs-hero__inner">
           <h1 class="fs-title">Forge System</h1>
-          <img class="fs-sep" src="${escapeHtml(separator)}" alt="" loading="lazy" />
+          <img class="fs-sep" src="${escapeHtml(separator)}" alt="" loading="lazy" referrerpolicy="no-referrer" />
           <div class="fs-hero__actions" role="group" aria-label="Ações">
-
+            <!-- (se quiser botões depois, coloca aqui) -->
+            <!--
+            <button class="fs-btn fs-btn--ghost" type="button" data-action="back">Voltar</button>
+            <button class="fs-btn" type="button" data-action="open-ref">Abrir referência</button>
+            -->
           </div>
         </div>
       </header>
 
-      <!-- “Headline” (equivalente ao caption azul da referência, mas no seu padrão) -->
       <section class="fs-section" aria-label="Informações necessárias">
         <div class="fs-headline">
-         
           <div class="fs-headline__text">Algumas informações necessárias para Forge System</div>
         </div>
 
@@ -169,10 +192,8 @@ export function render(app) {
           </div>
 
           <div class="fs-foot">
-            <div class="fs-foot__note">
-            </div>
-            <div class="fs-foot__actions">
-            </div>
+            <div class="fs-foot__note"></div>
+            <div class="fs-foot__actions"></div>
           </div>
         </div>
       </section>
@@ -193,3 +214,5 @@ export function render(app) {
     { passive: true }
   );
 }
+
+export default { render };
