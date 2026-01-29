@@ -1,0 +1,401 @@
+.mb-panel {
+  padding: 18px;
+}
+
+.mb-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.mb-kicker {
+  font-size: 12px;
+  opacity: 0.75;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mb-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mb-title {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.1;
+}
+
+.mb-subtitle {
+  margin: 8px 0 0;
+  opacity: 0.85;
+  max-width: 70ch;
+}
+
+.mb-meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mb-counter {
+  min-width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: right;
+}
+
+.mb-counter__label {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.mb-counter__value {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 3px;
+}
+
+.mb-hero {
+  display: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* ===== Search (compact no topo) ===== */
+.mb-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.mb-search__icon {
+  opacity: 0.75;
+  user-select: none;
+}
+
+.mb-search__input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+}
+
+/* ✅ menor, mais “toolbar-like” */
+.mb-search--compact {
+  padding: 8px 10px;
+  border-radius: 12px;
+  width: min(340px, 42vw);
+}
+
+.mb-search--compact .mb-search__input {
+  font-size: 13px;
+}
+
+/* ✅ NOVO CARD (totals) */
+.mb-hero__totals {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+}
+
+.mb-totals__title {
+  margin-left: 600px;
+  /* margin: 0; */
+  font-size: 18px;
+}
+
+.mb-totals__desc {
+   margin-left: 350px;
+  /* margin: 8px 0 0; */
+  opacity: 0.86;
+  line-height: 1.55;
+  max-width: 95ch;
+}
+
+.mb-totals__grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.mb-total-chip {
+  grid-column: span 12;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+  padding: 10px 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mb-total-chip__k {
+  opacity: 0.85;
+  font-size: 13px;
+}
+
+.mb-total-chip__v {
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.mb-totals__footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mb-totals__note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.mb-totals__spark {
+   margin-left: 250px;
+  opacity: 0.9;
+}
+
+.mb-hero__card {
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+}
+
+.mb-hero__title {
+   margin-left: 350px;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.mb-hero__text {
+  margin-left: 350px;
+  text-align: center;
+  /* margin: 0 0 30px; */
+  opacity: 0.88;
+  line-height: 1.55;
+  max-width: 92ch;
+}
+
+.mb-hero__note {
+  margin-left: 350px;
+  /* margin: 0; */
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ✅ ferramentas discretas (sem “caixão” gigante) */
+.mb-tools--mini {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+}
+
+.mb-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.mb-btn {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.mb-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.mb-btn--primary {
+  border-color: rgba(90, 160, 255, 0.35);
+  background: rgba(90, 160, 255, 0.18);
+}
+
+.mb-section__head {
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.mb-section__title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.mb-section__desc {
+  margin: 6px 0 0;
+  opacity: 0.8;
+}
+
+.mb-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.mb-card {
+  grid-column: span 12;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 94px 1fr;
+  gap: 12px;
+}
+
+.mb-card__media {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.22);
+  display: grid;
+  place-items: center;
+  padding: 10px;
+}
+
+.mb-mount {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+}
+
+.mb-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.mb-card__title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.mb-chip {
+  font-size: 12px;
+  opacity: 0.85;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.16);
+  white-space: nowrap;
+}
+
+.mb-bonus {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.mb-bonus__item {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  line-height: 1.25;
+}
+
+.mb-bonus__dot {
+  opacity: 0.75;
+}
+
+.mb-bonus__label {
+  opacity: 0.9;
+}
+
+.mb-bonus__value {
+  font-weight: 800;
+  opacity: 0.95;
+}
+
+.mb-empty__card {
+  margin-top: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+}
+
+.mb-empty__title {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.mb-empty__text {
+  margin: 0;
+  opacity: 0.85;
+}
+
+@media (min-width: 520px) {
+  .mb-total-chip {
+    grid-column: span 6;
+  }
+}
+
+/* ✅ Layout harmonioso no hero: welcome em cima, totals abaixo, tools como bloco pequeno à direita */
+@media (min-width: 760px) {
+  .mb-hero {
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-areas:
+      "welcome tools"
+      "totals  tools";
+    align-items: start;
+  }
+
+  .mb-hero__card {
+    grid-area: welcome;
+  }
+
+  .mb-hero__totals {
+    grid-area: totals;
+  }
+
+  .mb-tools--mini {
+    grid-area: tools;
+    align-self: start;
+  }
+
+  .mb-card {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mb-total-chip {
+    grid-column: span 4;
+  }
+
+  .mb-card {
+    grid-column: span 4;
+  }
+}

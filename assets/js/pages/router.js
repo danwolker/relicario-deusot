@@ -7,7 +7,8 @@ const routes = {
   "server-info": () => import("./server-info.js"),
   roulette: () => import("./roulette.js"),
   fendas: () => import("./fendas.js"),
-  outfitbonus: () => import("./outfitbonus.js"), // ✅ NOVO
+  outfitbonus: () => import("./outfitbonus.js"),
+  "mount-bonus": () => import("./mount-bonus.js"),
 };
 
 let currentPage = null;
