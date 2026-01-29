@@ -9,6 +9,12 @@ const routes = {
   fendas: () => import("./fendas.js"),
   outfitbonus: () => import("./outfitbonus.js"),
   "mount-bonus": () => import("./mount-bonus.js"),
+
+  // ✅ VIP no mesmo diretório de pages:
+  "vip-system": () => import("./vip-system.js"),
+
+  // (opcional) você tem no sidebar, mas se ainda não existe o arquivo, vai cair em "Seção em construção"
+  // loyalty: () => import("./loyalty.js"),
 };
 
 let currentPage = null;
@@ -29,6 +35,7 @@ async function renderPage(key) {
   const app = document.getElementById("app");
   if (!app) return;
 
+  // evita rerender desnecessário
   if (currentPage === key) return;
 
   app.innerHTML = `
@@ -54,8 +61,15 @@ async function renderPage(key) {
 
   try {
     const mod = await loader();
+
     if (!mod?.render) {
-      app.innerHTML = `<div class="hint">Página inválida.</div>`;
+      app.innerHTML = `
+        <section class="panel">
+          <div class="details-body">
+            <div class="hint">Página inválida.</div>
+          </div>
+        </section>
+      `;
       currentPage = key;
       return;
     }
@@ -82,11 +96,9 @@ on("relicario:nav", (e) => {
 });
 
 window.addEventListener("hashchange", () => {
-  const key = getKeyFromHash();
-  renderPage(key);
+  renderPage(getKeyFromHash());
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const key = getKeyFromHash();
-  renderPage(key);
+  renderPage(getKeyFromHash());
 });

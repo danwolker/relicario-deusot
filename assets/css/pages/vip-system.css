@@ -1,0 +1,260 @@
+/* assets/css/pages/vip-system.css */
+
+.vip-page {
+  width: 100%;
+  padding: 18px 14px 40px;
+  box-sizing: border-box;
+}
+
+.vip-hero {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(1200px 400px at 20% 0%, rgba(255, 215, 0, 0.10), transparent 60%),
+    radial-gradient(900px 380px at 90% 20%, rgba(255, 99, 132, 0.10), transparent 60%),
+    var(--vip-scroll-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+.vip-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.62));
+  pointer-events: none;
+}
+
+.vip-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 26px 18px;
+  display: grid;
+  gap: 18px;
+}
+
+.vip-title h1 {
+  margin: 0 0 10px;
+  font-size: 1.55rem;
+  letter-spacing: 0.2px;
+}
+
+.vip-title p {
+  margin: 0;
+  line-height: 1.55;
+  opacity: 0.92;
+  max-width: 75ch;
+}
+
+.vip-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.vip-btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.vip-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.vip-btn:active {
+  transform: translateY(0);
+}
+
+.vip-btn-ghost {
+  background: transparent;
+}
+
+.vip-section {
+  margin-top: 16px;
+}
+
+.vip-card {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.vip-card-header {
+  padding: 16px 16px 10px;
+}
+
+.vip-card-header h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.vip-muted {
+  margin: 0;
+  opacity: 0.72;
+  line-height: 1.45;
+}
+
+.vip-center {
+  text-align: center;
+}
+
+.vip-warning {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  background:
+    radial-gradient(700px 240px at 10% 10%, rgba(255, 0, 0, 0.12), transparent 60%),
+    rgba(255,255,255,0.04);
+}
+
+.vip-warning-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  background: rgba(255, 0, 0, 0.10);
+}
+
+.vip-warning p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.vip-grid {
+  padding: 10px 10px 14px;
+}
+
+.vip-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.9fr;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.vip-row + .vip-row {
+  margin-top: 8px;
+}
+
+.vip-row:not(.vip-head) {
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.vip-head {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  font-weight: 700;
+}
+
+.vip-cell {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.vip-benefit {
+  padding-left: 6px;
+}
+
+.vip-label {
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+.vip-col {
+  justify-content: center;
+}
+
+.vip-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.vip-pill b {
+  font-weight: 800;
+}
+
+.vip-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.vip-text {
+  font-size: 0.92rem;
+}
+
+.vip-vip {
+  border-color: rgba(60, 255, 160, 0.18);
+  background: rgba(60, 255, 160, 0.06);
+}
+
+.vip-accent {
+  font-weight: 800;
+}
+
+.vip-red {
+  color: #ff5c5c;
+}
+
+.vip-blue {
+  color: #6aa8ff;
+}
+
+.vip-mount {
+  display: grid;
+  place-items: center;
+  padding: 18px 16px 22px;
+}
+
+.vip-mount-gif {
+  width: min(260px, 80vw);
+  height: auto;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px;
+}
+
+@media (max-width: 760px) {
+  .vip-row {
+    grid-template-columns: 1fr;
+  }
+
+  .vip-col {
+    justify-content: flex-start;
+  }
+
+  .vip-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vip-title h1 {
+    font-size: 1.35rem;
+  }
+}
