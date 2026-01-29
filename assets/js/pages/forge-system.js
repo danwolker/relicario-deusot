@@ -5,36 +5,35 @@ const PAGE_KEY = "forge-system";
 const BASE_ORIGIN = "https://deusot.com";
 
 /**
- * Base dinâmica para CSS/arquivos do seu projeto:
- * - local: "/"
- * - GitHub Pages project page: "/relicario-deusot/"
- *
- * Recomendado no HTML:
- * <meta name="app-base" content="/relicario-deusot/">
+ * CSS absoluto baseado no próprio módulo (à prova de GitHub Pages project page).
+ * Ex.: se o JS está em:
+ *   https://danwolker.github.io/relicario-deusot/assets/js/pages/forge-system.js
+ * então o CSS vira:
+ *   https://danwolker.github.io/relicario-deusot/assets/css/pages/forge-system.css
  */
-function getBasePath() {
-  const meta = document.querySelector('meta[name="app-base"]');
-  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
-
-  const { hostname, pathname } = window.location;
-  if (hostname.endsWith("github.io")) {
-    const parts = pathname.split("/").filter(Boolean);
-    if (parts.length > 0) return `/${parts[0]}/`;
-  }
-  return "/";
+function getCssHref() {
+  return new URL(`../../css/pages/${PAGE_KEY}.css`, import.meta.url).href;
 }
 
 function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
-  if (document.getElementById(id)) return;
+  const desiredHref = getCssHref();
 
-  const base = getBasePath();
-  const href = `${base}assets/css/pages/${PAGE_KEY}.css`;
+  const existing = document.getElementById(id);
 
+  // ✅ Se já existe, mas está apontando errado (caso clássico), CORRIGE.
+  if (existing) {
+    if (existing.getAttribute("href") !== desiredHref) {
+      existing.setAttribute("href", desiredHref);
+    }
+    return;
+  }
+
+  // ✅ Se não existe, cria com o href correto
   const link = document.createElement("link");
   link.id = id;
   link.rel = "stylesheet";
-  link.href = href;
+  link.href = desiredHref;
   document.head.appendChild(link);
 }
 
@@ -133,11 +132,7 @@ export function render(app) {
           <h1 class="fs-title">Forge System</h1>
           <img class="fs-sep" src="${escapeHtml(separator)}" alt="" loading="lazy" referrerpolicy="no-referrer" />
           <div class="fs-hero__actions" role="group" aria-label="Ações">
-            <!-- (se quiser botões depois, coloca aqui) -->
-            <!--
-            <button class="fs-btn fs-btn--ghost" type="button" data-action="back">Voltar</button>
-            <button class="fs-btn" type="button" data-action="open-ref">Abrir referência</button>
-            -->
+            <!-- botões opcionais -->
           </div>
         </div>
       </header>
