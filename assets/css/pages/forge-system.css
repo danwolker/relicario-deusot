@@ -1,0 +1,245 @@
+/* assets/css/pages/forge-system.css */
+
+.fs-page {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: clamp(16px, 2.2vw, 28px);
+}
+
+/* Hero central como a referência (título + separador) */
+.fs-hero {
+  margin-bottom: 14px;
+}
+
+.fs-hero__inner {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}
+
+.fs-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.fs-sep {
+  width: min(700px, 100%);
+  height: auto;
+  opacity: 0.95;
+  filter: saturate(0.95);
+}
+
+.fs-hero__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Botões neutros (respeitam paleta do projeto) */
+.fs-btn {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  user-select: none;
+}
+
+.fs-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.fs-btn--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Section */
+.fs-section {
+  margin-top: 14px;
+}
+
+/* Headline (inspira o caption bar da referência) */
+.fs-headline {
+  display: center;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fs-headline__bar {
+  width: 10px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.fs-headline__text {
+   text-align: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Card principal */
+.fs-card {
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Bullets */
+.fs-bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  line-height: 1.65;
+  opacity: 0.94;
+}
+
+.fs-bullets--spaced {
+  margin-top: 12px;
+}
+
+/* Abilities list */
+.fs-abilities {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.fs-ability {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 620px) {
+  .fs-ability {
+    grid-template-columns: 64px 1fr;
+  }
+}
+
+.fs-ability__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.fs-ability__icon img {
+  width: 42px;
+  height: 42px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.fs-ability__title {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.fs-ability__name {
+  font-weight: 800;
+}
+
+.fs-ability__dash {
+  opacity: 0.6;
+  margin: 0 6px;
+}
+
+.fs-ability__slot {
+  opacity: 0.9;
+  font-weight: 700;
+}
+
+.fs-ability__desc {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+/* Tabela (responsiva com scroll horizontal) */
+.fs-tablewrap {
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.fs-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+}
+
+.fs-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 12px 10px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.fs-table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0.95;
+}
+
+.fs-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Rodapé do card */
+.fs-foot {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.fs-foot__note {
+  opacity: 0.72;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
