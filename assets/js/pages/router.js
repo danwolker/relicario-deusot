@@ -12,13 +12,21 @@ const routes = {
   "vip-system": () => import("./vip-system.js"),
   loyalty: () => import("./loyalty.js"),
   "stone-system": () => import("./stone-system.js"),
+
+  // ✅ novas rotas do sidebar
+  "passe-de-batalha": () => import("./passe-de-batalha.js"),
+  tasks: () => import("./tasks.js"),
+  "forge-system": () => import("./forge-system.js"),
+  "daily-boss": () => import("./daily-boss.js"),
+  "new-warzones": () => import("./new-warzones.js"),
+  "castle-war": () => import("./castle-war.js"),
+  "rune-system": () => import("./rune-system.js"),
 };
 
 let currentPage = null;
 
 function normalizeKey(input) {
   const raw = String(input || "").trim();
-  // aceita "#/relicario", "#relicario", "/relicario", "relicario"
   return raw.replace(/^#/, "").replace(/^\/+/, "") || "home";
 }
 
@@ -28,7 +36,6 @@ function getKeyFromHash() {
 
 function setHash(key) {
   const safe = normalizeKey(key);
-  // padroniza sempre como "#/rota" (mais comum em SPA)
   const next = `#/${safe}`;
   if (location.hash !== next) location.hash = next;
 }
@@ -101,7 +108,6 @@ window.addEventListener("hashchange", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // se entrou com "#relicario" (sem /), normaliza pra "#/relicario"
   const k = getKeyFromHash();
   setHash(k);
   renderPage(k);
