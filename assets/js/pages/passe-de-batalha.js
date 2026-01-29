@@ -2,12 +2,34 @@
 import { emit } from "../utils.js";
 
 const PAGE_KEY = "passe-de-batalha";
-const CSS_PATH = "/assets/css/pages/passe-de-batalha.css";
 const BASE_ORIGIN = "https://deusot.com";
 
-function ensurePageCss(href = CSS_PATH) {
+/**
+ * Base dinâmica para CSS/arquivos do seu projeto:
+ * - local: "/"
+ * - GitHub Pages project page: "/relicario-deusot/"
+ *
+ * Recomendado no HTML:
+ * <meta name="app-base" content="/relicario-deusot/">
+ */
+function getBasePath() {
+  const meta = document.querySelector('meta[name="app-base"]');
+  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return "/";
+}
+
+function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
   if (document.getElementById(id)) return;
+
+  const base = getBasePath();
+  const href = `${base}assets/css/pages/${PAGE_KEY}.css`;
 
   const link = document.createElement("link");
   link.id = id;
@@ -44,13 +66,19 @@ export function render(app) {
           </div>
 
           <div class="pb-hero__actions" role="group" aria-label="Ações">
-        
+            <!-- (Opcional) Se quiser botões depois, coloque aqui. -->
           </div>
         </div>
 
         <figure class="pb-figure" aria-label="Imagem de referência da interface">
           <div class="pb-figure__frame">
-            <img class="pb-figure__img" src="${escapeHtml(imageUrl)}" alt="Interface do Passe de Batalha (referência)" loading="lazy" />
+            <img
+              class="pb-figure__img"
+              src="${escapeHtml(imageUrl)}"
+              alt="Interface do Passe de Batalha (referência)"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
           </div>
           <figcaption class="pb-figure__caption">
             Imagem carregada diretamente de ${escapeHtml(BASE_ORIGIN)}.
@@ -157,7 +185,7 @@ export function render(app) {
     </main>
   `;
 
-  // Delegação de clique (sem <a href="pagina.html">)
+  // Delegação de clique (se você colocar botões com data-action depois)
   app.addEventListener(
     "click",
     (e) => {
@@ -174,3 +202,5 @@ export function render(app) {
     { passive: true }
   );
 }
+
+export default { render };
