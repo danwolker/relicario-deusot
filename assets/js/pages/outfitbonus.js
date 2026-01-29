@@ -8,7 +8,7 @@ const ORIGIN = "https://deusot.com";
  * - local: "/"
  * - GitHub Pages project page: "/relicario-deusot/"
  *
- * Se quiser fixar (recomendado), no HTML:
+ * Recomendado no HTML:
  * <meta name="app-base" content="/relicario-deusot/">
  */
 function getBasePath() {
@@ -25,29 +25,19 @@ function getBasePath() {
 
 /**
  * Resolve URL para imagens/links.
- * Regra do projeto (seu pedido): outfits SEMPRE vêm do ORIGIN.
- *
- * - Se já for http(s), mantém.
- * - Se for "./images/..." ou "/images/..." ou "images/..." => converte para ORIGIN + "/images/..."
- * - Se for outras relativas (raras), também converte para ORIGIN por padrão.
+ * Regra: outfits SEMPRE vêm do ORIGIN (deusot.com), a menos que já seja http(s).
  */
 export function toAbsUrl(url, origin = ORIGIN) {
   if (!url) return "";
   const s = String(url).trim();
   if (!s) return "";
 
-  // já absoluta
   if (/^https?:\/\//i.test(s)) return s;
 
-  // mantém especiais
   if (/^(data:|mailto:|tel:|javascript:)/i.test(s) || s.startsWith("#")) return s;
 
-  // normaliza
   const noDot = s.replace(/^\.\//, "");
-  const cleaned = noDot.replace(/^\/+/, ""); // remove "/" iniciais
-
-  // seu caso: tudo que cair aqui vira deusot.com/...
-  // "images/outfits/x.gif" -> https://deusot.com/images/outfits/x.gif
+  const cleaned = noDot.replace(/^\/+/, "");
   return `${origin}/${cleaned}`;
 }
 
@@ -93,16 +83,19 @@ function ensurePageStyles() {
   document.head.appendChild(link);
 }
 
+/**
+ * ✅ Outfits
+ * - Você pediu: imagens “male” e caminhos diretos do deusot.com
+ * - Então a gente usa as URLs exatas aqui (sem depender de ./images do repo).
+ */
 const OUTFITS = [
   {
     name: "Future Warrior Outfit",
-    femaleImg: "https://deusot.com/images/outfits/Outfit_Future_Warrior_DeusOT.gif",
     maleImg: "https://deusot.com/images/outfits/Outfit_Future_Warrior_DeusOT.gif",
     bonuses: ["Onslaught: +0.10%", "Transcendence: +0.05%"],
   },
   {
     name: "Blood Lover Outfit",
-    femaleImg: "https://deusot.com/images/outfits/Outfit_Blood_Lover.gif",
     maleImg: "https://deusot.com/images/outfits/Outfit_Blood_Lover.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -114,7 +107,6 @@ const OUTFITS = [
   },
   {
     name: "Moonmaster Outfit",
-    femaleImg: "https://deusot.com/images/outfits/Outfit_Moonmaster.gif",
     maleImg: "https://deusot.com/images/outfits/Outfit_Moonmaster.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -126,7 +118,6 @@ const OUTFITS = [
   },
   {
     name: "Hefesto Outfit",
-    femaleImg: "https://deusot.com/images/outfits/Outfit_Hefesto.gif",
     maleImg: "https://deusot.com/images/outfits/Outfit_Hefesto.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -137,10 +128,9 @@ const OUTFITS = [
     ],
   },
 
-  // ✅ agora tudo vindo do deusot.com
+  // ✅ lista que você mandou (todas do deusot.com / male)
   {
     name: "Hades Outfit",
-    femaleImg: "https://deusot.com/images/outfits/hades_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/hades_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -152,7 +142,6 @@ const OUTFITS = [
   },
   {
     name: "Nattank",
-    femaleImg: "https://deusot.com/images/outfits/nattank_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/nattank_outfit.gif",
     bonuses: [
       "Skill: +2",
@@ -166,7 +155,6 @@ const OUTFITS = [
   },
   {
     name: "Diogo",
-    femaleImg: "https://deusot.com/images/outfits/diogo_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/diogo_outfit.gif",
     bonuses: [
       "Skill: +2",
@@ -180,7 +168,6 @@ const OUTFITS = [
   },
   {
     name: "DDD",
-    femaleImg: "https://deusot.com/images/outfits/ddd_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/ddd_outfit.gif",
     bonuses: [
       "Skill: +2",
@@ -194,7 +181,6 @@ const OUTFITS = [
   },
   {
     name: "Bugado",
-    femaleImg: "https://deusot.com/images/outfits/bugado_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/bugado_outfit.gif",
     bonuses: [
       "Skill: +2",
@@ -207,28 +193,12 @@ const OUTFITS = [
     ],
   },
   {
-    name: "Dukoth",
-    femaleImg: "https://deusot.com/images/outfits/dukoth_outfit.gif",
-    maleImg: "https://deusot.com/images/outfits/dukoth_outfit.gif",
-    bonuses: [
-      "Skill: +2",
-      "Transcendence: +0.15%",
-      "Onslaught: +0.10%",
-      "Critical Chance: +0.25%",
-      "Critical Damage: +1%",
-      "Momentum: +0.50%",
-      "Ruse: +0.50%",
-    ],
-  },
-  {
     name: "Bigodezerah",
-    femaleImg: "https://deusot.com/images/outfits/bigodezerah_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/bigodezerah_outfit.gif",
     bonuses: ["Onslaught: +0.10%", "Critical Chance: +0.20%"],
   },
   {
     name: "Julio Skeletin",
-    femaleImg: "https://deusot.com/images/outfits/julioskeletin_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/julioskeletin_outfit.gif",
     bonuses: [
       "Critical Chance: +0.05%",
@@ -241,19 +211,16 @@ const OUTFITS = [
   },
   {
     name: "Archer",
-    femaleImg: "https://deusot.com/images/outfits/archer_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/archer_outfit.gif",
     bonuses: ["Critical Chance: +0.05%"],
   },
   {
     name: "Angel",
-    femaleImg: "https://deusot.com/images/outfits/angel_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/angel_outfit.gif",
     bonuses: ["Skill: +2", "Transcendence: +0.25%", "Onslaught: +0.50%"],
   },
   {
     name: "Diamond Outfit",
-    femaleImg: "https://deusot.com/images/outfits/diamond_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/diamond_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -265,7 +232,6 @@ const OUTFITS = [
   },
   {
     name: "Platinum Outfit",
-    femaleImg: "https://deusot.com/images/outfits/platinum_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/platinum_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -277,7 +243,6 @@ const OUTFITS = [
   },
   {
     name: "Silver Outfit",
-    femaleImg: "https://deusot.com/images/outfits/silver_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/silver_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -289,7 +254,6 @@ const OUTFITS = [
   },
   {
     name: "Ruby Outfit",
-    femaleImg: "https://deusot.com/images/outfits/ruby_outfit.gif",
     maleImg: "https://deusot.com/images/outfits/ruby_outfit.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -299,24 +263,8 @@ const OUTFITS = [
       "Critical Damage: +1%",
     ],
   },
-
-  {
-    name: "Golden Outfit",
-    link: "https://www.tibiawiki.com.br/wiki/Golden_Outfit_Outfits",
-    femaleImg: "https://www.tibiawiki.com.br/images/3/39/Outfit_Golden_Female_Addon_3.gif",
-    maleImg: "https://www.tibiawiki.com.br/images/4/48/Outfit_Golden_Male_Addon_3.gif",
-    bonuses: [
-      "Critical Chance: +0.10%",
-      "Skill: +2",
-      "Onslaught: +0.10%",
-      "Transcendence: +0.05%",
-      "Critical Damage: +1%",
-    ],
-  },
-
   {
     name: "Guardian Of Nature",
-    femaleImg: "https://deusot.com/images/outfits/Guardian_Of_Nature_Female.gif",
     maleImg: "https://deusot.com/images/outfits/Guardian_Of_Nature_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -328,7 +276,6 @@ const OUTFITS = [
   },
   {
     name: "Elemental Spykes",
-    femaleImg: "https://deusot.com/images/outfits/Elemental_Spykes_Female.gif",
     maleImg: "https://deusot.com/images/outfits/Elemental_Spykes_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -340,7 +287,6 @@ const OUTFITS = [
   },
   {
     name: "Aegis Aurora",
-    femaleImg: "https://deusot.com/images/outfits/Aegis_Aurora.gif",
     maleImg: "https://deusot.com/images/outfits/Aegis_Valor.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -352,7 +298,6 @@ const OUTFITS = [
   },
   {
     name: "Ultimate God",
-    femaleImg: "https://deusot.com/images/outfits/Ultimate_Gods_Female.gif",
     maleImg: "https://deusot.com/images/outfits/Ultimate_Gods_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -364,7 +309,6 @@ const OUTFITS = [
   },
   {
     name: "Polar King and Queen",
-    femaleImg: "https://deusot.com/images/outfits/Polar_Queen.gif",
     maleImg: "https://deusot.com/images/outfits/Polar_King.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -376,7 +320,6 @@ const OUTFITS = [
   },
   {
     name: "Shocksmith",
-    femaleImg: "https://deusot.com/images/outfits/Shocksmith_Female.gif",
     maleImg: "https://deusot.com/images/outfits/Shocksmith_Male.gif",
     bonuses: [
       "Critical Chance: +0.10%",
@@ -387,10 +330,22 @@ const OUTFITS = [
     ],
   },
 
+  // Mantidos (tibiawiki), porque são outfits oficiais com diferenças por gênero
+  {
+    name: "Golden Outfit",
+    link: "https://www.tibiawiki.com.br/wiki/Golden_Outfit_Outfits",
+    maleImg: "https://www.tibiawiki.com.br/images/4/48/Outfit_Golden_Male_Addon_3.gif",
+    bonuses: [
+      "Critical Chance: +0.10%",
+      "Skill: +2",
+      "Onslaught: +0.10%",
+      "Transcendence: +0.05%",
+      "Critical Damage: +1%",
+    ],
+  },
   {
     name: "Mage",
     link: "https://www.tibiawiki.com.br/wiki/Mage_Outfits",
-    femaleImg: "https://www.tibiawiki.com.br/images/1/1a/Outfit_Mage_Female_Addon_3.gif",
     maleImg: "https://www.tibiawiki.com.br/images/d/da/Outfit_Mage_Male_Addon_3.gif",
     notes: [
       { who: "Female", text: "Nenhum bônus" },
@@ -404,7 +359,6 @@ const OUTFITS = [
   {
     name: "Summoner",
     link: "https://www.tibiawiki.com.br/wiki/Summoner_Outfits",
-    femaleImg: "https://www.tibiawiki.com.br/images/1/14/Outfit_Summoner_Female_Addon_3.gif",
     maleImg: "https://www.tibiawiki.com.br/images/8/8a/Outfit_Summoner_Male_Addon_3.gif",
     notes: [
       {
@@ -415,11 +369,9 @@ const OUTFITS = [
       { who: "Male", text: "Nenhum bônus" },
     ],
   },
-
   {
     name: "Royal Costume",
     link: "https://www.tibiawiki.com.br/wiki/Formal_Dress_Outfits",
-    femaleImg: "https://www.tibiawiki.com.br/images/3/31/Outfit_Royal_Costume_Female_Addon_3.gif",
     maleImg: "https://www.tibiawiki.com.br/images/8/81/Outfit_Royal_Costume_Male_Addon_3.gif",
     bonuses: ["Critical Chance: +0.05%", "Skill: +1", "Onslaught: +0.10%", "Critical Damage: +1%"],
   },
@@ -658,6 +610,7 @@ function renderNotesBlocks(notes) {
 
 /* ============================
    CARDS / LISTAGEM
+   (✅ 1 sprite só, “male”)
 ============================ */
 
 function renderCard(o) {
@@ -665,7 +618,6 @@ function renderCard(o) {
     ? `<a class="ob-titleLink" href="${escapeHtml(o.link)}" target="_blank" rel="noreferrer">${escapeHtml(o.name)}</a>`
     : `<span class="ob-title">${escapeHtml(o.name)}</span>`;
 
-  const femaleImg = toAbsUrl(o.femaleImg);
   const maleImg = toAbsUrl(o.maleImg);
 
   const bonusesHtml = o.bonuses?.length
@@ -677,24 +629,23 @@ function renderCard(o) {
     : "";
 
   const notesHtml = renderNotesBlocks(o.notes);
-
   const hasAnyBonus = (o.bonuses?.length || 0) > 0 || (o.notes?.length || 0) > 0;
 
   return `
-    <article class="ob-card" data-name="${escapeHtml(o.name)}">
+    <article class="ob-card">
       <header class="ob-cardHead">
         ${title}
       </header>
 
       <div class="ob-sprites">
         <figure class="ob-sprite">
-          <figcaption>Female</figcaption>
-          <img loading="lazy" src="${escapeHtml(femaleImg)}" alt="${escapeHtml(o.name)} female" />
-        </figure>
-
-        <figure class="ob-sprite">
-          <figcaption>Male</figcaption>
-          <img loading="lazy" src="${escapeHtml(maleImg)}" alt="${escapeHtml(o.name)} male" />
+          <figcaption>Outfit</figcaption>
+          <img
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            src="${escapeHtml(maleImg)}"
+            alt="${escapeHtml(o.name)}"
+          />
         </figure>
       </div>
 
@@ -705,43 +656,6 @@ function renderCard(o) {
       </div>
     </article>
   `;
-}
-
-function mountInteractions(root) {
-  const q = root.querySelector("#ob-q");
-  const only = root.querySelector("#ob-only");
-  const cards = Array.from(root.querySelectorAll(".ob-card"));
-  const counter = root.querySelector("#ob-count");
-
-  function apply() {
-    const term = normalizeText(q?.value || "");
-    const onlyWithBonus = !!only?.checked;
-
-    let visible = 0;
-
-    for (const card of cards) {
-      const name = normalizeText(card.getAttribute("data-name") || "");
-      const matchName = !term || name.includes(term);
-
-      const hasBonus =
-        !!card.querySelector(".ob-bonusList") ||
-        !!card.querySelector(".ob-notes") ||
-        !!card.querySelector(".ob-noteBlock") ||
-        !!card.querySelector(".ob-noteList");
-
-      const matchBonus = !onlyWithBonus || hasBonus;
-
-      const ok = matchName && matchBonus;
-      card.style.display = ok ? "" : "none";
-      if (ok) visible++;
-    }
-
-    if (counter) counter.textContent = String(visible);
-  }
-
-  q?.addEventListener("input", apply);
-  only?.addEventListener("change", apply);
-  apply();
 }
 
 export function render(app) {
@@ -766,36 +680,10 @@ export function render(app) {
             </p>
           </div>
 
-          <aside class="ob-side" aria-label="Ferramentas e bônus total">
-
-            <div class="ob-tools" aria-label="Filtros">
-              <div class="ob-toolRow">
-                <label class="ob-label" for="ob-q">Buscar</label>
-                <input
-                  id="ob-q"
-                  class="ob-input"
-                  type="search"
-                  placeholder="Ex.: Hades, Angel, Ruby..."
-                  autocomplete="off"
-                />
-              </div>
-
-              <div class="ob-toolRowInline">
-                <label class="ob-check">
-                  <input id="ob-only" type="checkbox" />
-                  <span>Somente com bônus</span>
-                </label>
-
-                <div class="ob-meta">
-                  <span class="ob-pill subtle">Visíveis</span>
-                  <span class="ob-pill" id="ob-count">0</span>
-                </div>
-              </div>
-            </div>
-
+          <aside class="ob-side" aria-label="Bônus total">
             ${renderTotalsCard(totals)}
-
           </aside>
+
         </div>
       </header>
 
@@ -812,8 +700,6 @@ export function render(app) {
       </footer>
     </main>
   `;
-
-  mountInteractions(app);
 }
 
 export default { render };
