@@ -5,31 +5,18 @@ const PAGE_KEY = "passe-de-batalha";
 const BASE_ORIGIN = "https://deusot.com";
 
 /**
- * Base dinâmica para CSS/arquivos do seu projeto:
- * - local: "/"
- * - GitHub Pages project page: "/relicario-deusot/"
- *
- * Recomendado no HTML:
- * <meta name="app-base" content="/relicario-deusot/">
+ * Carrega o CSS da página usando caminho relativo ao próprio módulo.
+ * Isso elimina 100% dos problemas de base "/assets" vs "/relicario-deusot/assets" no GitHub Pages.
  */
-function getBasePath() {
-  const meta = document.querySelector('meta[name="app-base"]');
-  if (meta?.content) return String(meta.content).replace(/\/+$/, "") + "/";
-
-  const { hostname, pathname } = window.location;
-  if (hostname.endsWith("github.io")) {
-    const parts = pathname.split("/").filter(Boolean);
-    if (parts.length > 0) return `/${parts[0]}/`;
-  }
-  return "/";
-}
-
 function ensurePageCss() {
   const id = `page-css:${PAGE_KEY}`;
   if (document.getElementById(id)) return;
 
-  const base = getBasePath();
-  const href = `${base}assets/css/pages/${PAGE_KEY}.css`;
+  // ✅ ESTE é o pulo do gato:
+  // o JS está em:  /assets/js/pages/passe-de-batalha.js
+  // então o CSS fica: /assets/css/pages/passe-de-batalha.css
+  // sem depender de meta app-base, router, hostname, etc.
+  const href = new URL(`../../css/pages/${PAGE_KEY}.css`, import.meta.url).href;
 
   const link = document.createElement("link");
   link.id = id;
@@ -185,7 +172,6 @@ export function render(app) {
     </main>
   `;
 
-  // Delegação de clique (se você colocar botões com data-action depois)
   app.addEventListener(
     "click",
     (e) => {
