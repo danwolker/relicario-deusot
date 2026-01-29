@@ -6,6 +6,8 @@
  * Se um asset falhar, entra placeholder sem quebrar o grid.
  */
 
+import { getBasePath } from "../includes.js";
+
 const BASE = "https://deusot.com";
 
 // Imagens/gifs principais (do HTML de referência)
@@ -128,12 +130,17 @@ function escapeHtml(s) {
 }
 
 function ensureCss() {
-  if (document.getElementById("roulette-css")) return;
+  const id = "roulette-css";
+  if (document.getElementById(id)) return;
 
   const link = document.createElement("link");
-  link.id = "roulette-css";
+  link.id = id;
   link.rel = "stylesheet";
-  link.href = "/assets/css/pages/roulette.css";
+
+  // ✅ Base dinâmica (GitHub Pages / subpasta / local)
+  const base = getBasePath(); // ex.: "/" ou "/relicario-deusot/"
+  link.href = `${base}assets/css/pages/roulette.css`;
+
   document.head.appendChild(link);
 }
 
@@ -178,7 +185,13 @@ function buildRouletteCard({
   const meta = el("div", "roulette-cost__meta");
   meta.appendChild(el("div", "roulette-cost__label", "Custo"));
   meta.appendChild(el("div", "roulette-cost__value", escapeHtml(costValue)));
-  meta.appendChild(el("div", "", `<div style="opacity:.72; font-size:12px; line-height:1.35;">${escapeHtml(costText)}</div>`));
+  meta.appendChild(
+    el(
+      "div",
+      "",
+      `<div style="opacity:.72; font-size:12px; line-height:1.35;">${escapeHtml(costText)}</div>`
+    )
+  );
   cost.appendChild(meta);
 
   top.appendChild(left);
@@ -359,7 +372,8 @@ export function render(container) {
         hint: "A roleta principal. Visual maior.",
         costImg: ASSETS.coin,
         costValue: "1 Roulette Coin",
-        costText: "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
+        costText:
+          "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
         gif: ASSETS.gifMain,
         gifWidth: "100%",
       })
@@ -371,7 +385,8 @@ export function render(container) {
         hint: "Versão compacta.",
         costImg: ASSETS.ticket,
         costValue: "1 Roulette Ticket",
-        costText: "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
+        costText:
+          "Você obtém pela store, pacotes, eventos ou loot de bosses especiais.",
         gif: ASSETS.gifSlot,
         gifWidth: "520px",
       })
@@ -402,7 +417,8 @@ export function render(container) {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Buscar item (ex.: Bag, Scroll, Stone, Resilience...)";
+    input.placeholder =
+      "Buscar item (ex.: Bag, Scroll, Stone, Resilience...)";
     input.autocomplete = "off";
     input.spellcheck = false;
 
